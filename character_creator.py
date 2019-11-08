@@ -451,11 +451,24 @@ elif user_command == "PLAY":
         o You can speak, read, and write Elvish.''')
         print()
         print("There are three subraces of elves, high elves, wood elves, and dark elves.")
-        print('''High Elf:''')
+        print('''High Elf: A master of magic, the high elf is a very intelligent being. As a 
+        high elf your intelligence increases by 1 and you are proficient with the longsword,
+        shortbow, and longbow. You also know one cantrip of your choice from the wizard spell
+        list, using intelligence as your spellcasting ability. You can also speak, read, and write
+        one extra language.''')
         print()
-        print('''Wood Elf:''')
+        print('''Wood Elf: The wood elf is a stealthy and quick individual. They have copperish skin with 
+        copper colored hair and green/brown/hazel eyes.As a wood elf your wisdom increases by 1 and you are 
+        proficient with the longsword, shortsword, shortbow, and longbow. Your base walking speed increases 
+        by 35 ft anf you can attempt to hide even when you are only lightly obscured by foliage, heavy rain, 
+        falling snow, mist, etc.''')
         print()
-        print('''Dark Elf(Drow):''')
+        print('''Dark Elf(Drow): Banished from the surface, the drow now call the Underdark their home.
+        They usually have very dark skin and pale eyes with white or yellow hair. Your charisma score 
+        increases by one and your darkvision extends to 120 ft. Drow, being from underground, have
+        disadvantage on attack rolls and on wisdom checks that rely on sight when you, your target,
+        or whatever you are trying to see is in sunlight. You know the dancing lights cantrip, and are
+        profiecient with rapiers, shortswords, and hand crossbows.''')
         user_subrace = input("Please type 'HIGH', 'WOOD', or 'DARK' based on the subrace you choose. ")
         print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")    
         
