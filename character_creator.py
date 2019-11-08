@@ -7,6 +7,8 @@
 #Variables
 user_command = "" #Determines which command user has typed in and acts accordingly
 user_race = "" #Determines which race the user wants for their character
+user_name = "" #The character's name chosen by the user
+user_subrace = "" #The subrace chosen by the user
 
 
 #Functions
@@ -18,6 +20,8 @@ user_race = "" #Determines which race the user wants for their character
 print('''Welcome to the 5th Edition D&D Character Creator! This program can help beginners
 make their first D&D character at first level! This creator will focus on races, classes, and
 backgrounds which appear in the Player's Handbook.''')
+
+
 user_command = input("Confused on where to start? Type HELP. Or, type in the command you wish you use. (Type PLAY to start!) ")
 if user_command == "CLASSES": 
     print(''' Available classes:''')
@@ -31,7 +35,16 @@ if user_command == "CLASSES":
         1d20- a twenty sided dice using numbers 1-20.''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "BACK":
         print('''Welcome to the D&D Character Creator! This program can help beginners
@@ -50,7 +63,16 @@ elif user_command == "DIE":
         print(''' Available classes:''')
         user_command = input("Please type in the command you wish you use. ")        
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "BACK":
         print('''Welcome to the D&D Character Creator! This program can help beginners
@@ -58,7 +80,16 @@ elif user_command == "DIE":
         user_command = input("Confused on where to start? Type HELP. Or, type in the command you wish you use. ")  
 #Races Menu
 elif user_command == "RACES":
-    print(''' Available races:''')
+    print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
     user_command = input("Please type in the command you wish you use. ")
     if user_command == "CLASSES":
         print(''' Available classes:''')
@@ -88,7 +119,16 @@ elif user_command == "BACK":
         BACK: returns to the start screen.''')
         user_command = input("Please type in the command you wish you use. ")        
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "CLASSES":
         print(''' Available classes:''')
@@ -123,7 +163,16 @@ if user_command == "HELP":
         1d20- a twenty sided dice using numbers 1-20.''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "BACK":
         print('''Welcome to the D&D Character Creator! This program can help beginners
@@ -142,7 +191,16 @@ elif user_command == "CLASSES":
         1d20- a twenty sided dice using numbers 1-20.''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "BACK":
         print('''Welcome to the D&D Character Creator! This program can help beginners
@@ -161,7 +219,16 @@ elif user_command == "DIE":
         print(''' Available classes:''')
         user_command = input("Please type in the command you wish you use. ")        
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "BACK":
         print('''Welcome to the D&D Character Creator! This program can help beginners
@@ -169,7 +236,16 @@ elif user_command == "DIE":
         user_command = input("Confused on where to start? Type HELP. Or, type in the command you wish you use. ")  
 #Races Menu
 elif user_command == "RACES":
-    print(''' Available races:''')
+    print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
     user_command = input("Please type in the command you wish you use. ")
     if user_command == "CLASSES":
         print(''' Available classes:''')
@@ -199,7 +275,16 @@ elif user_command == "BACK":
         BACK: returns to the start screen.''')
         user_command = input("Please type in the command you wish you use. ")        
     elif user_command == "RACES":
-        print(''' Available races:''')
+        print(''' Available races:
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
     elif user_command == "CLASSES":
         print(''' Available classes:''')
@@ -257,7 +342,10 @@ elif user_command == "PLAY":
     print(''' 
     
     ''')
+    user_name = input("What's your character's name? ")
+    print("Let's create " + user_name + "!")
     #End of fake loading
+    
     #Choosing a race
     print(''' To know more about each race, just type 'INFO', or choose your race!
  To choose your race type the race name ex. 'DWARF' ''')
@@ -312,6 +400,32 @@ elif user_command == "PLAY":
         the same length as a human, plus a few years. They have the same average height and weight of a human. As a tiefling,
         your intelligence score increases by 1 and your charisma (confidence, charm, etc.) increases by 2. ''')
         
+    elif user_race == "DWARF":
+        print('''You have chosen Dwarf as your class. Congrats! You get the following abilities:
+        o Your Constitution increase by 2.
+        o Your speed is 25 ft per turn.
+        o You can see in dim light within 60 ft of you as if it were bright light and in darkness
+        as if it were dim light.
+        o You have advantage on saving throws against poison and resistance to poison damage (Advantage
+        and resistance will be explained later).
+        o You have proficiency with the battleaxe, handaxe, throwing hammer, and warhammer (Proficiency 
+        will be explained later).
+        o You have proficiency with one set of tools of your choice: smith's tools, brewer's supplies, or
+        mason's tools. 
+        o Whenever you make a history check related to the origin of stonework, you can add your proficiency
+        bonus to the check and double it.
+        o You can speak, read, and write Dwarvish. ''')
+        print()
+        print("There are two subraces of dwarves, hill dwarves and mountain dwarves.")
+        print('''Hill Dwarves: Hill dwarves have keen senses, incredible intuition and unbeatable
+        resilience. As a hill dwarf, your wisdom score increases by 1 and your maximum health 
+        increases by 1, and it continues to increase by 1 everytime you level up.''')
+        print()
+        print('''Mountain Dwarves: Mountain dwarves are hardy creatures used to rough terrain. They
+        are a little taller than a hill dwarf and have a lighter skin color. As a mountain dwarf, your
+        strength score increases by 2 and you have proficiency using medium and light armor.''')
+        user_subrace = input("Please type either 'HILL' or 'MOUNTAIN' based on the subrace you choose. ")
+        print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")
         
     
     
