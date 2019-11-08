@@ -1,0 +1,24 @@
+User Stories
+
+Epic:
+    As a beginner DND player, I want a character creator so that I have a DND character I can play as.
+
+Split User Stories:
+    As a player I want a menu of commands I can use so that I know how to use the program.
+    
+    As a player I want the program to let me choose which race I want to be so that I can customize my character.
+    
+    As a player I want the program to explain each race so that I can make a more informed decision.
+    
+    As a player I want the program to let me choose which class I want to be so that I can customize my character.
+    
+    As a player I want the program to explain each class so that I can make a more informed decision.
+    
+    As a player I want the program to explain my class's starter equipment so that I know what my character has.
+    
+
+    
+    
+    
+    
+
