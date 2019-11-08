@@ -412,7 +412,64 @@ elif user_command == "PLAY":
         which are around 4 or 5 ft long and solid-colored eyes. They believe trust is earned, not given freely. They live about
         the same length as a human, plus a few years. They have the same average height and weight of a human. As a tiefling,
         your intelligence score increases by 1 and your charisma (confidence, charm, etc.) increases by 2. ''')
-        
+        user_race = input("Please pick your race: ")
+        if user_race == "DWARF":
+            print('''You have chosen Dwarf as your class. Congrats! You get the following abilities:
+            o Your Constitution increase by 2.
+            o Your speed is 25 ft per turn.
+            o You can see in dim light within 60 ft of you as if it were bright light and in darkness
+            as if it were dim light.
+            o You have advantage on saving throws against poison and resistance to poison damage.
+            o You have proficiency with the battleaxe, handaxe, throwing hammer, and warhammer.
+            o You have proficiency with one set of tools of your choice: smith's tools, brewer's supplies, or
+            mason's tools. 
+            o Whenever you make a history check related to the origin of stonework, you can add your proficiency
+            bonus to the check and double it.
+            o You can speak, read, and write Dwarvish. ''')
+            print()
+            print("There are two subraces of dwarves, hill dwarves and mountain dwarves.")
+            print('''Hill Dwarves: Hill dwarves have keen senses, incredible intuition and unbeatable
+            resilience. As a hill dwarf, your wisdom score increases by 1 and your maximum health 
+            increases by 1, and it continues to increase by 1 everytime you level up.''')
+            print()
+            print('''Mountain Dwarves: Mountain dwarves are hardy creatures used to rough terrain. They
+            are a little taller than a hill dwarf and have a lighter skin color. As a mountain dwarf, your
+            strength score increases by 2 and you have proficiency using medium and light armor.''')
+            user_subrace = input("Please type either 'HILL' or 'MOUNTAIN' based on the subrace you choose. ")
+            print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")
+        elif user_race == "ELF":
+            print('''You have chosen Elf as your class. Congrats! You get the following abilities:
+            o Your dexterity score increases by 2.
+            o Your walking speed is 30 ft per turn.
+            o You can see in dim light within 60 ft of you as if it were bright light and in darkness
+            as if it were dim light.
+            o You have proficiency in the perception skill.
+            o You have advantage on saving throws against being charmed, and magic can't put you to
+            sleep.
+            o Elves do not require sleep, instead they meditate deeply for 4 hours a day.
+            o You can speak, read, and write Elvish.''')
+            print()
+            print("There are three subraces of elves, high elves, wood elves, and dark elves.")
+            print('''High Elf: A master of magic, the high elf is a very intelligent being. As a 
+            high elf your intelligence increases by 1 and you are proficient with the longsword,
+            shortbow, and longbow. You also know one cantrip of your choice from the wizard spell
+            list, using intelligence as your spellcasting ability. You can also speak, read, and write
+            one extra language.''')
+            print()
+            print('''Wood Elf: The wood elf is a stealthy and quick individual. They have copperish skin with 
+            copper colored hair and green/brown/hazel eyes.As a wood elf your wisdom increases by 1 and you are 
+            proficient with the longsword, shortsword, shortbow, and longbow. Your base walking speed increases 
+            by 35 ft anf you can attempt to hide even when you are only lightly obscured by foliage, heavy rain, 
+            falling snow, mist, etc.''')
+            print()
+            print('''Dark Elf(Drow): Banished from the surface, the drow now call the Underdark their home.
+            They usually have very dark skin and pale eyes with white or yellow hair. Your charisma score 
+            increases by one and your darkvision extends to 120 ft. Drow, being from underground, have
+            disadvantage on attack rolls and on wisdom checks that rely on sight when you, your target,
+            or whatever you are trying to see is in sunlight. You know the dancing lights cantrip, and are
+            profiecient with rapiers, shortswords, and hand crossbows.''')
+            user_subrace = input("Please type 'HIGH', 'WOOD', or 'DARK' based on the subrace you choose. ")
+            print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")
     elif user_race == "DWARF":
         print('''You have chosen Dwarf as your class. Congrats! You get the following abilities:
         o Your Constitution increase by 2.
@@ -437,7 +494,6 @@ elif user_command == "PLAY":
         strength score increases by 2 and you have proficiency using medium and light armor.''')
         user_subrace = input("Please type either 'HILL' or 'MOUNTAIN' based on the subrace you choose. ")
         print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")
-        
     elif user_race == "ELF":
         print('''You have chosen Elf as your class. Congrats! You get the following abilities:
         o Your dexterity score increases by 2.
@@ -471,7 +527,7 @@ elif user_command == "PLAY":
         profiecient with rapiers, shortswords, and hand crossbows.''')
         user_subrace = input("Please type 'HIGH', 'WOOD', or 'DARK' based on the subrace you choose. ")
         print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")    
-        
+    
     
     
 
