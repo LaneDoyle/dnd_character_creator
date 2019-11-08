@@ -6,7 +6,7 @@
 
 #Variables
 user_command = "" #Determines which command user has typed in and acts accordingly
-
+user_race = "" #Determines which race the user wants for their character
 
 
 #Functions
@@ -15,8 +15,9 @@ user_command = "" #Determines which command user has typed in and acts according
 
 #Code
 #Introduction
-print('''Welcome to the D&D Character Creator! This program can help beginners
-make their first D&D character at first level!''')
+print('''Welcome to the 5th Edition D&D Character Creator! This program can help beginners
+make their first D&D character at first level! This creator will focus on races, classes, and
+backgrounds which appear in the Player's Handbook.''')
 user_command = input("Confused on where to start? Type HELP. Or, type in the command you wish you use. (Type PLAY to start!) ")
 if user_command == "CLASSES": 
     print(''' Available classes:''')
@@ -254,15 +255,70 @@ elif user_command == "PLAY":
     ''')
     
     print(''' 
-    Barbarian
-    Warlock
-    Fighter
-    Wizard
-    Sorcerer
-    Monk
-    Paladin
-    Cleric
+    
     ''')
+    #End of fake loading
+    #Choosing a race
+    print(''' To know more about each race, just type 'INFO', or choose your race!
+ To choose your race type the race name ex. 'DWARF' ''')
+    user_race = input("Please pick your race: ")
+    if user_race == "INFO":
+        print(''' Race Info:
+        Dwarf: Dwarves have an appearance similar to humans, if humans were all naturally
+        under 5ft. Dwarves can live over 400 years old. Tiny but mighty, they are skilled 
+        warriors in battle. They stand around 4 to  5ft tall and weigh around 150. Hardy 
+        creatures, your constitution (vitality) score increases by 2 when you are a dwarf.
+        
+        Elf: Elves are graceful creatures. They live for centuries and hold vast knowledge of the
+        world around them. Elves can live to be 750 years old. They are, on average, 5 or over 6 ft
+        tall. Their weight is similar to a human's. As an elf your dexterity (agility) increases by 2.
+        
+        Halfling: Halflings are shorter than dwarves. They are skilled in fitting into communities and
+        are fiercely loyal to their allies. They reach adulthood around the age of 20 and live into the
+        middle of their second century. On average halflings stand about 3 ft tall and weigh 40 pounds.
+        As a halfling your dexterity (agility) increases by 2.
+        
+        Human: The most recognizable race, humans are adaptable and ambitious. Because of their shorter
+        life spans, they do not hesitate to seize the moment. Humans live less than a century. Their height
+        and weight vary greatly, from being 5 to over 6 ft tall and 100 to 200 pounds or more. As a human,
+        each of your ability scores increase by one. 
+        
+        Dragonborn: The kin of dragons, dragonborn resemble a dragon-like humanoid, although they have no tail
+        or wings. Their scale color can range from blue to gold. Their clans are the most important thing in their
+        lives. Dragonborn usually live to around 80 years old. On average they are well over 6 ft tall and are around
+        250 pounds. As a dragonborn, your strength score increases by 2 and your charisma (confidence, charm, etc.) 
+        score increases by 1.
+        
+        Gnome: About the size of a halfling, the gnome has a delightful energy about them, greatly enjoying the life
+        they lead. A gnome's appearance generally tells all you need to know about their personality. They are curious
+        people, and enjoy each and every moment. Gnomes can live to almost 500 years old and are, on average, 3 to 4 ft 
+        tall and 40 pounds. As a gnome, your intelligence score increases by 2. 
+        
+        Half-Elf: A mix of human and elf, half-elves are usually curious adventurers are quick talking diplomats. They 
+        appear to be human, except their ears are pointy and they have the eyes of their elven parents. They live to 
+        be around 180 years old and average a height of 5 to 6 ft tall. They have about the same weight as a human. As
+        a half-elf, your charisma (confidence, charm, etc.) score increases by two and two other ability scores of your 
+        choice increase by 1.
+        
+        Half-Orc: A mix of human and orc, half-orcs are more than intimidating. Their large figures, jutting jaws, and sharp 
+        teeth, can be seen are terrifying by others. Most have scars they collected from battle, while some have scars which
+        mark them as an exile. Regardless of the meaning, most half-orcs are marked by at least one scar. However, they rarely
+        live longer than 75 years old. They average around 5 to well over 6 ft tall and can be around 200 pounds or more. As 
+        a half-orc, your strength score increases by 2, and your constitution (vitality) score increases by 1. 
+        
+        Tiefling: Although appearing similar to humans, tieflings have large horns which take a variety of shapes. Their skin
+        color is the same as a human's except some have various shades of red as their skin color. They also have thick tails
+        which are around 4 or 5 ft long and solid-colored eyes. They believe trust is earned, not given freely. They live about
+        the same length as a human, plus a few years. They have the same average height and weight of a human. As a tiefling,
+        your intelligence score increases by 1 and your charisma (confidence, charm, etc.) increases by 2. ''')
+        
+        
+    
+    
+
+
+
+
     
 
 
