@@ -4,6 +4,8 @@
 
 ''' A program which helps a beginner learn how to create D&D characters'''
 
+import dieroller as dr
+
 #Variables
 user_command = "" #Determines which command user has typed in and acts accordingly
 user_race = "" #Determines which race the user wants for their character
@@ -337,6 +339,15 @@ elif user_command == "PLAY":
     There are several layers to the character creation process. First, let's start with your character's 
     race. You surely looked at the races beforehand...right? Just kidding! I know you didn't. So, I grabbed 
     an extra copy of the list of races! Here they are: 
+        Dwarf
+        Elf
+        Halfling
+        Human
+        Dragonborn
+        Gnomes
+        Half-Elf
+        Half-Orc
+        Tiefling
     ''')
     
     print(''' 
@@ -349,6 +360,8 @@ elif user_command == "PLAY":
     #Choosing a race
     print(''' To know more about each race, just type 'INFO', or choose your race!
  To choose your race type the race name ex. 'DWARF' ''')
+    print(''' It is also important to note that things such as advantage, proficiency, etc.
+ will be explained later!''')
     user_race = input("Please pick your race: ")
     if user_race == "INFO":
         print(''' Race Info:
@@ -406,10 +419,8 @@ elif user_command == "PLAY":
         o Your speed is 25 ft per turn.
         o You can see in dim light within 60 ft of you as if it were bright light and in darkness
         as if it were dim light.
-        o You have advantage on saving throws against poison and resistance to poison damage (Advantage
-        and resistance will be explained later).
-        o You have proficiency with the battleaxe, handaxe, throwing hammer, and warhammer (Proficiency 
-        will be explained later).
+        o You have advantage on saving throws against poison and resistance to poison damage.
+        o You have proficiency with the battleaxe, handaxe, throwing hammer, and warhammer.
         o You have proficiency with one set of tools of your choice: smith's tools, brewer's supplies, or
         mason's tools. 
         o Whenever you make a history check related to the origin of stonework, you can add your proficiency
@@ -426,6 +437,27 @@ elif user_command == "PLAY":
         strength score increases by 2 and you have proficiency using medium and light armor.''')
         user_subrace = input("Please type either 'HILL' or 'MOUNTAIN' based on the subrace you choose. ")
         print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")
+        
+    elif user_race == "ELF":
+        print('''You have chosen Elf as your class. Congrats! You get the following abilities:
+        o Your dexterity score increases by 2.
+        o Your walking speed is 30 ft per turn.
+        o You can see in dim light within 60 ft of you as if it were bright light and in darkness
+        as if it were dim light.
+        o You have proficiency in the perception skill.
+        o You have advantage on saving throws against being charmed, and magic can't put you to
+        sleep.
+        o Elves do not require sleep, instead they meditate deeply for 4 hours a day.
+        o You can speak, read, and write Elvish.''')
+        print()
+        print("There are three subraces of elves, high elves, wood elves, and dark elves.")
+        print('''High Elf:''')
+        print()
+        print('''Wood Elf:''')
+        print()
+        print('''Dark Elf(Drow):''')
+        user_subrace = input("Please type 'HIGH', 'WOOD', or 'DARK' based on the subrace you choose. ")
+        print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")    
         
     
     
