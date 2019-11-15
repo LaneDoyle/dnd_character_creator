@@ -6,11 +6,19 @@
 
 import dieroller as dr
 
-#Variables
+#Basic Variables
 user_command = "" #Determines which command user has typed in and acts accordingly
 user_race = "" #Determines which race the user wants for their character
 user_name = "" #The character's name chosen by the user
 user_subrace = "" #The subrace chosen by the user
+
+#Stat Variables
+stat_str = 0 #Strength Score 
+stat_dex = 0 #Dexterity Score 
+stat_con = 0 #Constitution Score 
+stat_int = 0 #Intelligence Score
+stat_wis = 0 #Wisdom Score 
+stat_cha = 0 #Charisma Score
 
 
 #Functions
@@ -361,7 +369,7 @@ elif user_command == "PLAY":
     print(''' To know more about each race, just type 'INFO', or choose your race!
  To choose your race type the race name ex. 'DWARF' ''')
     print(''' It is also important to note that things such as advantage, proficiency, etc.
- will be explained later!''')
+ will be explained later! I would also reccommend writing all this down! :) ''')
     user_race = input("Please pick your race: ")
     if user_race == "INFO":
         print(''' Race Info:
@@ -526,7 +534,80 @@ elif user_command == "PLAY":
         or whatever you are trying to see is in sunlight. You know the dancing lights cantrip, and are
         profiecient with rapiers, shortswords, and hand crossbows.''')
         user_subrace = input("Please type 'HIGH', 'WOOD', or 'DARK' based on the subrace you choose. ")
+        print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")   
+    elif user_race == "HALFLING":
+        print('''You have chosen Halfling as your class. Congrats! You get the following abilities:
+        o Your dexterity score increases by 2.
+        o Your base walking speed is 25 ft per turn.
+        o When you roll a 1 on an attack roll, skill check, or saving throw, you can reroll the die and
+        must use the new roll.
+        o You have advantage on saving throws against being frightened.
+        o You can move through the space of any creature that is of a size larger than yours.
+        o You can speak, read, and write Common and Halfling.''')
+        print()
+        print("There are two subraces of halflings, Lightfoot and Stout.")
+        print('''Lightfoot Halfling: Friendly creatures, lightfoot halflings can easily hide from sight.
+        As a lightfoot halfling your charisma score increases by 1 and you can attempt to hide even when
+        you are obscured only by a creature that is at least one size larger than you.''')
+        print()
+        print('''Stout Halfling: Stout Halflings are hardier creatures that are rumored to have dwarven
+        blood. As a stout halfling your constitution score increases by 1 and you have advantage on saving
+        throws against poison, and you have resistance against poison damage.''')
+        print()
+        user_subrace = input("Please type 'LIGHTFOOT' or 'STOUT' based on the subrace you choose. ")
         print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")    
+    elif user_race == "HUMAN":
+        print('''You have chosen Human as your class. Congrats! You get the following abilities:
+        o Your ability scores each increase by 1.
+        o Your base walking speed is 30 ft per turn.
+        o You can speak, read, and write Common and one extra language of your choice.''')
+        print()
+        user_subrace == ""
+        print("Alright! " + user_name + " is a " + " " + user_race + "!") 
+    elif user_race == "DRAGONBORN":
+        print('''You have chosen Human as your class. Congrats! You get the following abilities:
+        o Your strength score increases by 2.
+        o Your charisma score increases by 1.
+        o Your base walking speed is 30 ft per turn.
+        o You can speak, read, and write Common and Draconic.''')
+        print()
+        print('''Each dragon has a breath weapon such as fire breath. Depending on the color
+        the breath weapon type varies. Here they are:
+        Black = Acid
+        Blue = Lightning
+        Brass = Fire
+        Bronze = Lightning
+        Copper = Acid
+        Gold = Fire
+        Green = Poison
+        Red = Fire
+        Silver = Cold (Ice)
+        White = Cold (Ice)''')
+        print()
+        user_subrace = input("Please type the color of dragon you chose. Ex. 'BLACK'.")
+        if user_subrace == "BLACK":
+            print('''You have chosen black as your type! You are resistant to acid damage!''')
+        elif user_subrace == "BLUE":
+            print('''You have chosen blue as your type! You are resistant to lightning damage!''')  
+        elif user_subrace == "BRASS":
+            print('''You have chosen brass as your type! You are resistant to fire damage!''')
+        elif user_subrace == "BRONZE":
+            print('''You have chosen bronze as your type! You are resistant to lightning damage!''')
+        elif user_subrace == "COPPER":
+            print('''You have chosen copper as your type! You are resistant to acid damage!''')
+        elif user_subrace == "GOLD":
+            print('''You have chosen gold as your type! You are resistant to fire damage!''')
+        elif user_subrace == "GREEN":
+            print('''You have chosen green as your type! You are resistant to poison damage!''')
+        elif user_subrace == "RED":
+            print('''You have chosen red as your type! You are resistant to fire damage!''')
+        elif user_subrace == "SILVER":
+            print('''You have chosen silver as your type! You are resistant to cold damage!''')
+        elif user_subrace == "WHITE":
+            print('''You have chosen white as your type! You are resistant to cold damage!''')        
+        print()
+        print("Alright! " + user_name + " is a " + user_subrace + " " + user_race + "!")      
+    
     
     
     
