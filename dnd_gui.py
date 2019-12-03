@@ -115,21 +115,35 @@ class Dice(tk.Frame):
                                        bg = 'mint cream')
         self.lbl_title_dice_label.grid(row = 0, column = 0)
         
-        self.lbl_dice_label = tk.Label(self, text = '''
-        Die:
-        1d4- a four sided dice using numbers 1-4.
-        1d6- a six sided dice using numbers 1-6.
-        1d8- an eight sided dice using numbers 1-8.
-        1d12- a twelve sided dice using numbers 1-12.
-        1d20- a twenty sided dice using numbers 1-20.''', 
-        font = DEFAULT, bg = 'mint cream')
-        self.lbl_dice_label.grid(row = 1, column = 0)        
+        self.lbl_dice_label1 = tk.Label(self, text = "1d4- a four sided dice using numbers 1-4.",
+                                       font = DEFAULT, bg = 'mint cream')
+        self.lbl_dice_label1.grid(row = 1, column = 0) 
+        
+        
+        self.lbl_dice_label2 = tk.Label(self, text = "1d6- a six sided dice using numbers 1-6.",
+                                       font = DEFAULT, bg = 'mint cream')
+        self.lbl_dice_label2.grid(row = 2, column = 0) 
+        
+        
+        self.lbl_dice_label3 = tk.Label(self, text = "1d8- an eight sided dice using numbers 1-8.",
+                                       font = DEFAULT, bg = 'mint cream')
+        self.lbl_dice_label3.grid(row = 3, column = 0) 
+        
+        
+        self.lbl_dice_label4 = tk.Label(self, text = "1d12- a twelve sided dice using numbers 1-12.",
+                                       font = DEFAULT, bg = 'mint cream')
+        self.lbl_dice_label4.grid(row = 4, column = 0) 
+        
+        
+        self.lbl_dice_label5 = tk.Label(self, text = " 1d20- a twenty sided dice using numbers 1-20.",
+                                       font = DEFAULT, bg = 'mint cream')
+        self.lbl_dice_label5.grid(row = 5, column = 0)         
         
         self.btn_back_button = tk.Button(self, text = "Back",
                                             font = DEFAULT, command = 
                                             self.raise_menu, bg = 'ivory',
                                             activebackground = 'MistyRose2')
-        self.btn_back_button.grid(row = 2, column = 0)
+        self.btn_back_button.grid(row = 6, column = 0)
     
     def raise_menu(self):
         frame_menu.tkraise()
