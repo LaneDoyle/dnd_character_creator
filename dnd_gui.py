@@ -5,36 +5,41 @@
 import tkinter as tk
 import sys as sys
 
-DEFAULT = ('Times New Roman', 30)
+DEFAULT = ('Arial', 30)
 #Creating Main Menu
 class Main_Menu(tk.Frame):
     def __init__(self):
-        tk.Frame.__init__(self)
+        tk.Frame.__init__(self, bg = 'mint cream')
         self.lbl_main_label = tk.Label(self, text = "Main Menu", 
-                                       font = DEFAULT)
+                                       font = DEFAULT, bg = 'mint cream')
         self.lbl_main_label.grid(row = 0, column = 0)
         
         self.btn_classes_button = tk.Button(self, text = "START!",
-                                            font = DEFAULT)
+                                            font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 1, column = 0)
         
         self.btn_classes_button = tk.Button(self, text = "Available Races",
                                             font = DEFAULT, command =
-                                            self.raise_races)
+                                            self.raise_races, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 2, column = 0)   
         
         self.btn_classes_button = tk.Button(self, text = "Available Classes",
                                             font = DEFAULT, command =
-                                            self.raise_class)
+                                            self.raise_class, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 3, column = 0)          
         
         self.btn_classes_button = tk.Button(self, text = "Dice",
                                             font = DEFAULT, command =
-                                            self.raise_dice)
+                                            self.raise_dice, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 4, column = 0) 
         
         self.btn_classes_button = tk.Button(self, text = "Exit",
-                                            font = DEFAULT, command = self.cancel)
+                                            font = DEFAULT, command = self.cancel, 
+                                            bg = 'ivory', activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 5, column = 0) 
         
     def cancel(self):
@@ -54,9 +59,9 @@ class Main_Menu(tk.Frame):
         
 class Race_Menu(tk.Frame):
     def __init__(self):
-        tk.Frame.__init__(self)
+        tk.Frame.__init__(self, bg = 'mint cream')
         self.lbl_main_label = tk.Label(self, text = "Races", 
-                                       font = DEFAULT)
+                                       font = DEFAULT, bg = 'mint cream')
         self.lbl_main_label.grid(row = 0, column = 0)
         
         self.lbl_main_label = tk.Label(self, text = ''' 
@@ -64,12 +69,13 @@ class Race_Menu(tk.Frame):
         Dwarf, Elf, Halfling, Human, 
         Dragonborn, Gnomes, Half-Elf, 
         Half-Orc, and Tiefling''', 
-        font = DEFAULT)
+        font = DEFAULT, bg = 'mint cream')
         self.lbl_main_label.grid(row = 1, column = 0)        
         
         self.btn_classes_button = tk.Button(self, text = "Back",
                                             font = DEFAULT, command = 
-                                            self.raise_menu)
+                                            self.raise_menu, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 2, column = 0)
     
     def raise_menu(self):
@@ -77,9 +83,10 @@ class Race_Menu(tk.Frame):
         
 class Class_Menu(tk.Frame):
     def __init__(self):
-        tk.Frame.__init__(self)
+        tk.Frame.__init__(self, bg = 'mint cream')
         self.lbl_main_label = tk.Label(self, text = "Classes", 
-                                       font = DEFAULT)
+                                       font = DEFAULT, 
+                                       bg = 'mint cream')
         self.lbl_main_label.grid(row = 0, column = 0)
         
         self.lbl_main_label = tk.Label(self, text = ''' 
@@ -88,12 +95,13 @@ class Class_Menu(tk.Frame):
         Druid, Fighter, Monk
         Paladin, Ranger, Rogue
         Sorcerer, Warlock, Wizard''', 
-        font = DEFAULT)
+        font = DEFAULT, bg = 'mint cream')
         self.lbl_main_label.grid(row = 1, column = 0)        
         
         self.btn_classes_button = tk.Button(self, text = "Back",
                                             font = DEFAULT, command = 
-                                            self.raise_menu)
+                                            self.raise_menu, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 2, column = 0)
     
     def raise_menu(self):
@@ -101,24 +109,26 @@ class Class_Menu(tk.Frame):
         
 class Dice(tk.Frame):
     def __init__(self):
-        tk.Frame.__init__(self)
+        tk.Frame.__init__(self, bg = 'mint cream')
         self.lbl_main_label = tk.Label(self, text = "Dice", 
-                                       font = DEFAULT)
+                                       font = DEFAULT,
+                                       bg = 'mint cream')
         self.lbl_main_label.grid(row = 0, column = 0)
         
-        self.lbl_main_label = tk.Label(self, text = ''' 
+        self.lbl_main_label = tk.Label(self, text = '''
         Die:
         1d4- a four sided dice using numbers 1-4.
         1d6- a six sided dice using numbers 1-6.
         1d8- an eight sided dice using numbers 1-8.
         1d12- a twelve sided dice using numbers 1-12.
         1d20- a twenty sided dice using numbers 1-20.''', 
-        font = DEFAULT)
+        font = DEFAULT, bg = 'mint cream')
         self.lbl_main_label.grid(row = 1, column = 0)        
         
         self.btn_classes_button = tk.Button(self, text = "Back",
                                             font = DEFAULT, command = 
-                                            self.raise_menu)
+                                            self.raise_menu, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
         self.btn_classes_button.grid(row = 2, column = 0)
     
     def raise_menu(self):
