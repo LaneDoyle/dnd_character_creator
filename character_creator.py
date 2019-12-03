@@ -39,16 +39,8 @@ def Menu_classes():
         user_command = input("Please type in the command you wish you use. ")
 
 def Menu_races():
-        print(''' Available races:
-        Dwarf
-        Elf
-        Halfling
-        Human
-        Dragonborn
-        Gnomes
-        Half-Elf
-        Half-Orc
-        Tiefling''')
+        print(''' Available races: Dwarf, Elf, Halfling, Human, Dragonborn, Gnomes, Half-Elf, 
+        Half-Orc, Tiefling''')
         user_command = input("Please type in the command you wish you use. ")
 
 def Menu_die():
@@ -87,6 +79,7 @@ backgrounds which appear in the Player's Handbook.''')
 
 
 user_command = input("Confused on where to start? Type HELP. Or, type in the command you wish you use. (Type PLAY to start!) ")
+
 if user_command == "CLASSES": 
         Menu_classes()
         Menu_back()
@@ -99,7 +92,7 @@ elif user_command == "RACES":
 elif user_command == "HELP":
         Menu_help()
         Menu_back()
-        
+
 #Starts Creator
 elif user_command == "PLAY":
     #Fake loading
