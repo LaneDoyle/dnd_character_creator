@@ -5,11 +5,12 @@
 import tkinter as tk
 import sys as sys
 
-DEFAULT = ('Arial', 15)
+DEFAULT = ('Arial', 25)
 #Creating Main Menu
 class Main_Menu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_main_label = tk.Label(self, text = "Main Menu", 
                                        font = DEFAULT, bg = 'mint cream')
         self.lbl_main_label.grid(row = 0, column = 0)
@@ -60,6 +61,7 @@ class Main_Menu(tk.Frame):
 class Race_Menu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_races_label = tk.Label(self, text = "Races", 
                                        font = DEFAULT, bg = 'mint cream')
         self.lbl_races_label.grid(row = 0, column = 0)
@@ -90,6 +92,7 @@ class Race_Menu(tk.Frame):
 class Class_Menu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_classes_label = tk.Label(self, text = "Classes", 
                                        font = DEFAULT, 
                                        bg = 'mint cream')
@@ -128,6 +131,7 @@ class Class_Menu(tk.Frame):
 class Dice(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_title_dice_label = tk.Label(self, text = "Dice", 
                                        font = DEFAULT,
                                        bg = 'mint cream')
