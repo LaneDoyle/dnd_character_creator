@@ -40,7 +40,8 @@ class Main_Menu(tk.Frame):
         
         self.btn_exit_button = tk.Button(self, text = "Exit",
                                             font = DEFAULT, command = self.cancel, 
-                                            bg = 'ivory', activebackground = 'MistyRose2')
+                                            bg = 'ivory', 
+                                            activebackground = 'MistyRose2')
         self.btn_exit_button.grid(row = 5, column = 0) 
         
     def cancel(self):
