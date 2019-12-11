@@ -17,7 +17,8 @@ class Main_Menu(tk.Frame):
         
         self.btn_start_button = tk.Button(self, text = "START!",
                                             font = DEFAULT, bg = 'ivory',
-                                            activebackground = 'MistyRose2')
+                                            activebackground = 'MistyRose2',
+                                            command = self.raise_start)
         self.btn_start_button.grid(row = 1, column = 0)
         
         self.btn_races_button = tk.Button(self, text = "Available Races",
@@ -171,7 +172,36 @@ class Dice(tk.Frame):
     def raise_menu(self):
         frame_menu.tkraise()
 #End of Main Menu
-#Character Creation
+
+#BEGINNING OF ACTUAL PROGRAM        
+class Start(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.lbl_title_race_pick_label = tk.Label(self, text = "Choosing a Race", 
+                                       font = DEFAULT,
+                                       bg = 'mint cream')  
+        self.lbl_title_race_pick_label.grid(row = 1, column = 0,
+                                            columnspan = 2)
+        
+        self.btn_race_info = tk.Button(self, text = "Race Information",
+                                       font = DEFAULT,
+                                       bg = 'ivory',
+                                       activebackground = 'MistyRose2')
+        self.btn_race_info.grid(row = 2, column = 0)
+        self.lbl_race_pick = tk.Label(self, text = "Please enter your race:",
+                                      font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_pick.grid(row = 3, column = 0)
+        self.ent_race_pick = tk.Entry(self, font = DEFAULT)
+        self.ent_race_pick.grid(row = 3, column = 1)
+        self.btn_exit_button = tk.Button(self, text = "Exit",
+                                            font = DEFAULT, command = self.cancel, 
+                                            bg = 'ivory', 
+                                            activebackground = 'MistyRose2')
+        self.btn_exit_button.grid(row = 4, column = 0, columnspan = 2) 
+        
+    def cancel(self):
+        sys.exit()        
+
 
     
 #Creating the frames
@@ -189,6 +219,9 @@ available_class.grid(row = 0, column = 0, sticky = "news")
 
 dice = Dice()
 dice.grid(row = 0, column = 0, sticky = "news")
+
+start = Start()
+start.grid(row = 0, column = 0, sticky = "news")
 
 
 
