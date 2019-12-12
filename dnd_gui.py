@@ -218,23 +218,70 @@ class Race_Info(tk.Frame):
         self.lbl_race_lbl.grid(row = 1, column = 0)
         
         self.lbl_race_dwarf = tk.Label(self, text = '''Dwarf: Dwarves have an appearance similar to humans, 
-        if humans were all naturally under 5ft. Dwarves can live over 400 years old. Tiny but mighty, 
-        they are skilled warriors in battle. They stand around 4 to  5ft tall and weigh around 150. Hardy 
-        creatures, your constitution (vitality) score increases by 2 when you are a dwarf.''', 
-                                       font = DEFAULT,
+        if humans were all naturally under 5ft. 
+        Dwarves can live over 400 years old. Tiny but mighty, 
+        they are skilled warriors in battle. They stand around 4 to  
+        5ft tall and weigh around 150. Hardy 
+        creatures, your constitution (vitality) score increases by 2 
+        when you are a dwarf.''', 
+                                       font = ('Arial', 18),
                                        bg = 'mint cream')  
         self.lbl_race_dwarf.grid(row = 2, column = 0)
         
-        self.lbl_race_dwarf = tk.Label(self, text = '''Elf: Elves are graceful creatures. They live for centuries and hold 
-        vast knowledge of the world around them. Elves can live to be 750 years old. They are, on average, 5 or over 6 ft
-        tall. Their weight is similar to a human's. As an elf your dexterity (agility) increases by 2.''', 
-                                       font = DEFAULT,
+        self.lbl_race_dwarf = tk.Label(self, text = '''Elf: Elves are graceful creatures. 
+        They live for centuries and hold 
+        vast knowledge of the world around them. 
+        Elves can live to be 750 years old. 
+        They are, on average, 5 or over 6 ft
+        tall. Their weight is similar to a human's. 
+        As an elf your dexterity (agility) increases by 2.''', 
+                                       font = ('Arial', 18),
                                        bg = 'mint cream')  
-        self.lbl_race_dwarf.grid(row = 3, column = 0)        
-
-
+        self.lbl_race_dwarf.grid(row = 3, column = 0) 
         
-    
+        self.lbl_race_halfling= tk.Label(self, text = '''Halfling: Halflings are shorter than dwarves. 
+        They are skilled in fitting into communities and
+        are fiercely loyal to their allies. 
+        They reach adulthood around the age of 20 
+        and live into the
+        middle of their second century. 
+        On average halflings stand about 
+        3 ft tall and weigh 40 pounds.
+        As a halfling your dexterity (agility) increases by 2. ''', 
+                                       font = ('Arial', 18),
+                                       bg = 'mint cream')  
+        self.lbl_race_halfling.grid(row = 4, column = 0) 
+        
+        self.lbl_race_human= tk.Label(self, text = '''Human: The most recognizable race, humans are adaptable 
+        and ambitious. Because of their shorter
+        life spans, they do not hesitate to seize the moment. 
+        Humans live less than a century. Their height
+        and weight vary greatly, from being 5 to over 6 ft tall 
+        and 100 to 200 pounds or more. As a human,
+        each of your ability scores increase by one.''', 
+                                       font = ('Arial', 18),
+                                       bg = 'mint cream')  
+        self.lbl_race_human.grid(row = 5, column = 0)
+        
+        self.btn_continue= tk.Label(self, text = "Continue",
+                                        font = DEFAULT, 
+                                        command = self.raise_races_2, 
+                                        bg = 'ivory', 
+                                        activebackground = 'MistyRose2')  
+        self.btn_continue.grid(row = 6, column = 0)
+              
+
+        def raise_races_2(self):
+            race_info2.tkraise()
+            
+        
+class Race_Info2(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.lbl_race_lbl = tk.Label(self, text = "Race Information Cont.", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)        
+        
     
 #Creating the frames
 root = tk.Tk()
@@ -257,6 +304,9 @@ start.grid(row = 0, column = 0, sticky = "news")
 
 race_info = Race_Info()
 race_info.grid(row = 0, column = 0, sticky = "news")
+
+race_info2 = Race_Info2()
+race_info2.grid(row = 0, column = 0, sticky = "news")
 
 
 frame_menu.tkraise()
