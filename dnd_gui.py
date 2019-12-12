@@ -177,22 +177,27 @@ class Dice(tk.Frame):
 class Start(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_title_race_pick_label = tk.Label(self, text = "Choosing a Race", 
                                        font = DEFAULT,
                                        bg = 'mint cream')  
-        self.lbl_title_race_pick_label.grid(row = 1, column = 0,
+        self.lbl_title_race_pick_label.grid(row = 1, column = 0, 
                                             columnspan = 2)
         
         self.btn_race_info = tk.Button(self, text = "Race Information",
                                        font = DEFAULT,
                                        bg = 'ivory',
-                                       activebackground = 'MistyRose2')
-        self.btn_race_info.grid(row = 2, column = 0)
+                                       activebackground = 'MistyRose2',
+                                       command = self.raise_races)
+        self.btn_race_info.grid(row = 2, column = 0, columnspan = 2)
+        
         self.lbl_race_pick = tk.Label(self, text = "Please enter your race:",
                                       font = DEFAULT, bg = 'mint cream')
         self.lbl_race_pick.grid(row = 3, column = 0)
+        
         self.ent_race_pick = tk.Entry(self, font = DEFAULT)
         self.ent_race_pick.grid(row = 3, column = 1)
+        
         self.btn_exit_button = tk.Button(self, text = "Exit",
                                             font = DEFAULT, command = self.cancel, 
                                             bg = 'ivory', 
@@ -200,9 +205,36 @@ class Start(tk.Frame):
         self.btn_exit_button.grid(row = 4, column = 0, columnspan = 2) 
         
     def cancel(self):
-        sys.exit()        
+        sys.exit()    
+        
+    def raise_races(self):
+        race_info.tkraise()        
+    
+class Race_Info(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.lbl_race_lbl = tk.Label(self, text = "Race Information", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_race_dwarf = tk.Label(self, text = '''Dwarf: Dwarves have an appearance similar to humans, 
+        if humans were all naturally under 5ft. Dwarves can live over 400 years old. Tiny but mighty, 
+        they are skilled warriors in battle. They stand around 4 to  5ft tall and weigh around 150. Hardy 
+        creatures, your constitution (vitality) score increases by 2 when you are a dwarf.''', 
+                                       font = DEFAULT,
+                                       bg = 'mint cream')  
+        self.lbl_race_dwarf.grid(row = 2, column = 0)
+        
+        self.lbl_race_dwarf = tk.Label(self, text = '''Elf: Elves are graceful creatures. They live for centuries and hold 
+        vast knowledge of the world around them. Elves can live to be 750 years old. They are, on average, 5 or over 6 ft
+        tall. Their weight is similar to a human's. As an elf your dexterity (agility) increases by 2.''', 
+                                       font = DEFAULT,
+                                       bg = 'mint cream')  
+        self.lbl_race_dwarf.grid(row = 3, column = 0)        
 
 
+        
+    
     
 #Creating the frames
 root = tk.Tk()
@@ -223,6 +255,8 @@ dice.grid(row = 0, column = 0, sticky = "news")
 start = Start()
 start.grid(row = 0, column = 0, sticky = "news")
 
+race_info = Race_Info()
+race_info.grid(row = 0, column = 0, sticky = "news")
 
 
 frame_menu.tkraise()
