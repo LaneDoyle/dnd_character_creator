@@ -263,7 +263,7 @@ class Race_Info(tk.Frame):
                                        bg = 'mint cream')  
         self.lbl_race_human.grid(row = 5, column = 0)
         
-        self.btn_continue= tk.Label(self, text = "Continue",
+        self.btn_continue= tk.Button(self, text = "Continue",
                                         font = DEFAULT, 
                                         command = self.raise_races_2, 
                                         bg = 'ivory', 
@@ -271,16 +271,98 @@ class Race_Info(tk.Frame):
         self.btn_continue.grid(row = 6, column = 0)
               
 
-        def raise_races_2(self):
-            race_info2.tkraise()
+    def raise_races_2(self):
+        race_info2.tkraise()
             
         
 class Race_Info2(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_race_lbl = tk.Label(self, text = "Race Information Cont.", 
                                      font = DEFAULT, bg = 'mint cream')
-        self.lbl_race_lbl.grid(row = 1, column = 0)        
+        self.lbl_race_lbl.grid(row = 1, column = 0) 
+        
+        self.lbl_race_dg = tk.Label(self, text = '''Dragonborn: The kin of dragons, dragonborn 
+        resemble a dragon-like humanoid, 
+        although they have no tail
+        or wings. Their scale color can range 
+        from blue to gold. Their clans are the most 
+        important thing in their
+        lives. Dragonborn usually live to around 80 years old. 
+        On average they are well over 6 ft tall and are around
+        250 pounds. As a dragonborn, your strength score increases 
+        by 2 and your charisma (confidence, charm, etc.) 
+        score increases by 1. ''', 
+                                       font = ('Arial', 15),
+                                       bg = 'mint cream')  
+        self.lbl_race_dg.grid(row = 2, column = 0)
+        
+        self.lbl_race_gnome = tk.Label(self, text = '''Gnome: About the size of a halfling, 
+        the gnome has a delightful energy about them, 
+        greatly enjoying the life
+        they lead. A gnome's appearance generally tells all you need 
+        to know about their personality. They are curious
+        people, and enjoy each and every moment. Gnomes can 
+        live to almost 500 years old and are, on average, 3 to 4 ft 
+        tall and 40 pounds. As a gnome, your intelligence score 
+        increases by 2.  ''', 
+                                       font = ('Arial', 15),
+                                       bg = 'mint cream')  
+        self.lbl_race_gnome.grid(row = 3, column = 0) 
+        
+        self.lbl_race_he= tk.Label(self, text = '''Half-Elf: A mix of human and elf, 
+        half-elves are usually curious adventurers 
+        are quick talking diplomats. They 
+        appear to be human, except their ears 
+        are pointy and they have the eyes of their elven parents. They live to 
+        be around 180 years old and average a height of 5 to 6 
+        ft tall. They have about the same weight as a human. As
+        a half-elf, your charisma (confidence, charm, etc.) 
+        score increases by two and two other ability scores of your 
+        choice increase by 1. ''', 
+                                       font = ('Arial', 15),
+                                       bg = 'mint cream')  
+        self.lbl_race_he.grid(row = 4, column = 0)
+        
+        self.lbl_race_ho= tk.Label(self, text = '''Half-Orc: A mix of human and orc, 
+        half-orcs are more than intimidating. 
+        Their large figures, jutting jaws, and sharp 
+        teeth, can be seen are terrifying by others. 
+        Most have scars they collected from battle, while some have scars which
+        mark them as an exile. Regardless of the meaning, most half-orcs 
+        are marked by at least one scar. However, they rarely
+        live longer than 75 years old. They average around 5 
+        to well over 6 ft tall and can be around 200 pounds or more. As 
+        a half-orc, your strength score increases by 2, and 
+        your constitution (vitality) score increases by 1. ''', 
+                                       font = ('Arial', 15),
+                                       bg = 'mint cream')  
+        self.lbl_race_ho.grid(row = 5, column = 0)
+        
+        self.lbl_race_tiefling= tk.Label(self, text = '''Tiefling: Although appearing similar to 
+        humans, tieflings have large horns which 
+        take a variety of shapes. Their skin
+        color is the same as a human's except some have various 
+        shades of red as their skin color. They also have thick tails
+        which are around 4 or 5 ft long and solid-colored eyes. 
+        They believe trust is earned, not given freely. They live about
+        the same length as a human, plus a few years. 
+        They have the same average height and weight of a human. As a tiefling,
+        your intelligence score increases by 1 and your 
+        charisma (confidence, charm, etc.) increases by 2.''', 
+                                       font = ('Arial', 15),
+                                       bg = 'mint cream')  
+        self.lbl_race_tiefling.grid(row = 6, column = 0)        
+        
+        self.btn_exit_button = tk.Button(self, text = "Exit",
+                                            font = DEFAULT, command = self.cancel, 
+                                            bg = 'ivory', 
+                                            activebackground = 'MistyRose2')
+        self.btn_exit_button.grid(row = 7, column = 0, columnspan = 2) 
+        
+    def cancel(self):
+        sys.exit()          
         
     
 #Creating the frames
