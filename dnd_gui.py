@@ -198,21 +198,31 @@ class Start(tk.Frame):
         self.ent_race_pick = tk.Entry(self, font = DEFAULT)
         self.ent_race_pick.grid(row = 3, column = 1)
         
+        self.btn_back_button = tk.Button(self, text = "Back",
+                                            font = DEFAULT, command = self.raise_menu, 
+                                            bg = 'ivory', 
+                                            activebackground = 'MistyRose2')
+        self.btn_back_button.grid(row = 4, column = 0, columnspan = 2)        
+        
         self.btn_exit_button = tk.Button(self, text = "Exit",
                                             font = DEFAULT, command = self.cancel, 
                                             bg = 'ivory', 
                                             activebackground = 'MistyRose2')
-        self.btn_exit_button.grid(row = 4, column = 0, columnspan = 2) 
+        self.btn_exit_button.grid(row = 5, column = 0, columnspan = 2) 
         
     def cancel(self):
         sys.exit()    
         
     def raise_races(self):
-        race_info.tkraise()        
+        race_info.tkraise()
+        
+    def raise_menu(self):
+        frame_menu.tkraise()
     
 class Race_Info(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
         self.lbl_race_lbl = tk.Label(self, text = "Race Information", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
@@ -224,7 +234,7 @@ class Race_Info(tk.Frame):
         5ft tall and weigh around 150. Hardy 
         creatures, your constitution (vitality) score increases by 2 
         when you are a dwarf.''', 
-                                       font = ('Arial', 18),
+                                       font = ('Arial', 15),
                                        bg = 'mint cream')  
         self.lbl_race_dwarf.grid(row = 2, column = 0)
         
@@ -235,7 +245,7 @@ class Race_Info(tk.Frame):
         They are, on average, 5 or over 6 ft
         tall. Their weight is similar to a human's. 
         As an elf your dexterity (agility) increases by 2.''', 
-                                       font = ('Arial', 18),
+                                       font = ('Arial', 15),
                                        bg = 'mint cream')  
         self.lbl_race_dwarf.grid(row = 3, column = 0) 
         
@@ -248,7 +258,7 @@ class Race_Info(tk.Frame):
         On average halflings stand about 
         3 ft tall and weigh 40 pounds.
         As a halfling your dexterity (agility) increases by 2. ''', 
-                                       font = ('Arial', 18),
+                                       font = ('Arial', 15),
                                        bg = 'mint cream')  
         self.lbl_race_halfling.grid(row = 4, column = 0) 
         
@@ -259,7 +269,7 @@ class Race_Info(tk.Frame):
         and weight vary greatly, from being 5 to over 6 ft tall 
         and 100 to 200 pounds or more. As a human,
         each of your ability scores increase by one.''', 
-                                       font = ('Arial', 18),
+                                       font = ('Arial', 15),
                                        bg = 'mint cream')  
         self.lbl_race_human.grid(row = 5, column = 0)
         
@@ -324,6 +334,24 @@ class Race_Info2(tk.Frame):
                                        font = ('Arial', 15),
                                        bg = 'mint cream')  
         self.lbl_race_he.grid(row = 4, column = 0)
+ 
+        self.btn_continue= tk.Button(self, text = "Continue",
+                                        font = DEFAULT, 
+                                        command = self.raise_races_3, 
+                                        bg = 'ivory', 
+                                        activebackground = 'MistyRose2')  
+        self.btn_continue.grid(row = 6, column = 0)        
+        
+    def raise_races_3(self):
+        race_info3.tkraise()
+        
+class Race_Info3(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Race Information Cont.", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0) 
         
         self.lbl_race_ho= tk.Label(self, text = '''Half-Orc: A mix of human and orc, 
         half-orcs are more than intimidating. 
@@ -338,7 +366,7 @@ class Race_Info2(tk.Frame):
         your constitution (vitality) score increases by 1. ''', 
                                        font = ('Arial', 15),
                                        bg = 'mint cream')  
-        self.lbl_race_ho.grid(row = 5, column = 0)
+        self.lbl_race_ho.grid(row = 2, column = 0)
         
         self.lbl_race_tiefling= tk.Label(self, text = '''Tiefling: Although appearing similar to 
         humans, tieflings have large horns which 
@@ -353,18 +381,18 @@ class Race_Info2(tk.Frame):
         charisma (confidence, charm, etc.) increases by 2.''', 
                                        font = ('Arial', 15),
                                        bg = 'mint cream')  
-        self.lbl_race_tiefling.grid(row = 6, column = 0)        
+        self.lbl_race_tiefling.grid(row = 3, column = 0)  
         
-        self.btn_exit_button = tk.Button(self, text = "Exit",
-                                            font = DEFAULT, command = self.cancel, 
+        self.btn_back_button = tk.Button(self, text = "Back",
+                                            font = DEFAULT, command = self.raise_start, 
                                             bg = 'ivory', 
                                             activebackground = 'MistyRose2')
-        self.btn_exit_button.grid(row = 7, column = 0, columnspan = 2) 
+        self.btn_back_button.grid(row = 4, column = 0, columnspan = 2)        
+               
         
-    def cancel(self):
-        sys.exit()          
+    def raise_start(self):
+        start.tkraise()
         
-    
 #Creating the frames
 root = tk.Tk()
 root.title("DND Character Creator")
@@ -389,6 +417,9 @@ race_info.grid(row = 0, column = 0, sticky = "news")
 
 race_info2 = Race_Info2()
 race_info2.grid(row = 0, column = 0, sticky = "news")
+
+race_info3 = Race_Info3()
+race_info3.grid(row = 0, column = 0, sticky = "news")
 
 
 frame_menu.tkraise()
