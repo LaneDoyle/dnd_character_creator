@@ -57,7 +57,7 @@ SPELLS = ''
 BACKGROUND = ''
 ALIGNMENT = ''
 SPEED = 0
-LANGUAGES = ''
+LANGUAGES_KNOWN = 1
 SUBCLASS = ''
 PROFICIENCY = ''
 
@@ -249,7 +249,7 @@ class Start(tk.Frame):
                                        command = self.raise_races)
         self.btn_race_info.grid(row = 2, column = 0, columnspan = 2)
         
-        self.lbl_race_pick = tk.Label(self, text = "Please enter your race:",
+        self.lbl_race_pick = tk.Label(self, text = "Please enter your race in lowercase:",
                                       font = DEFAULT, bg = 'mint cream')
         self.lbl_race_pick.grid(row = 3, column = 0)
         
@@ -284,7 +284,12 @@ class Start(tk.Frame):
         frame_menu.tkraise()
         
     def raise_traits(self):
-        race_traits_dwarf.tkraise()        
+        if self.ent_race_pick.get() == "dwarf":
+            race_traits_dwarf.tkraise()
+        elif self.ent_race_pick.get() =="elf":
+            race_traits_elf.tkraise()
+        else: 
+            sys.exit()
     
 class Race_Info(tk.Frame):
     def __init__(self):
@@ -493,7 +498,8 @@ class Race_Traits_Dwarf(tk.Frame):
         which give additional traits. There are two subclasses of dwarf, the Hill
         Dwarf and the Mountain Dwarf. Hill dwarves increase your health and wisdom.
         Mountain dwarves increases strength and adds proficiencies. Proficiencies
-        allow you to use more equipment, like martial weapons.''', 
+        allow you to use more equipment or skills, like martial weapons or perception.
+        Choose wisely as you can not go back...''', 
                                               font = ('Arial', 20), fg = 'blue',
                                               bg = 'mint cream')
         self.lbl_sub_lbl.grid(row = 4, column = 0)
@@ -575,7 +581,6 @@ class Race_Dwarf_Mtn(tk.Frame):
 
 #Elf
 class Race_Traits_Elf(tk.Frame):
-
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -608,7 +613,8 @@ class Race_Traits_Elf(tk.Frame):
         gives you advantages to using stealth. Being a drow gives you an increase to
         your charisma, darkvision extended to 120ft, one extra spell, and proficiencies.
         However, being a drow makes it harder for you to attack in sunlight, as they are from
-        underground. Proficiencies allow you to use more equipment, like martial weapons.''', 
+        underground. Proficiencies allow you to use more equipment or skills, like martial 
+        weapons or perception. Choose wisely as you can not go back...''', 
                                               font = ('Arial', 20), fg = 'blue',
                                               bg = 'mint cream')
         self.lbl_sub_lbl.grid(row = 4, column = 0)
@@ -626,13 +632,53 @@ class Race_Traits_Elf(tk.Frame):
         self.btn_wood_btn.grid(row = 7, column = 0)
         
     def raise_high(self):
+        global INT
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global SPELLS
         high_elf.tkraise()
+        INT += 1
+        print(INT)
+        PROFICIENCY += 'Longsword, '
+        PROFICIENCY += 'Shortbow, '
+        PROFICIENCY += 'Longbow, '
+        print(PROFICIENCY)
+        LANGUAGES_KNOWN += 1
+        print(LANGUAGES_KNOWN)
+        SPELLS += 'One wizard cantrip of your choice, '
+        print(SPELLS)
+        
         
     def raise_wood(self):
+        global PROFICIENCY
+        global WIS
+        global SPEED
         wood_elf.tkraise()
+        PROFICIENCY += 'Longsword, '
+        PROFICIENCY += 'Shortsword, '
+        PROFICIENCY += 'Shortbow, '
+        PROFICIENCY += 'Longbow, '
+        print(PROFICIENCY)
+        WIS += 1
+        print(WIS)
+        SPEED = 35
+        print(SPEED)
         
     def raise_drow(self):
-        drow_elf.tkraise()            
+        global CHA
+        global SPELLS
+        global PROFICIENCY
+        drow_elf.tkraise()
+        CHA += 1
+        print(CHA)
+        SPELLS += 'Dancing Lights, '
+        print(SPELLS)
+        PROFICIENCY += 'Rapier, '
+        PROFICIENCY += 'Shortsword, '
+        PROFICIENCY += 'Hand Crossbow, '
+        print(PROFICIENCY)        
+        
+        
         
 
 class Race_Elf_High(tk.Frame):
@@ -643,7 +689,11 @@ class Race_Elf_High(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = ''' ''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill = tk.Label(self, text = '''A master of magic, the high elf is a very intelligent being. As a 
+            high elf your intelligence increases by 1 and you are proficient with the longsword,
+            shortbow, and longbow. You also know one cantrip of your choice from the wizard spell
+            list, using intelligence as your spellcasting ability. You can also speak, read, and write
+            one extra language.''', font = DEFAULT, bg = 'mint cream')
         self.lbl_traits_hill.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
@@ -658,7 +708,11 @@ class Race_Elf_Wood(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = ''' ''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill = tk.Label(self, text = '''The wood elf is a stealthy and quick individual. They have copperish skin with 
+            copper colored hair and green/brown/hazel eyes.As a wood elf your wisdom increases by 1 and you are 
+            proficient with the longsword, shortsword, shortbow, and longbow. Your base walking speed increases 
+            to 35 ft anf you can attempt to hide even when you are only lightly obscured by foliage, heavy rain, 
+            falling snow, mist, etc.''', font = DEFAULT, bg = 'mint cream')
         self.lbl_traits_hill.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
@@ -673,7 +727,12 @@ class Race_Elf_Drow(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = ''' ''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill = tk.Label(self, text = '''Banished from the surface, the drow now call the Underdark their home.
+            They usually have very dark skin and pale eyes with white or yellow hair. Your charisma score 
+            increases by one and your darkvision extends to 120 ft. Drow, being from underground, have
+            disadvantage on attack rolls and on wisdom checks that rely on sight when you, your target,
+            or whatever you are trying to see is in sunlight. You know the dancing lights cantrip, and are
+            profiecient with rapiers, shortswords, and hand crossbows.''', font = DEFAULT, bg = 'mint cream')
         self.lbl_traits_hill.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
