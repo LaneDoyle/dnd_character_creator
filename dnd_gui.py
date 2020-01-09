@@ -5,7 +5,62 @@
 import tkinter as tk
 import sys as sys
 
+#Constants
+#Font type and size
 DEFAULT = ('Arial', 25)
+#Armor class and hit points
+AC = 0
+HP = 0
+HIT_DIE = ''
+#Attributes
+STR = 0
+DEX = 0
+CON = 0
+INT = 0
+WIS = 0
+CHA = 0
+#Proficiency bonus
+PROF_BONUS = 0
+#Saving Throw bonuses
+SAVE_STR = 0
+SAVE_DEX = 0
+SAVE_CON = 0
+SAVE_INT = 0
+SAVE_WIS = 0
+SAVE_CHA = 0
+#Skill bonuses
+ACROBATICS = 0
+ANIMAL_HANDLING = 0
+ARCANA = 0
+ATHLETICS = 0
+DECEPTION = 0
+HISTORY = 0
+INSIGHT = 0
+INTIMIDATION = 0
+INVESTIGATION = 0
+MEDICINE = 0
+NATURE = 0
+PERCEPTION = 0
+PERFORMANCE = 0
+PERSUASION = 0
+RELIGION = 0
+SLEIGHT_OF_HAND = 0
+STEALTH = 0
+SURVIVAL = 0
+#Equipment
+WEAPON1 = ''
+WEAPON2 = ''
+ARMOR = ''
+SPELL_SLOTS = ''
+SPELLS = ''
+#Misc
+BACKGROUND = ''
+ALIGNMENT = ''
+SPEED = 0
+
+
+
+
 #Creating Main Menu
 class Main_Menu(tk.Frame):
     def __init__(self):
@@ -403,7 +458,7 @@ class Race_Info3(tk.Frame):
     def raise_start(self):
         start.tkraise()
         
-#Each race will have its own frame and will use an if statement to decide what frame to use
+#Each race will have its own frame and will use an if statement to decide what frame to use in the Start frame
 class Race_Traits_Dwarf(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
