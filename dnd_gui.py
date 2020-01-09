@@ -462,6 +462,7 @@ class Race_Info3(tk.Frame):
         start.tkraise()
         
 #Each race will have its own frame and will use an if statement to decide what frame to use in the Start frame
+#Dwarf
 class Race_Traits_Dwarf(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
@@ -543,23 +544,141 @@ class Race_Dwarf_Hill(tk.Frame):
 
         self.lbl_traits_hill = tk.Label(self, text = '''Hill dwarves have keen senses, incredible intuition and unbeatable
             resilience. As a hill dwarf, your wisdom score increases by 1 and your maximum health 
-            increases by 1, and it continues to increase by 1 everytime you level up.''', font = ('Arial', 18), bg = 'mint cream')
+            increases by 1, and it continues to increase by 1 everytime you level up.''', font = DEFAULT, bg = 'mint cream')
         self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0)
         
 class Race_Dwarf_Mtn(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
-        self.lbl_race_lbl = tk.Label(self, text = "Mountain Dwarf", 
-                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl = tk.Label(self, text = "Mountain Dwarf", font = DEFAULT, 
+                                     bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
         
         self.lbl_traits_mtn = tk.Label(self, text = '''Mountain dwarves are hardy creatures used to rough terrain. They
             are a little taller than a hill dwarf and have a lighter skin color. As a mountain dwarf, your
-            strength score increases by 2 and you have proficiency using medium and light armor.''', font = ('Arial', 18), bg = 'mint cream')
-        self.lbl_traits_mtn.grid(row = 2, column = 0) 
+            strength score increases by 2 and you have proficiency using medium and light armor.''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_mtn.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0)        
         
         
+
+
+
+
+#Elf
+class Race_Traits_Elf(tk.Frame):
+
+    def __init__(self):       
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_elf_lbl = tk.Label(self, text = "Your Racial Traits (Elf):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_elf_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0) 
+        
+        self.lbl_traits_elf = tk.Label(self, text = '''o Your dexterity score increases by 2.
+            o Your walking speed is 30 ft per turn.
+            o You can see in dim light within 60 ft of you as if it were bright light and in darkness
+            as if it were dim light.
+            o You have proficiency in the perception skill.
+            o You have advantage on saving throws against being charmed, and magic can't put you to
+            sleep.
+            o Elves do not require sleep, instead they meditate deeply for 4 hours a day.
+            o You can speak, read, and write Elvish.''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_elf.grid(row = 3, column = 0)
+        
+        self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
+        which give additional traits. There are three wubclasses of elves, high elves,
+        wood elves, and drow. Being a high elf increases your intelligence, gives
+        you proficiencies, one extra spell, and one extra language to know. Wood elves
+        give you an increase to your wisdom, proficiencies, makes you faster, and
+        gives you advantages to using stealth. Being a drow gives you an increase to
+        your charisma, darkvision extended to 120ft, one extra spell, and proficiencies.
+        However, being a drow makes it harder for you to attack in sunlight, as they are from
+        underground. Proficiencies allow you to use more equipment, like martial weapons.''', 
+                                              font = ('Arial', 20), fg = 'blue',
+                                              bg = 'mint cream')
+        self.lbl_sub_lbl.grid(row = 4, column = 0)
+        
+        self.btn_high_btn = tk.Button(self, text = "High Elf", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_high)
+        self.btn_high_btn.grid(row = 5, column = 0)
+        
+        self.btn_wood_btn = tk.Button(self, text = "Wood Elf", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_wood)
+        self.btn_wood_btn.grid(row = 6, column = 0)  
+        
+        self.btn_wood_btn = tk.Button(self, text = "Dark Elf (Drow)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_drow)
+        self.btn_wood_btn.grid(row = 7, column = 0)
+        
+    def raise_high(self):
+        high_elf.tkraise()
+        
+    def raise_wood(self):
+        wood_elf.tkraise()
+        
+    def raise_drow(self):
+        drow_elf.tkraise()            
+        
+
+class Race_Elf_High(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "High Elf", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_hill = tk.Label(self, text = ''' ''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0)    
+
+class Race_Elf_Wood(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Wood Elf", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_hill = tk.Label(self, text = ''' ''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0)    
+    
+class Race_Elf_Drow(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Dark Elf (Drow)", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_hill = tk.Label(self, text = ''' ''', font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0)    
 
 
 #Creating the frames
@@ -598,6 +717,19 @@ hill_dwarf.grid(row = 0, column = 0, sticky = "news")
 
 mtn_dwarf = Race_Dwarf_Mtn()
 mtn_dwarf.grid(row = 0, column = 0, sticky = "news")
+
+race_traits_elf = Race_Traits_Elf()
+race_traits_elf.grid(row = 0, column = 0, sticky = "news")
+
+high_elf = Race_Elf_High()
+high_elf.grid(row = 0, column = 0, sticky = "news")
+
+wood_elf = Race_Elf_Wood()
+wood_elf.grid(row = 0, column = 0, sticky = "news")
+
+drow_elf = Race_Elf_Drow()
+drow_elf.grid(row = 0, column = 0, sticky = "news")
+
 
 frame_menu.tkraise()
 root.mainloop()
