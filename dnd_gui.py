@@ -5,7 +5,7 @@
 import tkinter as tk
 import sys as sys
 
-#Constants
+#Global Variables
 #Font type and size
 DEFAULT = ('Arial', 25)
 #Armor class and hit points
@@ -57,6 +57,9 @@ SPELLS = ''
 BACKGROUND = ''
 ALIGNMENT = ''
 SPEED = 0
+LANGUAGES = ''
+SUBCLASS = ''
+PROFICIENCY = ''
 
 
 
@@ -460,12 +463,17 @@ class Race_Info3(tk.Frame):
         
 #Each race will have its own frame and will use an if statement to decide what frame to use in the Start frame
 class Race_Traits_Dwarf(tk.Frame):
-    def __init__(self):
+    def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
         self.lbl_dwarf_lbl = tk.Label(self, text = "Your Racial Traits (Dwarf):", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_dwarf_lbl.grid(row = 1, column = 0)
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0)        
         
         self.lbl_traits_dwarf = tk.Label(self, text = ''' o Your Constitution increase by 2.
             o Your speed is 25 ft per turn.
@@ -478,7 +486,80 @@ class Race_Traits_Dwarf(tk.Frame):
             o Whenever you make a history check related to the origin of stonework, you can add your proficiency
             bonus to the check and double it.
             o You can speak, read, and write Dwarvish. ''', font = ('Arial', 18), bg = 'mint cream')
-        self.lbl_traits_dwarf.grid(row = 2, column = 0)
+        self.lbl_traits_dwarf.grid(row = 3, column = 0)
+        
+        self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
+        which give additional traits. There are two subclasses of dwarf, the Hill
+        Dwarf and the Mountain Dwarf. Hill dwarves increase your health and wisdom.
+        Mountain dwarves increases strength and adds proficiencies. Proficiencies
+        allow you to use more equipment, like martial weapons.''', 
+                                              font = ('Arial', 20), fg = 'blue',
+                                              bg = 'mint cream')
+        self.lbl_sub_lbl.grid(row = 4, column = 0)
+        
+        self.btn_hill_btn = tk.Button(self, text = "Hill Dwarf", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_hill)
+        self.btn_hill_btn.grid(row = 5, column = 0)
+        
+        self.btn_mtn_btn = tk.Button(self, text = "Mountain Dwarf", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_mtn)
+        self.btn_mtn_btn.grid(row = 6, column = 0)
+        
+    def raise_hill(self): 
+        global WIS
+        global HP
+        global SUBCLASS         
+        hill_dwarf.tkraise()
+        WIS += 1
+        print(WIS)
+        HP += 1
+        print(HP)
+        SUBCLASS = 'Hill Dwarf'
+        print(SUBCLASS)        
+            
+    def raise_mtn(self):
+        global SUBCLASS 
+        global STR
+        global PROFICIENCY         
+        mtn_dwarf.tkraise()
+        STR += 2
+        print(STR)
+        PROFICIENCY += 'Medium armor, '
+        PROFICIENCY += 'Light armor, '
+        print(PROFICIENCY)
+        SUBCLASS = 'Mountain Dwarf'
+        print(SUBCLASS)        
+        
+
+
+
+class Race_Dwarf_Hill(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Hill Dwarf", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_hill = tk.Label(self, text = '''Hill dwarves have keen senses, incredible intuition and unbeatable
+            resilience. As a hill dwarf, your wisdom score increases by 1 and your maximum health 
+            increases by 1, and it continues to increase by 1 everytime you level up.''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+class Race_Dwarf_Mtn(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Mountain Dwarf", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_traits_mtn = tk.Label(self, text = '''Mountain dwarves are hardy creatures used to rough terrain. They
+            are a little taller than a hill dwarf and have a lighter skin color. As a mountain dwarf, your
+            strength score increases by 2 and you have proficiency using medium and light armor.''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_mtn.grid(row = 2, column = 0) 
+        
+        
 
 
 #Creating the frames
@@ -511,6 +592,12 @@ race_info3.grid(row = 0, column = 0, sticky = "news")
 
 race_traits_dwarf = Race_Traits_Dwarf()
 race_traits_dwarf.grid(row = 0, column = 0, sticky = "news")
+
+hill_dwarf = Race_Dwarf_Hill()
+hill_dwarf.grid(row = 0, column = 0, sticky = "news")
+
+mtn_dwarf = Race_Dwarf_Mtn()
+mtn_dwarf.grid(row = 0, column = 0, sticky = "news")
 
 frame_menu.tkraise()
 root.mainloop()
