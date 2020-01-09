@@ -198,17 +198,23 @@ class Start(tk.Frame):
         self.ent_race_pick = tk.Entry(self, font = DEFAULT)
         self.ent_race_pick.grid(row = 3, column = 1)
         
+        self.btn_back_button = tk.Button(self, text = "Continue",
+                                            font = DEFAULT, command = self.raise_traits, 
+                                            bg = 'ivory', 
+                                            activebackground = 'MistyRose2')
+        self.btn_back_button.grid(row = 4, column = 0, columnspan = 2)        
+        
         self.btn_back_button = tk.Button(self, text = "Back",
                                             font = DEFAULT, command = self.raise_menu, 
                                             bg = 'ivory', 
                                             activebackground = 'MistyRose2')
-        self.btn_back_button.grid(row = 4, column = 0, columnspan = 2)        
+        self.btn_back_button.grid(row = 5, column = 0, columnspan = 2)        
         
         self.btn_exit_button = tk.Button(self, text = "Exit",
                                             font = DEFAULT, command = self.cancel, 
                                             bg = 'ivory', 
                                             activebackground = 'MistyRose2')
-        self.btn_exit_button.grid(row = 5, column = 0, columnspan = 2) 
+        self.btn_exit_button.grid(row = 6, column = 0, columnspan = 2) 
         
     def cancel(self):
         sys.exit()    
@@ -218,6 +224,9 @@ class Start(tk.Frame):
         
     def raise_menu(self):
         frame_menu.tkraise()
+        
+    def raise_traits(self):
+        race_traits_dwarf.tkraise()        
     
 class Race_Info(tk.Frame):
     def __init__(self):
@@ -292,7 +301,7 @@ class Race_Info2(tk.Frame):
         self.lbl_race_lbl = tk.Label(self, text = "Race Information Cont.", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0) 
-        
+        #dg = Dragonborn
         self.lbl_race_dg = tk.Label(self, text = '''Dragonborn: The kin of dragons, dragonborn 
         resemble a dragon-like humanoid, 
         although they have no tail
@@ -320,7 +329,7 @@ class Race_Info2(tk.Frame):
                                        font = ('Arial', 15),
                                        bg = 'mint cream')  
         self.lbl_race_gnome.grid(row = 3, column = 0) 
-        
+        #he = Half Elf
         self.lbl_race_he= tk.Label(self, text = '''Half-Elf: A mix of human and elf, 
         half-elves are usually curious adventurers 
         are quick talking diplomats. They 
@@ -352,7 +361,7 @@ class Race_Info3(tk.Frame):
         self.lbl_race_lbl = tk.Label(self, text = "Race Information Cont.", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0) 
-        
+        #ho = Half Orc
         self.lbl_race_ho= tk.Label(self, text = '''Half-Orc: A mix of human and orc, 
         half-orcs are more than intimidating. 
         Their large figures, jutting jaws, and sharp 
@@ -383,16 +392,40 @@ class Race_Info3(tk.Frame):
                                        bg = 'mint cream')  
         self.lbl_race_tiefling.grid(row = 3, column = 0)  
         
-        self.btn_back_button = tk.Button(self, text = "Back",
+        
+        self.btn_cont_button = tk.Button(self, text = "Back",
                                             font = DEFAULT, command = self.raise_start, 
                                             bg = 'ivory', 
                                             activebackground = 'MistyRose2')
-        self.btn_back_button.grid(row = 4, column = 0, columnspan = 2)        
+        self.btn_cont_button.grid(row = 4, column = 0, columnspan = 2)        
                
         
     def raise_start(self):
         start.tkraise()
         
+#Each race will have its own frame and will use an if statement to decide what frame to use
+class Race_Traits_Dwarf(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_dwarf_lbl = tk.Label(self, text = "Your Racial Traits (Dwarf):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_dwarf_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_traits_dwarf = tk.Label(self, text = ''' o Your Constitution increase by 2.
+            o Your speed is 25 ft per turn.
+            o You can see in dim light within 60 ft of you as if it were bright light and in darkness
+            as if it were dim light.
+            o You have advantage on saving throws against poison and resistance to poison damage.
+            o You have proficiency with the battleaxe, handaxe, throwing hammer, and warhammer.
+            o You have proficiency with one set of tools of your choice: smith's tools, brewer's supplies, or
+            mason's tools. 
+            o Whenever you make a history check related to the origin of stonework, you can add your proficiency
+            bonus to the check and double it.
+            o You can speak, read, and write Dwarvish. ''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_dwarf.grid(row = 2, column = 0)
+
+
 #Creating the frames
 root = tk.Tk()
 root.title("DND Character Creator")
@@ -421,6 +454,8 @@ race_info2.grid(row = 0, column = 0, sticky = "news")
 race_info3 = Race_Info3()
 race_info3.grid(row = 0, column = 0, sticky = "news")
 
+race_traits_dwarf = Race_Traits_Dwarf()
+race_traits_dwarf.grid(row = 0, column = 0, sticky = "news")
 
 frame_menu.tkraise()
 root.mainloop()
