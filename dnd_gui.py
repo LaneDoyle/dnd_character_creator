@@ -4,6 +4,7 @@
 
 import tkinter as tk
 import sys as sys
+import dieroller as dr
 
 #Global Variables
 #Font type and size
@@ -1086,6 +1087,8 @@ class Race_Human_Regular(tk.Frame):
         
 
 
+
+#Dragonborn
 
 #Creating the frames
 root = tk.Tk()
