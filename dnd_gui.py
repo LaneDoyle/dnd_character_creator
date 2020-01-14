@@ -60,6 +60,8 @@ SPEED = 0
 LANGUAGES_KNOWN = 1
 SUBCLASS = ''
 PROFICIENCY = ''
+ADVANTAGES = ''
+RESISTANCE = ''
 
 
 
@@ -739,6 +741,90 @@ class Race_Elf_Drow(tk.Frame):
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0)    
 
+#Halfiling
+class Race_Traits_Halfling(tk.Frame):
+    def __init__(self):       
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_elf_lbl = tk.Label(self, text = "Your Racial Traits (Halfling):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_elf_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0) 
+        
+        self.lbl_traits_elf = tk.Label(self, text = ''' o Your dexterity score increases by 2.
+        o Your base walking speed is 25 ft per turn.
+        o When you roll a 1 on an attack roll, skill check, or saving throw, you can reroll the die and
+        must use the new roll.
+        o You have advantage on saving throws against being frightened.
+        o You can move through the space of any creature that is of a size larger than yours.
+        o You can speak, read, and write Common and Halfling''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_elf.grid(row = 3, column = 0)
+        
+        self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
+        which give additional traits. There are two subclasses of halfling, lightfoot 
+        halflings and stout halflings. As a lightfoot halfling, your charisma score increases and 
+        hiding is easier for you.  As a stout halfling your constitution score increases and it
+        is harder for you to be poisoned. Choose wisely as you can not go back...''', 
+                                              font = ('Arial', 20), fg = 'blue',
+                                              bg = 'mint cream')
+        self.lbl_sub_lbl.grid(row = 4, column = 0)
+        
+        self.btn_high_btn = tk.Button(self, text = "Lightfoot Halfling", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_light)
+        self.btn_high_btn.grid(row = 5, column = 0)
+        
+        self.btn_wood_btn = tk.Button(self, text = "Stout Halfing", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_stout)
+        self.btn_wood_btn.grid(row = 6, column = 0)
+        
+  
+    def raise_light(self):
+        pass
+        
+    def raise_stout(self):
+        pass
+
+class Race_Halfling_Light():
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Lightfoot Halfling", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_hill = tk.Label(self, text = '''Silent creatures, lightfoot halflings can easily hide from sight.
+        As a lightfoot halfling your charisma score increases by 1 and you can attempt to hide even when
+        you are obscured only by a creature that is at least one size larger than you.''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0) 
+        
+class Race_Halfling_Stout():
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Lightfoot Halfling", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_hill = tk.Label(self, text = '''Stout Halflings are hardier creatures that are rumored to have dwarven
+        blood. As a stout halfling your constitution score increases by 1 and you have advantage on saving
+        throws against poison, and you have resistance against poison damage. More
+        on resistance and saving throws later.''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_hill.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2')
+        self.btn_cont_btn.grid(row = 3, column = 0)
 
 #Creating the frames
 root = tk.Tk()
@@ -788,6 +874,16 @@ wood_elf.grid(row = 0, column = 0, sticky = "news")
 
 drow_elf = Race_Elf_Drow()
 drow_elf.grid(row = 0, column = 0, sticky = "news")
+
+race_traits_halfing = Race_Traits_Halfling()
+race_traits_halfling.grid(row = 0, column = 0, sticky = "news")
+
+half_light = Race_Halfling_Light()
+half_light.grid(row = 0, column = 0, sticky = "news")
+
+half_stout = Race_Halfling_Stout()
+half_stout.grid(row = 0, column = 0, sticky = "news")
+
 
 
 
