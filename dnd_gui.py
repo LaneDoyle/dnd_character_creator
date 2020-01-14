@@ -57,7 +57,7 @@ SPELLS = ''
 BACKGROUND = ''
 ALIGNMENT = ''
 SPEED = 0
-LANGUAGES_KNOWN = 1
+LANGUAGES_KNOWN = ''
 SUBCLASS = ''
 PROFICIENCY = ''
 ADVANTAGES = ''
@@ -286,14 +286,40 @@ class Start(tk.Frame):
         frame_menu.tkraise()
         
     def raise_traits(self):
+        global CON 
+        global SPEED
+        global ADVANTAGES
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global DEX
         if self.ent_race_pick.get() == "dwarf":
+            SPEED += 25
+            CON += 2
+            ADVANTAGES += 'poison, '
+            PROFICIENCY += 'battleaxe, handaxe, throwing hammer, warhammer, '
+            PROFICIENCY += "smith's tools, brewer's supplies, OR mason's tools, "
+            PROFICIENCY += "History of stonework checks, "
+            LANGUAGES_KNOWN = 'Dwarven, Common, '
+            print(SPEED, CON, ADVANTAGES, PROFICIENCY, LANGUAGES_KNOWN)
             race_traits_dwarf.tkraise()
         elif self.ent_race_pick.get() =="elf":
+            DEX += 2
+            SPEED += 30
+            PROFICIENCY += 'The perception skill'
+            ADVANTAGES += 'Charmed, '
+            LANGUAGES_KNOWN += 'Elvish, Common, '
+            print(DEX, SPEED, PROFICIENCY, ADVANTAGES, LANGUAGES_KNOWN) 
             race_traits_elf.tkraise()
         elif self.ent_race_pick.get() == "halfling":
+            DEX += 1
+            SPEED += 25
+            ADVANTAGES += 'Fear, '
+            LANGUAGES_KNOWN += 'Halfling, Common, ' 
             race_traits_halfling.tkraise()
+        elif self.ent_race_pick.get() == "human":
+            race_traits_human.tkraise()
         else: 
-            sys.exit()
+            pass
     
 class Race_Info(tk.Frame):
     def __init__(self):
@@ -631,9 +657,9 @@ class Race_Traits_Elf(tk.Frame):
                                             activebackground = 'MistyRose2', command = self.raise_wood)
         self.btn_wood_btn.grid(row = 6, column = 0)  
         
-        self.btn_wood_btn = tk.Button(self, text = "Dark Elf (Drow)", font = DEFAULT, bg = 'ivory', 
+        self.btn_drow_btn = tk.Button(self, text = "Dark Elf (Drow)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_drow)
-        self.btn_wood_btn.grid(row = 7, column = 0)
+        self.btn_drow_btn.grid(row = 7, column = 0)
         
     def raise_high(self):
         global INT
@@ -693,12 +719,12 @@ class Race_Elf_High(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = '''A master of magic, the high elf is a very intelligent being. As a 
+        self.lbl_traits_high = tk.Label(self, text = '''A master of magic, the high elf is a very intelligent being. As a 
             high elf your intelligence increases by 1 and you are proficient with the longsword,
             shortbow, and longbow. You also know one cantrip of your choice from the wizard spell
             list, using intelligence as your spellcasting ability. You can also speak, read, and write
             one extra language.''', font = DEFAULT, bg = 'mint cream')
-        self.lbl_traits_hill.grid(row = 2, column = 0)
+        self.lbl_traits_high.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2')
@@ -712,12 +738,12 @@ class Race_Elf_Wood(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = '''The wood elf is a stealthy and quick individual. They have copperish skin with 
+        self.lbl_traits_wood = tk.Label(self, text = '''The wood elf is a stealthy and quick individual. They have copperish skin with 
             copper colored hair and green/brown/hazel eyes.As a wood elf your wisdom increases by 1 and you are 
             proficient with the longsword, shortsword, shortbow, and longbow. Your base walking speed increases 
             to 35 ft anf you can attempt to hide even when you are only lightly obscured by foliage, heavy rain, 
             falling snow, mist, etc.''', font = DEFAULT, bg = 'mint cream')
-        self.lbl_traits_hill.grid(row = 2, column = 0)
+        self.lbl_traits_wood.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2')
@@ -731,13 +757,13 @@ class Race_Elf_Drow(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = '''Banished from the surface, the drow now call the Underdark their home.
+        self.lbl_traits_drow = tk.Label(self, text = '''Banished from the surface, the drow now call the Underdark their home.
             They usually have very dark skin and pale eyes with white or yellow hair. Your charisma score 
             increases by one and your darkvision extends to 120 ft. Drow, being from underground, have
             disadvantage on attack rolls and on wisdom checks that rely on sight when you, your target,
             or whatever you are trying to see is in sunlight. You know the dancing lights cantrip, and are
             profiecient with rapiers, shortswords, and hand crossbows.''', font = DEFAULT, bg = 'mint cream')
-        self.lbl_traits_hill.grid(row = 2, column = 0)
+        self.lbl_traits_drow.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2')
@@ -748,9 +774,9 @@ class Race_Traits_Halfling(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
-        self.lbl_elf_lbl = tk.Label(self, text = "Your Racial Traits (Halfling):", 
+        self.lbl_halfling_lbl = tk.Label(self, text = "Your Racial Traits (Halfling):", 
                                      font = DEFAULT, bg = 'mint cream')
-        self.lbl_elf_lbl.grid(row = 1, column = 0)
+        self.lbl_halfling_lbl.grid(row = 1, column = 0)
         
         self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
         you are given on either a piece of paper or a character sheet.''', 
@@ -758,14 +784,14 @@ class Race_Traits_Halfling(tk.Frame):
                                               bg = 'mint cream')
         self.lbl_warning_lbl.grid(row = 2, column = 0) 
         
-        self.lbl_traits_elf = tk.Label(self, text = ''' o Your dexterity score increases by 2.
+        self.lbl_traits_halfling = tk.Label(self, text = ''' o Your dexterity score increases by 2.
         o Your base walking speed is 25 ft per turn.
         o When you roll a 1 on an attack roll, skill check, or saving throw, you can reroll the die and
         must use the new roll.
         o You have advantage on saving throws against being frightened.
         o You can move through the space of any creature that is of a size larger than yours.
         o You can speak, read, and write Common and Halfling''', font = ('Arial', 18), bg = 'mint cream')
-        self.lbl_traits_elf.grid(row = 3, column = 0)
+        self.lbl_traits_halfling.grid(row = 3, column = 0)
         
         self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
         which give additional traits. There are two subclasses of halfling, lightfoot 
@@ -776,13 +802,13 @@ class Race_Traits_Halfling(tk.Frame):
                                               bg = 'mint cream')
         self.lbl_sub_lbl.grid(row = 4, column = 0)
         
-        self.btn_high_btn = tk.Button(self, text = "Lightfoot Halfling", font = DEFAULT, bg = 'ivory', 
+        self.btn_light_btn = tk.Button(self, text = "Lightfoot Halfling", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_light)
-        self.btn_high_btn.grid(row = 5, column = 0)
+        self.btn_light_btn.grid(row = 5, column = 0)
         
-        self.btn_wood_btn = tk.Button(self, text = "Stout Halfing", font = DEFAULT, bg = 'ivory', 
+        self.btn_stout_btn = tk.Button(self, text = "Stout Halfing", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_stout)
-        self.btn_wood_btn.grid(row = 6, column = 0)
+        self.btn_stout_btn.grid(row = 6, column = 0)
         
   
     def raise_light(self):
@@ -810,11 +836,11 @@ class Race_Halfling_Light(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = '''Silent creatures, lightfoot halflings can easily hide from sight.
+        self.lbl_traits_light = tk.Label(self, text = '''Silent creatures, lightfoot halflings can easily hide from sight.
         As a lightfoot halfling your charisma score increases by 1 and you can attempt to hide even when
         you are obscured only by a creature that is at least one size larger than you.''', 
                                               font = DEFAULT, bg = 'mint cream')
-        self.lbl_traits_hill.grid(row = 2, column = 0)
+        self.lbl_traits_light.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2')
@@ -828,16 +854,238 @@ class Race_Halfling_Stout(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_hill = tk.Label(self, text = '''Stout Halflings are hardier creatures that are rumored to have dwarven
+        self.lbl_traits_stout = tk.Label(self, text = '''Stout Halflings are hardier creatures that are rumored to have dwarven
         blood. As a stout halfling your constitution score increases by 1 and you have advantage on saving
         throws against poison, and you have resistance against poison damage. More
         on resistance and saving throws later.''', 
                                               font = DEFAULT, bg = 'mint cream')
-        self.lbl_traits_hill.grid(row = 2, column = 0)
+        self.lbl_traits_stout.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0)
+
+#Human
+class Race_Traits_Human(tk.Frame):
+    def __init__(self):       
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_human_lbl = tk.Label(self, text = "Your Racial Traits (Human):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_human_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0) 
+        
+        self.lbl_traits_elf = tk.Label(self, text = '''o Your ability scores each increase by 1.
+        o Your base walking speed is 30 ft per turn.
+        o You can speak, read, and write Common and one extra language of your choice.''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_elf.grid(row = 3, column = 0)
+        
+        self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
+        which give additional traits. There is technically two subclasses of human.
+        Variant human and regular human. Variant human gives you extra bonuses and skills,
+        however, confirm with your DM before choosing this subclass.  Choose wisely as you can 
+        not go back...''', 
+                                              font = ('Arial', 20), fg = 'blue',
+                                              bg = 'mint cream')
+        self.lbl_sub_lbl.grid(row = 4, column = 0)
+        
+        self.btn_var_btn = tk.Button(self, text = "Variant Human", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_variant)
+        self.btn_var_btn.grid(row = 5, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Regular Human", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_regular)
+        self.btn_reg_btn.grid(row = 6, column = 0)        
+        
+    def raise_variant(self):
+        global SPEED
+        global LANGUAGES_KNOWN
+        SPEED += 30
+        LANGUAGES_KNOWN += 'Common, One of your choice, '
+        print(SPEED, LANGUAGES_KNOWN)
+        human_variant.tkraise()
+        
+   
+    def raise_regular(self):
+        global STR
+        global DEX
+        global CON
+        global INT
+        global WIS
+        global CHA
+        global SPEED
+        global LANGUAGES_KNOWN
+        STR += 1
+        DEX += 1
+        CON += 1
+        INT += 1
+        WIS += 1
+        CHA += 1
+        SPEED += 30
+        LANGUAGES_KNOWN += 'Common, One of your choice, '
+        print(STR, DEX, CON, INT, WIS, CHA, SPEED, LANGUAGES_KNOWN)
+        human_regular.tkraise()
+          
+    
+class Race_Human_Variant(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Variant Human", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''As a variant human, you have special
+        race features different from a regular human. Instead of having every ability score increase 
+        by one, as a  variant, you can choose two abilities to increase by one. You have one skill 
+        to have proficiency in one skill. You also have one feat of your choice.''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.lbl_traits_pick = tk.Label(self, text = '''Please pick two attributes to increase by one. ''', 
+                                              font = DEFAULT, bg = 'mint cream', fg = 'red')
+        self.lbl_traits_pick.grid(row = 3, column = 0)        
+        
+        self.btn_str_btn = tk.Button(self, text = "Strength", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_str)
+        self.btn_str_btn.grid(row = 4, column = 0) 
+        
+        self.btn_dex_btn = tk.Button(self, text = "Dexterity", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_dex)
+        self.btn_dex_btn.grid(row = 5, column = 0)
+        
+        self.btn_con_btn = tk.Button(self, text = "Constitution", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_con)
+        self.btn_con_btn.grid(row = 6, column = 0)
+        
+        self.btn_int_btn = tk.Button(self, text = "Intelligence", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_int)
+        self.btn_int_btn.grid(row = 7, column = 0) 
+        
+        self.btn_wis_btn = tk.Button(self, text = "Wisdom", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_wis)
+        self.btn_wis_btn.grid(row = 8, column = 0)
+        
+        self.btn_cha_btn = tk.Button(self, text = "Charisma", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_cha)
+        self.btn_cha_btn.grid(row = 9, column = 0)        
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 10, column = 0)  
+        
+    def disable_str(self):
+        global STR
+        STR += 1
+        print(STR)
+        self.btn_str_btn.configure(state = "disabled")
+        self.chosen += 1
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+            self.btn_cha_btn.configure(state = "disabled")
+            
+            
+    
+    def disable_dex(self):
+        global DEX
+        DEX += 1
+        print(DEX)
+        self.btn_dex_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+            self.btn_cha_btn.configure(state = "disabled")
+               
+    
+    def disable_con(self):
+        global CON
+        CON += 1
+        print(CON)
+        self.btn_con_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+            self.btn_cha_btn.configure(state = "disabled")                
+    
+    def disable_int(self):
+        global INT
+        INT += 1
+        print(INT)
+        self.btn_int_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+            self.btn_cha_btn.configure(state = "disabled") 
+        
+    def disable_wis(self):
+        global WIS
+        WIS += 1
+        print(WIS)
+        self.btn_wis_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_cha_btn.configure(state = "disabled") 
+        
+    def disable_cha(self):
+        global CHA
+        CHA += 1
+        print(CON)
+        self.btn_cha_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled") 
+        
+    
+        
+class Race_Human_Regular(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Regular Human", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_reg = tk.Label(self, text = '''All your race features were listed on
+        the previous frame.
+        o Your ability scores each increase by 1.
+        o Your base walking speed is 30 ft per turn.
+        o You can speak, read, and write Common and one extra language of your choice.''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_reg.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = '')
+        self.btn_cont_btn.grid(row = 3, column = 0)    
+    
+        
+
+
 
 #Creating the frames
 root = tk.Tk()
@@ -896,6 +1144,17 @@ half_light.grid(row = 0, column = 0, sticky = "news")
 
 half_stout = Race_Halfling_Stout()
 half_stout.grid(row = 0, column = 0, sticky = "news")
+
+race_traits_human = Race_Traits_Human()
+race_traits_human.grid(row = 0, column = 0, sticky = "news")
+
+human_variant = Race_Human_Variant()
+human_variant.grid(row = 0, column = 0, sticky = "news")
+
+human_regular = Race_Human_Regular()
+human_regular.grid(row = 0, column = 0, sticky = "news")
+
+
 
 
 
