@@ -290,6 +290,8 @@ class Start(tk.Frame):
             race_traits_dwarf.tkraise()
         elif self.ent_race_pick.get() =="elf":
             race_traits_elf.tkraise()
+        elif self.ent_race_pick.get() == "halfling":
+            race_traits_halfling.tkraise()
         else: 
             sys.exit()
     
@@ -784,12 +786,23 @@ class Race_Traits_Halfling(tk.Frame):
         
   
     def raise_light(self):
-        pass
+        global CHA
+        CHA += 1
+        print(CHA)
+        half_light.tkraise()
+        
         
     def raise_stout(self):
-        pass
+        global CON
+        global RESISTANCE 
+        global ADVANTAGES 
+        CON += 1
+        RESISTANCE += 'Poison, '
+        ADVANTAGES += 'Poison, '
+        print(CON, RESISTANCE, ADVANTAGES)
+        half_stout.tkraise()
 
-class Race_Halfling_Light():
+class Race_Halfling_Light(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -807,11 +820,11 @@ class Race_Halfling_Light():
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0) 
         
-class Race_Halfling_Stout():
+class Race_Halfling_Stout(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
-        self.lbl_race_lbl = tk.Label(self, text = "Lightfoot Halfling", 
+        self.lbl_race_lbl = tk.Label(self, text = "Stout Halfling", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
@@ -875,7 +888,7 @@ wood_elf.grid(row = 0, column = 0, sticky = "news")
 drow_elf = Race_Elf_Drow()
 drow_elf.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_halfing = Race_Traits_Halfling()
+race_traits_halfling = Race_Traits_Halfling()
 race_traits_halfling.grid(row = 0, column = 0, sticky = "news")
 
 half_light = Race_Halfling_Light()
