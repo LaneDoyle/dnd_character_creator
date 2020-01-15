@@ -319,6 +319,8 @@ class Start(tk.Frame):
             race_traits_halfling.tkraise()
         elif self.ent_race_pick.get() == "human":
             race_traits_human.tkraise()
+        elif self.ent_race_pick.get() == "dragonborn":
+            race_traits_dragonborn.tkraise()
         else: 
             pass
     
@@ -1089,6 +1091,70 @@ class Race_Human_Regular(tk.Frame):
 
 
 #Dragonborn
+class Race_Traits_Dragonborn(tk.Frame):
+    def __init__(self):       
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_human_lbl = tk.Label(self, text = "Your Racial Traits (Dragonborn):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_human_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0) 
+        
+        self.lbl_traits_elf = tk.Label(self, text = ''' ''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_elf.grid(row = 3, column = 0)
+        
+        self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
+        which give additional traits. Choose wisely as you can 
+        not go back...''', 
+                                              font = ('Arial', 20), fg = 'blue',
+                                              bg = 'mint cream')
+        self.lbl_sub_lbl.grid(row = 4, column = 0)
+        
+        self.btn_var_btn = tk.Button(self, text = "Black (Acid)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_var_btn.grid(row = 5, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Blue (Lightning)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 6, column = 0)      
+        
+        self.btn_reg_btn = tk.Button(self, text = "Brass (Fire)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 7, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Bronze (Lightning)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 8, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Copper (Acid)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 9, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Gold (Fire)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 10, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Green (Poison)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 11, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Red (Fire)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 12, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "Silver (Cold)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 13, column = 0)
+        
+        self.btn_reg_btn = tk.Button(self, text = "White (Cold)", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_reg_btn.grid(row = 14, column = 0)         
+    
 
 #Creating the frames
 root = tk.Tk()
@@ -1156,6 +1222,9 @@ human_variant.grid(row = 0, column = 0, sticky = "news")
 
 human_regular = Race_Human_Regular()
 human_regular.grid(row = 0, column = 0, sticky = "news")
+
+race_traits_dragonborn = Race_Traits_Dragonborn()
+race_traits_dragonborn.grid(row = 0, column = 0, sticky = "news")
 
 
 
