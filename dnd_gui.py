@@ -1155,6 +1155,30 @@ class Race_Traits_Dragonborn(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_reg_btn.grid(row = 14, column = 0)         
     
+class Race_Dragonborn_(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = ''' ''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.lbl_traits_pick = tk.Label(self, text = ''' ''', 
+                                              font = DEFAULT, bg = 'mint cream', fg = 'red')
+        self.lbl_traits_pick.grid(row = 3, column = 0)        
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 4, column = 0) 
+         
+        
+   
+
 
 #Creating the frames
 root = tk.Tk()
