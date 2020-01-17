@@ -293,6 +293,8 @@ class Start(tk.Frame):
         global PROFICIENCY
         global LANGUAGES_KNOWN
         global DEX
+        global STR
+        global CHA
         if self.ent_race_pick.get() == "dwarf":
             SPEED += 25
             CON += 2
@@ -320,6 +322,10 @@ class Start(tk.Frame):
         elif self.ent_race_pick.get() == "human":
             race_traits_human.tkraise()
         elif self.ent_race_pick.get() == "dragonborn":
+            STR += 2
+            CHA += 1
+            SPEED += 30
+            LANGUAGES_KNOWN += 'Common, Draconic, '
             race_traits_dragonborn.tkraise()
         else: 
             pass
@@ -1105,79 +1111,298 @@ class Race_Traits_Dragonborn(tk.Frame):
                                               bg = 'mint cream')
         self.lbl_warning_lbl.grid(row = 2, column = 0) 
         
-        self.lbl_traits_elf = tk.Label(self, text = ''' ''', font = ('Arial', 18), bg = 'mint cream')
+        self.lbl_traits_elf = tk.Label(self, text = '''o Your strength score increases by 2.
+        o Your charisma score increases by 1.
+        o Your base walking speed is 30 ft per turn.
+        o You can speak, read, and write Common and Draconic.''', font = ('Arial', 18), bg = 'mint cream')
         self.lbl_traits_elf.grid(row = 3, column = 0)
         
         self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
-        which give additional traits. Choose wisely as you can 
-        not go back...''', 
+        which give additional traits. The subclasses of Dragonborn determine yoru breath weapon and
+        scale color. Each dragonborn has a breath weapon they can choose; fire, cold, etc. Below, 
+        please pick a damage type. Choose wisely as you can not go back...''', 
                                               font = ('Arial', 20), fg = 'blue',
                                               bg = 'mint cream')
         self.lbl_sub_lbl.grid(row = 4, column = 0)
         
         self.btn_var_btn = tk.Button(self, text = "Black (Acid)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_black)
         self.btn_var_btn.grid(row = 5, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Blue (Lightning)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_blue)
         self.btn_reg_btn.grid(row = 6, column = 0)      
         
         self.btn_reg_btn = tk.Button(self, text = "Brass (Fire)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_brass)
         self.btn_reg_btn.grid(row = 7, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Bronze (Lightning)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_bronze)
         self.btn_reg_btn.grid(row = 8, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Copper (Acid)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_copper)
         self.btn_reg_btn.grid(row = 9, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Gold (Fire)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_gold)
         self.btn_reg_btn.grid(row = 10, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Green (Poison)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_green)
         self.btn_reg_btn.grid(row = 11, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Red (Fire)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_red)
         self.btn_reg_btn.grid(row = 12, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "Silver (Cold)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
+                                            activebackground = 'MistyRose2', command = self.raise_silver)
         self.btn_reg_btn.grid(row = 13, column = 0)
         
         self.btn_reg_btn = tk.Button(self, text = "White (Cold)", font = DEFAULT, bg = 'ivory', 
-                                            activebackground = 'MistyRose2', command = "")
-        self.btn_reg_btn.grid(row = 14, column = 0)         
+                                            activebackground = 'MistyRose2', command = self.raise_white)
+        self.btn_reg_btn.grid(row = 14, column = 0)   
+        
+    def raise_black(self):
+        global RESISTANCE
+        RESISTANCE += 'Acid, '
+        dragon_black.tkraise()
     
-class Race_Dragonborn_(tk.Frame):
+    def raise_blue(self):
+        global RESISTANCE
+        RESISTANCE += 'Lightning, '
+        dragon_blue.tkraise()
+        
+    def raise_brass(self):
+        global RESISTANCE
+        RESISTANCE += 'Fire, '
+        dragon_brass.tkraise()
+        
+    def raise_bronze(self):
+        global RESISTANCE
+        RESISTANCE += 'Lightning, '
+        dragon_bronze.tkraise()
+        
+    def raise_copper(self):
+        global RESISTANCE
+        RESISTANCE += 'Acid, '
+        dragon_copper.tkraise()
+        
+    def raise_gold(self):
+        global RESISTANCE
+        RESISTANCE += 'Fire, '
+        dragon_gold.tkraise()
+        
+    def raise_green(self):
+        global RESISTANCE
+        RESISTANCE += 'Poison, '
+        dragon_green.tkraise()
+        
+    def raise_red(self):
+        global RESISTANCE
+        RESISTANCE += 'Fire, '
+        dragon_red.tkraise()
+        
+    def raise_silver(self):
+        global RESISTANCE
+        RESISTANCE += 'Cold, '
+        dragon_silver.tkraise()
+        
+    def raise_white(self):
+        global RESISTANCE
+        RESISTANCE += 'Cold, ' 
+        dragon_white.tkraise()
+
+    
+    
+    
+class Race_Dragonborn_Black(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
         self.grid_columnconfigure(0, weight=1)
-        self.lbl_race_lbl = tk.Label(self, text = "", 
+        self.lbl_race_lbl = tk.Label(self, text = "Black(Acid) Dragonborn", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = ''' ''', 
-                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe acid! You are
+        also resistant to any acid damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
         self.lbl_traits_var.grid(row = 2, column = 0)
-        
-        self.lbl_traits_pick = tk.Label(self, text = ''' ''', 
-                                              font = DEFAULT, bg = 'mint cream', fg = 'red')
-        self.lbl_traits_pick.grid(row = 3, column = 0)        
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
-        self.btn_cont_btn.grid(row = 4, column = 0) 
+        self.btn_cont_btn.grid(row = 3, column = 0) 
+        
+class Race_Dragonborn_Blue(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Blue(Lightning) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe lightning! You are
+        also resistant to any lightning damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Brass(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Brass(Fire) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe fire! You are
+        also resistant to any fire damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Bronze(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Bronze(Lightning) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe lightning! You are
+        also resistant to any lightning damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Copper(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Bronze(Lightning) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe acid! You are
+        also resistant to any acid damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Gold(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Gold(Fire) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe fire! You are
+        also resistant to any fire damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Green(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Green(Poison) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe poison! You are
+        also resistant to any poison damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Red(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Red(Fire) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe fire! You are
+        also resistant to any fire damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_Silver(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Silver(Cold) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe cold! You are
+        also resistant to any cold damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
+        
+class Race_Dragonborn_White(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "White(Cold) Dragonborn", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe cold! You are
+        also resistant to any cold damage. (Resistance will be explained later)''', 
+                                              font = ('Arial', 30), bg = 'mint cream')
+        self.lbl_traits_var.grid(row = 2, column = 0)
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 3, column = 0)
          
         
    
+
+
+
 
 
 #Creating the frames
@@ -1250,8 +1475,35 @@ human_regular.grid(row = 0, column = 0, sticky = "news")
 race_traits_dragonborn = Race_Traits_Dragonborn()
 race_traits_dragonborn.grid(row = 0, column = 0, sticky = "news")
 
+dragon_black = Race_Dragonborn_Black()
+dragon_black.grid(row = 0, column = 0, sticky = "news")
 
+dragon_blue = Race_Dragonborn_Blue()
+dragon_blue.grid(row = 0, column = 0, sticky = "news")
 
+dragon_brass = Race_Dragonborn_Brass()
+dragon_brass.grid(row = 0, column = 0, sticky = "news")
+
+dragon_white = Race_Dragonborn_White()
+dragon_white.grid(row = 0, column = 0, sticky = "news")
+
+dragon_bronze = Race_Dragonborn_Bronze()
+dragon_bronze.grid(row = 0, column = 0, sticky = "news")
+
+dragon_copper = Race_Dragonborn_Copper()
+dragon_copper.grid(row = 0, column = 0, sticky = "news")
+
+dragon_gold = Race_Dragonborn_Gold()
+dragon_gold.grid(row = 0, column = 0, sticky = "news")
+
+dragon_green = Race_Dragonborn_Green()
+dragon_green.grid(row = 0, column = 0, sticky = "news")
+
+dragon_red = Race_Dragonborn_Red()
+dragon_red.grid(row = 0, column = 0, sticky = "news")
+
+dragon_silver = Race_Dragonborn_Silver()
+dragon_silver.grid(row = 0, column = 0, sticky = "news")
 
 
 
