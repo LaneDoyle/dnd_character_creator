@@ -63,6 +63,7 @@ SUBCLASS = ''
 PROFICIENCY = ''
 ADVANTAGES = ''
 RESISTANCE = ''
+OTHER = ''
 
 
 
@@ -295,6 +296,8 @@ class Start(tk.Frame):
         global DEX
         global STR
         global CHA
+        global INT
+        
         if self.ent_race_pick.get() == "dwarf":
             SPEED += 25
             CON += 2
@@ -327,6 +330,19 @@ class Start(tk.Frame):
             SPEED += 30
             LANGUAGES_KNOWN += 'Common, Draconic, '
             race_traits_dragonborn.tkraise()
+        elif self.ent_race_pick.get() == "gnome":
+            INT += 2
+            SPEED += 25
+            ADVANTAGES += 'Intelligence, wisdom, and charisma saving throws against magic, '
+            LANGUAGES_KNOWN += 'Common, Gnomish, '
+            race_traits_gnome.tkraise()
+        elif self.ent_race_pick.get() == "half-elf" or "half elf":
+            CHA += 2
+            SPEED += 30
+            ADVANTAGES += "Saving throws against being charmed, "
+            PROFICIENCY += 'Two skills of your choice, '
+            LANGUAGES_KNOWN += 'Common, Elvish, '
+            race_traits_he.tkraise()
         else: 
             pass
     
@@ -889,10 +905,10 @@ class Race_Traits_Human(tk.Frame):
                                               bg = 'mint cream')
         self.lbl_warning_lbl.grid(row = 2, column = 0) 
         
-        self.lbl_traits_elf = tk.Label(self, text = '''o Your ability scores each increase by 1.
+        self.lbl_traits_human = tk.Label(self, text = '''o Your ability scores each increase by 1.
         o Your base walking speed is 30 ft per turn.
         o You can speak, read, and write Common and one extra language of your choice.''', font = ('Arial', 18), bg = 'mint cream')
-        self.lbl_traits_elf.grid(row = 3, column = 0)
+        self.lbl_traits_human.grid(row = 3, column = 0)
         
         self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
         which give additional traits. There is technically two subclasses of human.
@@ -1111,11 +1127,11 @@ class Race_Traits_Dragonborn(tk.Frame):
                                               bg = 'mint cream')
         self.lbl_warning_lbl.grid(row = 2, column = 0) 
         
-        self.lbl_traits_elf = tk.Label(self, text = '''o Your strength score increases by 2.
+        self.lbl_traits_dragon = tk.Label(self, text = '''o Your strength score increases by 2.
         o Your charisma score increases by 1.
         o Your base walking speed is 30 ft per turn.
         o You can speak, read, and write Common and Draconic.''', font = ('Arial', 18), bg = 'mint cream')
-        self.lbl_traits_elf.grid(row = 3, column = 0)
+        self.lbl_traits_dragon.grid(row = 3, column = 0)
         
         self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
         which give additional traits. The subclasses of Dragonborn determine yoru breath weapon and
@@ -1125,45 +1141,45 @@ class Race_Traits_Dragonborn(tk.Frame):
                                               bg = 'mint cream')
         self.lbl_sub_lbl.grid(row = 4, column = 0)
         
-        self.btn_var_btn = tk.Button(self, text = "Black (Acid)", font = DEFAULT, bg = 'ivory', 
+        self.btn_black_btn = tk.Button(self, text = "Black (Acid)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_black)
-        self.btn_var_btn.grid(row = 5, column = 0)
+        self.btn_black_btn.grid(row = 5, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Blue (Lightning)", font = DEFAULT, bg = 'ivory', 
+        self.btn_blue_btn = tk.Button(self, text = "Blue (Lightning)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_blue)
-        self.btn_reg_btn.grid(row = 6, column = 0)      
+        self.btn_blue_btn.grid(row = 6, column = 0)      
         
-        self.btn_reg_btn = tk.Button(self, text = "Brass (Fire)", font = DEFAULT, bg = 'ivory', 
+        self.btn_brass_btn = tk.Button(self, text = "Brass (Fire)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_brass)
-        self.btn_reg_btn.grid(row = 7, column = 0)
+        self.btn_brass_btn.grid(row = 7, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Bronze (Lightning)", font = DEFAULT, bg = 'ivory', 
+        self.btn_bronze_btn = tk.Button(self, text = "Bronze (Lightning)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_bronze)
-        self.btn_reg_btn.grid(row = 8, column = 0)
+        self.btn_bronze_btn.grid(row = 8, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Copper (Acid)", font = DEFAULT, bg = 'ivory', 
+        self.btn_copper_btn = tk.Button(self, text = "Copper (Acid)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_copper)
-        self.btn_reg_btn.grid(row = 9, column = 0)
+        self.btn_copper_btn.grid(row = 9, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Gold (Fire)", font = DEFAULT, bg = 'ivory', 
+        self.btn_gold_btn = tk.Button(self, text = "Gold (Fire)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_gold)
-        self.btn_reg_btn.grid(row = 10, column = 0)
+        self.btn_gold_btn.grid(row = 10, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Green (Poison)", font = DEFAULT, bg = 'ivory', 
+        self.btn_green_btn = tk.Button(self, text = "Green (Poison)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_green)
-        self.btn_reg_btn.grid(row = 11, column = 0)
+        self.btn_green_btn.grid(row = 11, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Red (Fire)", font = DEFAULT, bg = 'ivory', 
+        self.btn_red_btn = tk.Button(self, text = "Red (Fire)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_red)
-        self.btn_reg_btn.grid(row = 12, column = 0)
+        self.btn_red_btn.grid(row = 12, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "Silver (Cold)", font = DEFAULT, bg = 'ivory', 
+        self.btn_silver_btn = tk.Button(self, text = "Silver (Cold)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_silver)
-        self.btn_reg_btn.grid(row = 13, column = 0)
+        self.btn_silver_btn.grid(row = 13, column = 0)
         
-        self.btn_reg_btn = tk.Button(self, text = "White (Cold)", font = DEFAULT, bg = 'ivory', 
+        self.btn_white_btn = tk.Button(self, text = "White (Cold)", font = DEFAULT, bg = 'ivory', 
                                             activebackground = 'MistyRose2', command = self.raise_white)
-        self.btn_reg_btn.grid(row = 14, column = 0)   
+        self.btn_white_btn.grid(row = 14, column = 0)   
         
     def raise_black(self):
         global RESISTANCE
@@ -1227,10 +1243,10 @@ class Race_Dragonborn_Black(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe acid! You are
+        self.lbl_traits_black = tk.Label(self, text = '''You can now breathe acid! You are
         also resistant to any acid damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_black.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1245,10 +1261,10 @@ class Race_Dragonborn_Blue(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe lightning! You are
+        self.lbl_traits_blue = tk.Label(self, text = '''You can now breathe lightning! You are
         also resistant to any lightning damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_blue.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1263,10 +1279,10 @@ class Race_Dragonborn_Brass(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe fire! You are
+        self.lbl_traits_brass = tk.Label(self, text = '''You can now breathe fire! You are
         also resistant to any fire damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_brass.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1281,10 +1297,10 @@ class Race_Dragonborn_Bronze(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe lightning! You are
+        self.lbl_traits_bronze = tk.Label(self, text = '''You can now breathe lightning! You are
         also resistant to any lightning damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_bronze.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1295,14 +1311,14 @@ class Race_Dragonborn_Copper(tk.Frame):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
         self.grid_columnconfigure(0, weight=1)
-        self.lbl_race_lbl = tk.Label(self, text = "Bronze(Lightning) Dragonborn", 
+        self.lbl_race_lbl = tk.Label(self, text = "Copper(Acid) Dragonborn", 
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe acid! You are
+        self.lbl_traits_copper = tk.Label(self, text = '''You can now breathe acid! You are
         also resistant to any acid damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_copper.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1317,10 +1333,10 @@ class Race_Dragonborn_Gold(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe fire! You are
+        self.lbl_traits_gold = tk.Label(self, text = '''You can now breathe fire! You are
         also resistant to any fire damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_gold.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1335,10 +1351,10 @@ class Race_Dragonborn_Green(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe poison! You are
+        self.lbl_traits_green = tk.Label(self, text = '''You can now breathe poison! You are
         also resistant to any poison damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_green.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1353,10 +1369,10 @@ class Race_Dragonborn_Red(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe fire! You are
+        self.lbl_traits_red = tk.Label(self, text = '''You can now breathe fire! You are
         also resistant to any fire damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_red.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1371,10 +1387,10 @@ class Race_Dragonborn_Silver(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe cold! You are
+        self.lbl_traits_silver = tk.Label(self, text = '''You can now breathe cold! You are
         also resistant to any cold damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_silver.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1389,10 +1405,10 @@ class Race_Dragonborn_White(tk.Frame):
                                      font = DEFAULT, bg = 'mint cream')
         self.lbl_race_lbl.grid(row = 1, column = 0)
 
-        self.lbl_traits_var = tk.Label(self, text = '''You can now breathe cold! You are
+        self.lbl_traits_white = tk.Label(self, text = '''You can now breathe cold! You are
         also resistant to any cold damage. (Resistance will be explained later)''', 
                                               font = ('Arial', 30), bg = 'mint cream')
-        self.lbl_traits_var.grid(row = 2, column = 0)
+        self.lbl_traits_white.grid(row = 2, column = 0)
         
         self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
                                             activebackground = 'MistyRose2', command = "")
@@ -1404,6 +1420,250 @@ class Race_Dragonborn_White(tk.Frame):
 
 
 
+
+#Gnome
+class Race_Traits_Gnome(tk.Frame):
+    def __init__(self):       
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_human_lbl = tk.Label(self, text = "Your Racial Traits (Gnome):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_human_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0) 
+        
+        self.lbl_traits_gnome = tk.Label(self, text = '''o Your intelligence score increases by 2
+        o You are considered small in size
+        o Your base speed is 25
+        o You have advantage on all intelligence, wisdom, and charisma saving throws against magic
+        o You can speak, read, and write, common and gnomish''', font = ('Arial', 18),
+                                             bg = 'mint cream')
+        self.lbl_traits_gnome.grid(row = 3, column = 0)
+        
+        self.lbl_sub_lbl = tk.Label(self, text = ''' Some classes have subclasses,
+        which give additional traits. The subclasses of gnome are forest and
+        rock gnomes. Forest gnomes increase your dexterity, you get a bonus spell to cast,
+        and you can communicate with small beasts. Rock gnomes increase your constitution
+        score,  you can add twice your proficiency bonus to intelligence checks based on
+        magic items, alchemical items, or technological devices, and you can create small 
+        devices. Choose wisely as you can not go back...''', 
+                                              font = ('Arial', 20), fg = 'blue',
+                                              bg = 'mint cream')
+        self.lbl_sub_lbl.grid(row = 4, column = 0)
+        
+        self.btn_forest_btn = tk.Button(self, text = "Forest Gnome", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_forest)
+        self.btn_forest_btn.grid(row = 5, column = 0)
+        
+        self.btn_rock_btn = tk.Button(self, text = "Rock Gnome", font = DEFAULT, bg = 'ivory', 
+                                            activebackground = 'MistyRose2', command = self.raise_rock)
+        self.btn_rock_btn.grid(row = 6, column = 0)
+        
+    def raise_forest(self):
+        global DEX
+        global SPELLS
+        global OTHER
+        SPELLS += 'Minor Illusion(Bonus), '
+        DEX += 1
+        OTHER += 'Can speak with small/smaller beasts, '
+        print(SPELLS, DEX, OTHER)
+        gnome_forest.tkraise()
+        
+    def raise_rock(self):
+        global CON
+        global PROFICIENCY
+        global OTHER
+        CON += 1
+        PROFICIENCY += 'Intelligence(history) check related to magic items, alchemical objects, or technological devices, '
+        OTHER += 'Tinkerer, '
+        print(CON, PROFICIENCY, OTHER)
+        gnome_rock.tkraise()
+
+class Race_Gnome_Forest(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Gnome Forest", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_forest = tk.Label(self, text = '''o Your dexterity score increases by 1
+        o You know the minor illusion spell (Casted using INT)
+        o Through sounds and and gestures you can speak with small and smaller beasts, but can only
+        communicate simple ideas. ''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_forest.grid(row = 2, column = 0)       
+        
+        self.btn_str_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_str_btn.grid(row = 4, column = 0) 
+
+class Race_Gnome_Rock(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_race_lbl = tk.Label(self, text = "Gnome Rock", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_race_lbl.grid(row = 1, column = 0)
+
+        self.lbl_traits_rock = tk.Label(self, text = '''o Your constitution score increases by 1
+        o Whenever you make an Intelligence(history) check related to magic items, alchemical
+        objects, or technological devices you can add twice your proficiency bonus.
+        o You have proficiency  wuth artisan's tools. Using these tools you can spend 1 hour and 10 GP 
+        worth of materials to construct a tiny clockwork device that has AC 5 and 1 HP. After 24 hours,
+        the device will cease to function.
+        o You can only have three devices active at a time.''', 
+                                              font = DEFAULT, bg = 'mint cream')
+        self.lbl_traits_rock.grid(row = 2, column = 0)
+        
+        self.lbl_traits_pick = tk.Label(self, text = '''DEVICES:
+        Clockwork Toy: a clockwork animal, monster, or person. When placed on the ground, the toy
+        moves 5 feet across the ground on each of your turns in a random direction.
+        
+        Fire Starter: The device produces a miniature flame, which you can use to light a candle,
+        torch, or campfire. This device requires an action.
+        
+        Music Box: When opened, this music box plays a single song at a moderate volume. The box
+        stops playing when it reaches the song's end or when it is closed.''', 
+                                              font = DEFAULT, bg = 'mint cream', fg = 'red')
+        self.lbl_traits_pick.grid(row = 3, column = 0)        
+        
+        self.btn_str_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_str_btn.grid(row = 4, column = 0) 
+        
+
+
+
+
+#Half-Elf
+class Race_Traits_HE(tk.Frame):
+    def __init__(self):       
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.chosen = 0
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_human_lbl = tk.Label(self, text = "Your Racial Traits (Half-Elf):", 
+                                     font = DEFAULT, bg = 'mint cream')
+        self.lbl_human_lbl.grid(row = 1, column = 0)
+        
+        self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+        you are given on either a piece of paper or a character sheet.''', 
+                                              font = ('Arial', 20), fg = 'red',
+                                              bg = 'mint cream')
+        self.lbl_warning_lbl.grid(row = 2, column = 0) 
+        
+        self.lbl_traits_he = tk.Label(self, text = '''o Your Charisma score increases by 2
+        o Two other ability scores of your choice increase by 1
+        o Your base speed is 30 feet
+        o You have darkvision taht reaches 60 feet
+        o You have advantage on saving throws against being charmed, and magic can't put you to sleep
+        o You gain proficiency in two skills of your choice
+        o You can speak, read, and write common and elvish and one exta language of your choice.''', font = ('Arial', 18),
+                                             bg = 'mint cream')
+        self.lbl_traits_he.grid(row = 3, column = 0)
+        
+        self.lbl_traits_pick = tk.Label(self, text = '''Please pick two attributes to increase by one. ''', 
+                                              font = DEFAULT, bg = 'mint cream', fg = 'red')
+        self.lbl_traits_pick.grid(row = 4, column = 0)        
+        
+        self.btn_str_btn = tk.Button(self, text = "Strength", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_str)
+        self.btn_str_btn.grid(row = 5, column = 0) 
+        
+        self.btn_dex_btn = tk.Button(self, text = "Dexterity", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_dex)
+        self.btn_dex_btn.grid(row = 6, column = 0)
+        
+        self.btn_con_btn = tk.Button(self, text = "Constitution", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_con)
+        self.btn_con_btn.grid(row = 7, column = 0)
+        
+        self.btn_int_btn = tk.Button(self, text = "Intelligence", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_int)
+        self.btn_int_btn.grid(row = 8, column = 0) 
+        
+        self.btn_wis_btn = tk.Button(self, text = "Wisdom", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = self.disable_wis)
+        self.btn_wis_btn.grid(row = 9, column = 0)        
+        
+        self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                            activebackground = 'MistyRose2', command = "")
+        self.btn_cont_btn.grid(row = 10, column = 0)  
+        
+    def disable_str(self):
+        global STR
+        STR += 1
+        print(STR)
+        self.btn_str_btn.configure(state = "disabled")
+        self.chosen += 1
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")          
+            
+    
+    def disable_dex(self):
+        global DEX
+        DEX += 1
+        print(DEX)
+        self.btn_dex_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+
+               
+    
+    def disable_con(self):
+        global CON
+        CON += 1
+        print(CON)
+        self.btn_con_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+                 
+    
+    def disable_int(self):
+        global INT
+        INT += 1
+        print(INT)
+        self.btn_int_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+            self.btn_wis_btn.configure(state = "disabled")
+
+        
+    def disable_wis(self):
+        global WIS
+        WIS += 1
+        print(WIS)
+        self.btn_wis_btn.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex_btn.configure(state = "disabled")
+            self.btn_str_btn.configure(state = "disabled")
+            self.btn_int_btn.configure(state = "disabled")
+            self.btn_con_btn.configure(state = "disabled")
+
+           
+
+#Half-Orc
 
 #Creating the frames
 root = tk.Tk()
@@ -1504,6 +1764,18 @@ dragon_red.grid(row = 0, column = 0, sticky = "news")
 
 dragon_silver = Race_Dragonborn_Silver()
 dragon_silver.grid(row = 0, column = 0, sticky = "news")
+
+race_traits_gnome = Race_Traits_Gnome()
+race_traits_gnome.grid(row = 0, column = 0, sticky = "news")
+
+gnome_forest = Race_Gnome_Forest()
+gnome_forest.grid(row = 0, column = 0, sticky = "news")
+
+gnome_rock = Race_Gnome_Rock()
+gnome_rock.grid(row = 0, column = 0, sticky = "news")
+
+race_traits_he = Race_Traits_HE()
+race_traits_he.grid(row = 0, column = 0, sticky = "news")
 
 
 
