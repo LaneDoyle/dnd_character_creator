@@ -69,7 +69,7 @@ OTHER = ''
 
 
 #Creating Main Menu
-class Main_Menu(tk.Frame):
+class main_Menu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -122,7 +122,7 @@ class Main_Menu(tk.Frame):
     def raise_dice(self):
         dice.tkraise()
         
-class Race_Menu(tk.Frame):
+class race_Menu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -153,7 +153,7 @@ class Race_Menu(tk.Frame):
     def raise_menu(self):
         frame_menu.tkraise()
         
-class Class_Menu(tk.Frame):
+class class_Menu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -346,7 +346,7 @@ class Start(tk.Frame):
         else: 
             pass
     
-class Race_Info(tk.Frame):
+class race_Info(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -412,7 +412,7 @@ class Race_Info(tk.Frame):
         race_info2.tkraise()
             
         
-class Race_Info2(tk.Frame):
+class race_Info2(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -472,7 +472,7 @@ class Race_Info2(tk.Frame):
     def raise_races_3(self):
         race_info3.tkraise()
         
-class Race_Info3(tk.Frame):
+class race_Info3(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -523,7 +523,7 @@ class Race_Info3(tk.Frame):
         
 #Each race will have its own frame and will use an if statement to decide what frame to use in the Start frame
 #Dwarf
-class Race_Traits_Dwarf(tk.Frame):
+class race_Traits_Dwarf(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -595,7 +595,7 @@ class Race_Traits_Dwarf(tk.Frame):
 
 
 
-class Race_Dwarf_Hill(tk.Frame):
+class race_Dwarf_Hill(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -612,7 +612,7 @@ class Race_Dwarf_Hill(tk.Frame):
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dwarf_Mtn(tk.Frame):
+class race_Dwarf_Mtn(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -635,7 +635,7 @@ class Race_Dwarf_Mtn(tk.Frame):
 
 
 #Elf
-class Race_Traits_Elf(tk.Frame):
+class race_Traits_Elf(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -736,7 +736,7 @@ class Race_Traits_Elf(tk.Frame):
         
         
 
-class Race_Elf_High(tk.Frame):
+class race_Elf_High(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -755,7 +755,7 @@ class Race_Elf_High(tk.Frame):
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0)    
 
-class Race_Elf_Wood(tk.Frame):
+class race_Elf_Wood(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -774,7 +774,7 @@ class Race_Elf_Wood(tk.Frame):
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0)    
     
-class Race_Elf_Drow(tk.Frame):
+class race_Elf_Drow(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -795,7 +795,7 @@ class Race_Elf_Drow(tk.Frame):
         self.btn_cont_btn.grid(row = 3, column = 0)    
 
 #Halfiling
-class Race_Traits_Halfling(tk.Frame):
+class race_Traits_Halfling(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -853,7 +853,7 @@ class Race_Traits_Halfling(tk.Frame):
         print(CON, RESISTANCE, ADVANTAGES)
         half_stout.tkraise()
 
-class Race_Halfling_Light(tk.Frame):
+class race_Halfling_Light(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -871,7 +871,7 @@ class Race_Halfling_Light(tk.Frame):
                                             activebackground = 'MistyRose2')
         self.btn_cont_btn.grid(row = 3, column = 0) 
         
-class Race_Halfling_Stout(tk.Frame):
+class race_Halfling_Stout(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -891,7 +891,7 @@ class Race_Halfling_Stout(tk.Frame):
         self.btn_cont_btn.grid(row = 3, column = 0)
 
 #Human
-class Race_Traits_Human(tk.Frame):
+class race_Traits_Human(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -957,7 +957,7 @@ class Race_Traits_Human(tk.Frame):
         human_regular.tkraise()
           
     
-class Race_Human_Variant(tk.Frame):
+class race_Human_Variant(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1088,7 +1088,7 @@ class Race_Human_Variant(tk.Frame):
         
     
         
-class Race_Human_Regular(tk.Frame):
+class race_Human_Regular(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -1113,7 +1113,7 @@ class Race_Human_Regular(tk.Frame):
 
 
 #Dragonborn
-class Race_Traits_Dragonborn(tk.Frame):
+class race_Traits_Dragonborn(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -1234,7 +1234,7 @@ class Race_Traits_Dragonborn(tk.Frame):
     
     
     
-class Race_Dragonborn_Black(tk.Frame):
+class race_Dragonborn_Black(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1252,7 +1252,7 @@ class Race_Dragonborn_Black(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0) 
         
-class Race_Dragonborn_Blue(tk.Frame):
+class race_Dragonborn_Blue(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1270,7 +1270,7 @@ class Race_Dragonborn_Blue(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Brass(tk.Frame):
+class race_Dragonborn_Brass(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1288,7 +1288,7 @@ class Race_Dragonborn_Brass(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Bronze(tk.Frame):
+class race_Dragonborn_Bronze(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1306,7 +1306,7 @@ class Race_Dragonborn_Bronze(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Copper(tk.Frame):
+class race_Dragonborn_Copper(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1324,7 +1324,7 @@ class Race_Dragonborn_Copper(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Gold(tk.Frame):
+class race_Dragonborn_Gold(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1342,7 +1342,7 @@ class Race_Dragonborn_Gold(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Green(tk.Frame):
+class race_Dragonborn_Green(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1360,7 +1360,7 @@ class Race_Dragonborn_Green(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Red(tk.Frame):
+class race_Dragonborn_Red(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1378,7 +1378,7 @@ class Race_Dragonborn_Red(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_Silver(tk.Frame):
+class race_Dragonborn_Silver(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1396,7 +1396,7 @@ class Race_Dragonborn_Silver(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_cont_btn.grid(row = 3, column = 0)
         
-class Race_Dragonborn_White(tk.Frame):
+class race_Dragonborn_White(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1422,7 +1422,7 @@ class Race_Dragonborn_White(tk.Frame):
 
 
 #Gnome
-class Race_Traits_Gnome(tk.Frame):
+class race_Traits_Gnome(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -1483,7 +1483,7 @@ class Race_Traits_Gnome(tk.Frame):
         print(CON, PROFICIENCY, OTHER)
         gnome_rock.tkraise()
 
-class Race_Gnome_Forest(tk.Frame):
+class race_Gnome_Forest(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1503,7 +1503,7 @@ class Race_Gnome_Forest(tk.Frame):
                                             activebackground = 'MistyRose2', command = "")
         self.btn_str_btn.grid(row = 4, column = 0) 
 
-class Race_Gnome_Rock(tk.Frame):
+class race_Gnome_Rock(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1543,7 +1543,7 @@ class Race_Gnome_Rock(tk.Frame):
 
 
 #Half-Elf
-class Race_Traits_HE(tk.Frame):
+class race_Traits_HE(tk.Frame):
     def __init__(self):       
         tk.Frame.__init__(self, bg = 'mint cream')
         self.chosen = 0
@@ -1669,13 +1669,13 @@ class Race_Traits_HE(tk.Frame):
 root = tk.Tk()
 root.title("DND Character Creator")
 
-frame_menu = Main_Menu()
+frame_menu = main_Menu()
 frame_menu.grid(row = 0, column = 0, sticky = "news")
 
-available_race = Race_Menu()
+available_race = race_Menu()
 available_race.grid(row = 0, column = 0, sticky = "news")
 
-available_class = Class_Menu()
+available_class = class_Menu()
 available_class.grid(row = 0, column = 0, sticky = "news")
 
 dice = Dice()
@@ -1684,97 +1684,97 @@ dice.grid(row = 0, column = 0, sticky = "news")
 start = Start()
 start.grid(row = 0, column = 0, sticky = "news")
 
-race_info = Race_Info()
+race_info = race_Info()
 race_info.grid(row = 0, column = 0, sticky = "news")
 
-race_info2 = Race_Info2()
+race_info2 = race_Info2()
 race_info2.grid(row = 0, column = 0, sticky = "news")
 
-race_info3 = Race_Info3()
+race_info3 = race_Info3()
 race_info3.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_dwarf = Race_Traits_Dwarf()
+race_traits_dwarf = race_Traits_Dwarf()
 race_traits_dwarf.grid(row = 0, column = 0, sticky = "news")
 
-hill_dwarf = Race_Dwarf_Hill()
+hill_dwarf = race_Dwarf_Hill()
 hill_dwarf.grid(row = 0, column = 0, sticky = "news")
 
-mtn_dwarf = Race_Dwarf_Mtn()
+mtn_dwarf = race_Dwarf_Mtn()
 mtn_dwarf.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_elf = Race_Traits_Elf()
+race_traits_elf = race_Traits_Elf()
 race_traits_elf.grid(row = 0, column = 0, sticky = "news")
 
-high_elf = Race_Elf_High()
+high_elf = race_Elf_High()
 high_elf.grid(row = 0, column = 0, sticky = "news")
 
-wood_elf = Race_Elf_Wood()
+wood_elf = race_Elf_Wood()
 wood_elf.grid(row = 0, column = 0, sticky = "news")
 
-drow_elf = Race_Elf_Drow()
+drow_elf = race_Elf_Drow()
 drow_elf.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_halfling = Race_Traits_Halfling()
+race_traits_halfling = race_Traits_Halfling()
 race_traits_halfling.grid(row = 0, column = 0, sticky = "news")
 
-half_light = Race_Halfling_Light()
+half_light = race_Halfling_Light()
 half_light.grid(row = 0, column = 0, sticky = "news")
 
-half_stout = Race_Halfling_Stout()
+half_stout = race_Halfling_Stout()
 half_stout.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_human = Race_Traits_Human()
+race_traits_human = race_Traits_Human()
 race_traits_human.grid(row = 0, column = 0, sticky = "news")
 
-human_variant = Race_Human_Variant()
+human_variant = race_Human_Variant()
 human_variant.grid(row = 0, column = 0, sticky = "news")
 
-human_regular = Race_Human_Regular()
+human_regular = race_Human_Regular()
 human_regular.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_dragonborn = Race_Traits_Dragonborn()
+race_traits_dragonborn = race_Traits_Dragonborn()
 race_traits_dragonborn.grid(row = 0, column = 0, sticky = "news")
 
-dragon_black = Race_Dragonborn_Black()
+dragon_black = race_Dragonborn_Black()
 dragon_black.grid(row = 0, column = 0, sticky = "news")
 
-dragon_blue = Race_Dragonborn_Blue()
+dragon_blue = race_Dragonborn_Blue()
 dragon_blue.grid(row = 0, column = 0, sticky = "news")
 
-dragon_brass = Race_Dragonborn_Brass()
+dragon_brass = race_Dragonborn_Brass()
 dragon_brass.grid(row = 0, column = 0, sticky = "news")
 
-dragon_white = Race_Dragonborn_White()
+dragon_white = race_Dragonborn_White()
 dragon_white.grid(row = 0, column = 0, sticky = "news")
 
-dragon_bronze = Race_Dragonborn_Bronze()
+dragon_bronze = race_Dragonborn_Bronze()
 dragon_bronze.grid(row = 0, column = 0, sticky = "news")
 
-dragon_copper = Race_Dragonborn_Copper()
+dragon_copper = race_Dragonborn_Copper()
 dragon_copper.grid(row = 0, column = 0, sticky = "news")
 
-dragon_gold = Race_Dragonborn_Gold()
+dragon_gold = race_Dragonborn_Gold()
 dragon_gold.grid(row = 0, column = 0, sticky = "news")
 
-dragon_green = Race_Dragonborn_Green()
+dragon_green = race_Dragonborn_Green()
 dragon_green.grid(row = 0, column = 0, sticky = "news")
 
-dragon_red = Race_Dragonborn_Red()
+dragon_red = race_Dragonborn_Red()
 dragon_red.grid(row = 0, column = 0, sticky = "news")
 
-dragon_silver = Race_Dragonborn_Silver()
+dragon_silver = race_Dragonborn_Silver()
 dragon_silver.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_gnome = Race_Traits_Gnome()
+race_traits_gnome = race_Traits_Gnome()
 race_traits_gnome.grid(row = 0, column = 0, sticky = "news")
 
-gnome_forest = Race_Gnome_Forest()
+gnome_forest = race_Gnome_Forest()
 gnome_forest.grid(row = 0, column = 0, sticky = "news")
 
-gnome_rock = Race_Gnome_Rock()
+gnome_rock = race_Gnome_Rock()
 gnome_rock.grid(row = 0, column = 0, sticky = "news")
 
-race_traits_he = Race_Traits_HE()
+race_traits_he = race_Traits_HE()
 race_traits_he.grid(row = 0, column = 0, sticky = "news")
 
 
