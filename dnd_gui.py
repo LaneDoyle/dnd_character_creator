@@ -343,6 +343,8 @@ class Start(tk.Frame):
             PROFICIENCY += 'Two skills of your choice, '
             LANGUAGES_KNOWN += 'Common, Elvish, '
             race_traits_he.tkraise()
+        elif self.ent_race_pick.get() == "half-orc" or "half orc":
+            race_traits_orc.tkraise()
         else: 
             pass
     
@@ -1664,7 +1666,67 @@ class race_Traits_HE(tk.Frame):
            
 
 #Half-Orc
+class race_Traits_Orc(tk.Frame):
+    tk.Frame.__init__(self, bg = 'mint cream')
+    self.grid_columnconfigure(0, weight=1)
+    self.lbl_orc_lbl = tk.Label(self, text = "Your Racial Traits (Half-Orc):", 
+                                 font = DEFAULT, bg = 'mint cream')
+    self.lbl_orc_lbl.grid(row = 1, column = 0)
+    
+    self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+    you are given on either a piece of paper or a character sheet.''', 
+                                          font = ('Arial', 20), fg = 'red',
+                                          bg = 'mint cream')
+    self.lbl_warning_lbl.grid(row = 2, column = 0) 
+    
+    
+    self.lbl_traits_orc = tk.Label(self, text = '''o Your strength increases by 2
+    o Your constitution increases by 1
+    o You have darkvision which extends 60ft
+    o Your speed is 30ft
+    o You have proficiency in the intimidation skill
+    o When you are reduced to 0 hit points(health), you can drop to 1 HP instead
+    o When you score a critical hit with a melee weapon attack you can roll one of 
+    damage dice one more time and add it to the extra damage of the crit
+    o You can speak, read, and write Common and Orc''', font = ('Arial', 18),
+                                         bg = 'mint cream')
+    self.lbl_traits_orc.grid(row = 3, column = 0)
+    
 
+    self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                        activebackground = 'MistyRose2', command = "")
+    self.btn_cont_btn.grid(row = 4, column = 0)
+    
+class race_Traits_Tief(tk.Frame):
+    tk.Frame.__init__(self, bg = 'mint cream')
+    self.grid_columnconfigure(0, weight=1)
+    self.lbl_tief_lbl = tk.Label(self, text = "Your Racial Traits (Tiefling):", 
+                                 font = DEFAULT, bg = 'mint cream')
+    self.lbl_tief_lbl.grid(row = 1, column = 0)
+    
+    self.lbl_warning_lbl = tk.Label(self, text = ''' Make sure to write all the information 
+    you are given on either a piece of paper or a character sheet.''', 
+                                          font = ('Arial', 20), fg = 'red',
+                                          bg = 'mint cream')
+    self.lbl_warning_lbl.grid(row = 2, column = 0) 
+    
+    
+    self.lbl_traits_tief = tk.Label(self, text = '''o Your intelligence score increases by 1
+    o Your charisma score increases by 2
+    o Your speed is 30ft
+    o You have darkvision which extends 60ft
+    o You have resistance to fire damage
+    o You know the thaumaturgy spell as a bonus (As you increase in level
+    you will get more bonus spells)
+    o You can speak, read, and write Common and Infernal''', font = ('Arial', 18),
+                                         bg = 'mint cream')
+    self.lbl_traits_tief.grid(row = 3, column = 0)
+    
+
+    self.btn_cont_btn = tk.Button(self, text = "Continue", font = DEFAULT, bg = 'ivory',
+                                        activebackground = 'MistyRose2', command = "")
+    self.btn_cont_btn.grid(row = 4, column = 0)    
+    
 #Creating the frames
 root = tk.Tk()
 root.title("DND Character Creator")
@@ -1777,7 +1839,8 @@ gnome_rock.grid(row = 0, column = 0, sticky = "news")
 race_traits_he = race_Traits_HE()
 race_traits_he.grid(row = 0, column = 0, sticky = "news")
 
-
+race_traits_orc = race_Traits_Orc()
+race_traits_orc.grid(row = 0, column = 0, sticky = "news")
 
 frame_menu.tkraise()
 root.mainloop()
