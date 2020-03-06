@@ -69,7 +69,7 @@ OTHER = ''
 
 
 #Creating Main Menu
-class main_Menu(tk.Frame):
+class MainMenu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -122,7 +122,7 @@ class main_Menu(tk.Frame):
     def raise_dice(self):
         dice.tkraise()
         
-class race_Menu(tk.Frame):
+class RaceMenu(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self, bg = 'mint cream')
         self.grid_columnconfigure(0, weight=1)
@@ -1745,10 +1745,10 @@ class class_Pick(tk.Frame):
 root = tk.Tk()
 root.title("DND Character Creator")
 
-frame_menu = main_Menu()
+frame_menu = MainMenu()
 frame_menu.grid(row = 0, column = 0, sticky = "news")
 
-available_race = race_Menu()
+available_race = RaceMenu()
 available_race.grid(row = 0, column = 0, sticky = "news")
 
 available_class = class_Menu()

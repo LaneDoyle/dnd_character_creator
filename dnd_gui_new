@@ -1,0 +1,146 @@
+#!/usr/bin/python3
+#LaneDoyle
+#12/3/19
+
+import tkinter as tk
+import dieroller as dr
+
+#Global Variables
+#Font type and size
+DEFAULT = ('Arial', 25)
+#Armor class and hit points
+AC = 0
+HP = 0
+HIT_DIE = ''
+#Attributes
+STR = 0
+DEX = 0
+CON = 0
+INT = 0
+WIS = 0
+CHA = 0
+#Proficiency bonus
+PROF_BONUS = 0
+#Saving Throw bonuses
+SAVE_STR = 0
+SAVE_DEX = 0
+SAVE_CON = 0
+SAVE_INT = 0
+SAVE_WIS = 0
+SAVE_CHA = 0
+#Skill bonuses
+ACROBATICS = 0
+ANIMAL_HANDLING = 0
+ARCANA = 0
+ATHLETICS = 0
+DECEPTION = 0
+HISTORY = 0
+INSIGHT = 0
+INTIMIDATION = 0
+INVESTIGATION = 0
+MEDICINE = 0
+NATURE = 0
+PERCEPTION = 0
+PERFORMANCE = 0
+PERSUASION = 0
+RELIGION = 0
+SLEIGHT_OF_HAND = 0
+STEALTH = 0
+SURVIVAL = 0
+#Equipment
+WEAPON1 = ''
+WEAPON2 = ''
+ARMOR = ''
+SPELL_SLOTS = ''
+SPELLS = ''
+#Misc
+BACKGROUND = ''
+ALIGNMENT = ''
+SPEED = 0
+LANGUAGES_KNOWN = ''
+SUBCLASS = ''
+PROFICIENCY = ''
+ADVANTAGES = ''
+RESISTANCE = ''
+OTHER = ''
+
+#Styles Constants
+FRMBACKGROUND = "mint cream"
+BTNBACKGROUNDSTATIC = "ivory"
+BTNBACKGROUNDACTIVE = "MistyRose2"
+
+class MainMenu(tk.Frame):
+    def __init__(self):
+        tk.Frame.__init__(self, bg = 'mint cream')
+        self.grid_columnconfigure(0, weight=1)
+        self.lbl_main_label = tk.Label(self, text = "Main Menu", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_main_label.grid(row = 0, column = 0)
+        
+        self.btn_start_button = tk.Button(self, text = "START!",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_start)
+        self.btn_start_button.grid(row = 1, column = 0)
+        
+        self.btn_races_button = tk.Button(self, text = "Available Races",
+                                            font = DEFAULT, command =
+                                            self.raise_races, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE)
+        self.btn_races_button.grid(row = 2, column = 0)   
+        
+        self.btn_classes_button = tk.Button(self, text = "Available Classes",
+                                            font = DEFAULT, command =
+                                            self.raise_class, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE)
+        self.btn_classes_button.grid(row = 3, column = 0)          
+        
+        self.btn_dice_button = tk.Button(self, text = "Dice",
+                                            font = DEFAULT, command =
+                                            self.raise_dice, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE)
+        self.btn_dice_button.grid(row = 4, column = 0) 
+        
+        self.btn_exit_button = tk.Button(self, text = "Exit",
+                                            font = DEFAULT, command = self.cancel, 
+                                            bg = BTNBACKGROUNDSTATIC, 
+                                            activebackground = BTNBACKGROUNDACTIVE)
+        self.btn_exit_button.grid(row = 5, column = 0) 
+        
+    def cancel(self):
+        exit()
+    
+    def raise_races(self):
+        available_race.tkraise()
+        
+    def raise_class(self):
+        available_class.tkraise()  
+    
+    def raise_start(self):
+        start.tkraise()    
+    
+    def raise_dice(self):
+        dice.tkraise()
+        
+class GenericPopup(tk.Frame):
+    def __init__(self, parent, msg =  "generic"):
+        tk.Frame.__init__(self, master = parent)
+        self.parent = parent
+        
+        self.lbl_continue = tk.Label(self, text = msg, bg = FRMBACKGROUND)
+        self.lbl_continue.grid(row = 0, column = 0)
+        
+        self.btn_ok = tk.Button(self, text = "Ok", 
+                                command = self.parent.destroy,
+                                bg = BTNBACKGROUNDSTATIC,
+                                activebackground = BTNBACKGROUNDACTIVE)
+        self.btn_ok.grid(row = 1, column = 0)
+
+
+class Screen(tk.Frame):
+    current = 0 
+    def __init__(self):
+        tk.Frame.__init__(self)
+    
+    def switch_frame():
+        screens[Screen.current].tkraise()
