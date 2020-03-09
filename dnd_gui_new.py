@@ -247,53 +247,97 @@ class RaceScreens(tk.Frame):
 class Start(RaceScreens):
     def __init__(self):
         RaceScreens.__init__(self)
+        
+        self.race_chosen = tk.IntVar()
+        
         self.grid_columnconfigure(0, weight=1)
         self.lbl_main = tk.Label(self, text = "Pick a Race:", 
                                        font = DEFAULT, bg = FRMBACKGROUND)
         self.lbl_main.grid(row = 0, column = 0)
         
         self.rad_dwarf = tk.Radiobutton(self, text = "Dwarf", 
-                                           bg = FRMBACKGROUND, value = 0)
+                                           bg = FRMBACKGROUND, value = 0, 
+                                           variable = self.race_chosen)
         self.rad_dwarf.grid(row = 1, column = 0)
         
         self.rad_elf = tk.Radiobutton(self, text = "Elf", 
-                                           bg = FRMBACKGROUND, value = 1)
+                                           bg = FRMBACKGROUND, value = 1, 
+                                           variable = self.race_chosen)
         self.rad_elf.grid(row = 2, column = 0)
         
         self.rad_halfling = tk.Radiobutton(self, text = "Halfing", 
-                                           bg = FRMBACKGROUND, value = 2)
+                                           bg = FRMBACKGROUND, value = 2,
+                                           variable = self.race_chosen)
         self.rad_halfling.grid(row = 3, column = 0)
         
         self.rad_human = tk.Radiobutton(self, text = "Human", 
-                                           bg = FRMBACKGROUND, value = 3)
+                                           bg = FRMBACKGROUND, value = 3,
+                                           variable = self.race_chosen)
         self.rad_human.grid(row = 4, column = 0)
         
         self.rad_dg = tk.Radiobutton(self, text = "Dragonborn", 
-                                           bg = FRMBACKGROUND, value = 4)
+                                           bg = FRMBACKGROUND, value = 4,
+                                           variable = self.race_chosen)
         self.rad_dg.grid(row = 5, column = 0)
         
         self.rad_gnome = tk.Radiobutton(self, text = "Gnome", 
-                                           bg = FRMBACKGROUND, value = 5)
+                                           bg = FRMBACKGROUND, value = 5,
+                                           variable = self.race_chosen)
         self.rad_gnome.grid(row = 6, column = 0)
         
         self.rad_he = tk.Radiobutton(self, text = "Half-Elf", 
-                                           bg = FRMBACKGROUND, value = 6)
+                                           bg = FRMBACKGROUND, value = 6,
+                                           variable = self.race_chosen)
         self.rad_he.grid(row = 7, column = 0)
         
         self.rad_orc = tk.Radiobutton(self, text = "Orc", 
-                                           bg = FRMBACKGROUND, value = 7)
+                                           bg = FRMBACKGROUND, value = 7,
+                                           variable = self.race_chosen)
         self.rad_orc.grid(row = 8, column = 0)
         
         self.rad_tief = tk.Radiobutton(self, text = "Tiefling", 
-                                           bg = FRMBACKGROUND, value = 8)
+                                           bg = FRMBACKGROUND, value = 8,
+                                           variable = self.race_chosen)
         self.rad_tief.grid(row = 9, column = 0)
         
         self.btn_ok = tk.Button(self, text = "OK",
                                             font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
                                             activebackground = BTNBACKGROUNDACTIVE,
-                                            command = "")
+                                            command = self.raise_races)
         self.btn_ok.grid(row = 10, column = 0)
         
+    def raise_races(self):
+        if self.race_chosen.get() == 0:
+            RaceScreens.current = 1
+            RaceScreens.switch_frame()             
+            
+
+            
+class Dwarf(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_dwarf = tk.Label(self, text = "Dwarf:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_dwarf.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_dwarf = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_dwarf.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = "")
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = "")
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+         
+ 
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -305,9 +349,10 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start()]
+    racescreens = [Start(), Dwarf()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
+    racescreens[1].grid(row = 0, column = 0, sticky = "news")
 
     
     mainscreens[0].tkraise()
