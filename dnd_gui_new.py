@@ -6,63 +6,6 @@ import tkinter as tk
 import dieroller as dr
 from tkinter.scrolledtext import ScrolledText
 
-#Global Variables
-#Armor class and hit points
-AC = 0
-HP = 0
-HIT_DIE = ''
-#Attributes
-STR = 0
-DEX = 0
-CON = 0
-INT = 0
-WIS = 0
-CHA = 0
-#Proficiency bonus
-PROF_BONUS = 0
-#Saving Throw bonuses
-SAVE_STR = 0
-SAVE_DEX = 0
-SAVE_CON = 0
-SAVE_INT = 0
-SAVE_WIS = 0
-SAVE_CHA = 0
-#Skill bonuses
-ACROBATICS = 0
-ANIMAL_HANDLING = 0
-ARCANA = 0
-ATHLETICS = 0
-DECEPTION = 0
-HISTORY = 0
-INSIGHT = 0
-INTIMIDATION = 0
-INVESTIGATION = 0
-MEDICINE = 0
-NATURE = 0
-PERCEPTION = 0
-PERFORMANCE = 0
-PERSUASION = 0
-RELIGION = 0
-SLEIGHT_OF_HAND = 0
-STEALTH = 0
-SURVIVAL = 0
-#Equipment
-WEAPON1 = ''
-WEAPON2 = ''
-ARMOR = ''
-SPELL_SLOTS = ''
-SPELLS = ''
-#Misc
-BACKGROUND = ''
-ALIGNMENT = ''
-SPEED = 0
-LANGUAGES_KNOWN = ''
-SUBCLASS = ''
-PROFICIENCY = ''
-ADVANTAGES = ''
-RESISTANCE = ''
-OTHER = ''
-
 #Styles Constants
 DEFAULT = ('Arial', 25)
 FRMBACKGROUND = "mint cream"
@@ -76,7 +19,6 @@ available_races = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn",
 available_classes = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", 
                      "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", 
                      "Warlock", "Wizard"]
-race_traits = []
 
 race_index = 0
 class_index = 0
@@ -251,6 +193,16 @@ class Start(RaceScreens):
         RaceScreens.__init__(self)
         
         self.race_chosen = tk.IntVar()
+        self.strength = 0
+        self.dex = 0
+        self.con = 0
+        self.intelligence = 0
+        self.wis = 0
+        self.cha = 0
+        self.languages_known = ""
+        self.proficiency = ""
+        self.advantages = ""
+        self.speed = 0
         
         self.grid_columnconfigure(0, weight=1)
         self.lbl_main = tk.Label(self, text = "Pick a Race:", 
@@ -309,23 +261,14 @@ class Start(RaceScreens):
         self.btn_ok.grid(row = 10, column = 0)
         
     def raise_races(self):
-        global CON 
-        global SPEED
-        global ADVANTAGES
-        global PROFICIENCY
-        global LANGUAGES_KNOWN
-        global DEX
-        global STR
-        global CHA
-        global INT
         if self.race_chosen.get() == 0:
-            SPEED += 25
-            CON += 2
-            ADVANTAGES += 'poison, '
-            PROFICIENCY += 'battleaxe, handaxe, throwing hammer, warhammer, '
-            PROFICIENCY += "smith's tools, brewer's supplies, OR mason's tools, "
-            PROFICIENCY += "History of stonework checks, "
-            LANGUAGES_KNOWN = 'Dwarven, Common, '
+            self.speed += 25
+            self.con += 2
+            self.advantages += 'poison, '
+            self.proficiency+= 'battleaxe, handaxe, throwing hammer, warhammer, '
+            self.proficiency += "smith's tools, brewer's supplies, OR mason's tools, "
+            self.proficiency += "History of stonework checks, "
+            self.languages_known = 'Dwarven, Common, '
             
             RaceScreens.current = 1
             RaceScreens.switch_frame()
@@ -335,30 +278,30 @@ class Start(RaceScreens):
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "\n")            
             racescreens[1].scr_dwarf.insert("end", "Speed: ")
-            racescreens[1].scr_dwarf.insert("end", SPEED)
+            racescreens[1].scr_dwarf.insert("end", self.speed)
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "Constitution Score: ")
-            racescreens[1].scr_dwarf.insert("end", CON)
+            racescreens[1].scr_dwarf.insert("end", self.con)
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "Advantages: ")
-            racescreens[1].scr_dwarf.insert("end", ADVANTAGES)
+            racescreens[1].scr_dwarf.insert("end", self.advantages)
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "Proficiency: ")
-            racescreens[1].scr_dwarf.insert("end", PROFICIENCY)
+            racescreens[1].scr_dwarf.insert("end", self.proficiency)
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "\n")
             racescreens[1].scr_dwarf.insert("end", "Languages Known: ")
-            racescreens[1].scr_dwarf.insert("end", LANGUAGES_KNOWN)
+            racescreens[1].scr_dwarf.insert("end", self.languages_known)
             
         elif self.race_chosen.get() == 1:
-            DEX += 2
-            SPEED += 30
-            PROFICIENCY += 'The perception skill'
-            ADVANTAGES += 'Charmed, '
-            LANGUAGES_KNOWN += 'Elvish, Common, '
+            self.dex += 2
+            self.speed += 30
+            self.proficiency += 'The perception skill'
+            self.advantages += 'Charmed, '
+            self.languages_known += 'Elvish, Common, '
             
             RaceScreens.current = 2
             RaceScreens.switch_frame()
@@ -368,29 +311,29 @@ class Start(RaceScreens):
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "\n")            
             racescreens[2].scr_elf.insert("end", "Dexterity Score: ")
-            racescreens[2].scr_elf.insert("end", DEX)
+            racescreens[2].scr_elf.insert("end", self.dex)
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "Speed: ")
-            racescreens[2].scr_elf.insert("end", SPEED)
+            racescreens[2].scr_elf.insert("end", self.speed)
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "Advantages: ")
-            racescreens[2].scr_elf.insert("end", ADVANTAGES)
+            racescreens[2].scr_elf.insert("end", self.advantages)
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "Proficiency: ")
-            racescreens[2].scr_elf.insert("end", PROFICIENCY)
+            racescreens[2].scr_elf.insert("end", self.proficiency)
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "\n")
             racescreens[2].scr_elf.insert("end", "Languages Known: ")
-            racescreens[2].scr_elf.insert("end", LANGUAGES_KNOWN)
+            racescreens[2].scr_elf.insert("end", self.languages_known)
             
         elif self.race_chosen.get() == 2:
-            DEX += 1
-            SPEED += 25
-            ADVANTAGES += 'Fear, '
-            LANGUAGES_KNOWN += 'Halfling, Common, ' 
+            self.dex += 1
+            self.speed += 25
+            self.advantages += 'Fear, '
+            self.languages_known += 'Halfling, Common, ' 
             
             RaceScreens.current = 3
             RaceScreens.switch_frame()
@@ -400,30 +343,61 @@ class Start(RaceScreens):
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "\n")            
             racescreens[3].scr_halfling.insert("end", "Dexterity Score: ")
-            racescreens[3].scr_halfling.insert("end", DEX)
+            racescreens[3].scr_halfling.insert("end", self.dex)
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "Speed: ")
-            racescreens[3].scr_halfling.insert("end", SPEED)
+            racescreens[3].scr_halfling.insert("end", self.speed)
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "Advantages: ")
-            racescreens[3].scr_halfling.insert("end", ADVANTAGES)
+            racescreens[3].scr_halfling.insert("end", self.advantages)
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "Languages Known: ")
-            racescreens[3].scr_halfling.insert("end", LANGUAGES_KNOWN)
+            racescreens[3].scr_halfling.insert("end", self.languages_known)
         
         elif self.race_chosen.get() == 3:
             RaceScreens.current = 4
             RaceScreens.switch_frame()
             
+            self.languages_known += 'Common, One of your choice, '
+            self.speed += 30
             
-
-
-            
-            
-
+            racescreens[6].scr_halfling.delete(0.0, "end")
+            racescreens[6].scr_halfling.insert("end", "Your Racial Traits:")           
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")            
+            racescreens[6].scr_halfling.insert("end", "Strength Score: ")
+            racescreens[6].scr_halfling.insert("end", racescreens[4].strength)
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Dexterity Score: ")
+            racescreens[6].scr_halfling.insert("end", racescreens[4].dex)
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Constitution Score: ")
+            racescreens[6].scr_halfling.insert("end", racescreens[4].con)
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Intelligence Score: ")
+            racescreens[6].scr_halfling.insert("end", racescreens[4].intelligence) 
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Wisdom Score: ")
+            racescreens[6].scr_halfling.insert("end", racescreens[4].wis) 
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Charisma Score: ")
+            racescreens[6].scr_halfling.insert("end", racescreens[4].cha) 
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Speed: ")
+            racescreens[6].scr_halfling.insert("end", self.speed) 
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "\n")
+            racescreens[6].scr_halfling.insert("end", "Languages Known: ")
+            racescreens[6].scr_halfling.insert("end", self.languages_known)
             
 class Dwarf(RaceScreens):
     def __init__(self):
@@ -576,6 +550,12 @@ class HumanPick(RaceScreens):
     def __init__(self):
         RaceScreens.__init__(self)
         self.grid_columnconfigure(0, weight=1)
+        self.strength = 0
+        self.dex = 0
+        self.con = 0
+        self.intelligence = 0
+        self.wis = 0
+        self.cha = 0
 
         self.sub_chosen = tk.IntVar()
         
@@ -603,6 +583,14 @@ class HumanPick(RaceScreens):
         self.btn_ok.grid(row = 3, column = 0, sticky = "news")
         
     def cancel(self):
+        self.strength = 0
+        self.dex = 0
+        self.con = 0
+        self.intelligence = 0
+        self.wis = 0
+        self.cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
         RaceScreens.current = 0
         RaceScreens.switch_frame()
         
@@ -612,8 +600,15 @@ class HumanPick(RaceScreens):
             RaceScreens.switch_frame()
         
         elif self.sub_chosen.get() == 1:
+            self.strength += 1
+            self.dex += 1
+            self.con += 1
+            self.intelligence += 1
+            self.wis += 1
+            self.cha += 1
+        
             RaceScreens.current = 6
-            RaceScreens.switch_frame()            
+            RaceScreens.switch_frame()
     
 class ChooseTraits(RaceScreens):
     def __init__(self):
@@ -655,9 +650,7 @@ class ChooseTraits(RaceScreens):
         self.btn_ok.grid(row = 7, column = 0)  
         
     def disable_str(self):
-        global STR
-        STR += 1
-        print(STR)
+        racescreens[4].strength += 1
         self.btn_str.configure(state = "disabled")
         self.chosen += 1
         if self.chosen >= 2:
@@ -666,13 +659,12 @@ class ChooseTraits(RaceScreens):
             self.btn_int.configure(state = "disabled")
             self.btn_wis.configure(state = "disabled")
             self.btn_cha.configure(state = "disabled")
+
             
             
     
     def disable_dex(self):
-        global DEX
-        DEX += 1
-        print(DEX)
+        racescreens[4].dex += 1
         self.btn_dex.configure(state = "disabled")
         self.chosen += 1 
         if self.chosen >= 2:
@@ -681,12 +673,11 @@ class ChooseTraits(RaceScreens):
             self.btn_int.configure(state = "disabled")
             self.btn_wis.configure(state = "disabled")
             self.btn_cha.configure(state = "disabled")
+
                
     
     def disable_con(self):
-        global CON
-        CON += 1
-        print(CON)
+        racescreens[4].con += 1
         self.btn_con.configure(state = "disabled")
         self.chosen += 1 
         if self.chosen >= 2:
@@ -694,12 +685,10 @@ class ChooseTraits(RaceScreens):
             self.btn_str.configure(state = "disabled")
             self.btn_int.configure(state = "disabled")
             self.btn_wis.configure(state = "disabled")
-            self.btn_cha.configure(state = "disabled")                
+            self.btn_cha.configure(state = "disabled")
     
     def disable_int(self):
-        global INT
-        INT += 1
-        print(INT)
+        racescreens[4].intelligence += 1
         self.btn_int.configure(state = "disabled")
         self.chosen += 1 
         if self.chosen >= 2:
@@ -707,12 +696,10 @@ class ChooseTraits(RaceScreens):
             self.btn_str.configure(state = "disabled")
             self.btn_con.configure(state = "disabled")
             self.btn_wis.configure(state = "disabled")
-            self.btn_cha.configure(state = "disabled") 
+            self.btn_cha.configure(state = "disabled")
         
     def disable_wis(self):
-        global WIS
-        WIS += 1
-        print(WIS)
+        racescreens[4].wis += 1
         self.btn_wis.configure(state = "disabled")
         self.chosen += 1 
         if self.chosen >= 2:
@@ -720,12 +707,10 @@ class ChooseTraits(RaceScreens):
             self.btn_str.configure(state = "disabled")
             self.btn_int.configure(state = "disabled")
             self.btn_con.configure(state = "disabled")
-            self.btn_cha.configure(state = "disabled") 
+            self.btn_cha.configure(state = "disabled")
         
     def disable_cha(self):
-        global CHA
-        CHA += 1
-        print(CON)
+        racescreens[4].cha += 1
         self.btn_cha.configure(state = "disabled")
         self.chosen += 1 
         if self.chosen >= 2:
@@ -735,11 +720,14 @@ class ChooseTraits(RaceScreens):
             self.btn_wis.configure(state = "disabled")
             self.btn_con.configure(state = "disabled") 
         
-    def cancel(self):
-        RaceScreens.current = 0
-        RaceScreens.switch_frame()
-        
     def confirmed(self):
+        self.chosen = 0
+        self.btn_str.configure(state = "normal")
+        self.btn_dex.configure(state = "normal")
+        self.btn_con.configure(state = "normal")
+        self.btn_int.configure(state = "normal")
+        self.btn_wis.configure(state = "normal")
+        self.btn_cha.configure(state = "normal")        
         RaceScreens.current = 6
         RaceScreens.switch_frame()        
     
@@ -768,24 +756,14 @@ class Human(RaceScreens):
         self.btn_ok.grid(row = 2, column = 0, sticky = "news") 
         
     def cancel(self):
-        global CON 
-        global SPEED
-        global ADVANTAGES
-        global PROFICIENCY
-        global LANGUAGES_KNOWN
-        global DEX
-        global STR
-        global CHA
-        global INT
-        CON = 0
-        SPEED = 0
-        ADVANTAGES = ""
-        PROFICIENCY = ""
-        LANGUAGES_KNOWN = ""
-        DEX = 0
-        STR = 0
-        CHA = 0
-        INT = 0
+        racescreens[4].strength = 0
+        racescreens[4].dex = 0
+        racescreens[4].con = 0
+        racescreens[4].intelligence = 0
+        racescreens[4].wis = 0
+        racescreens[4].cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""        
         RaceScreens.current = 0
         RaceScreens.switch_frame()
         
