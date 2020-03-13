@@ -412,7 +412,17 @@ class Start(RaceScreens):
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "Languages Known: ")
-            racescreens[3].scr_halfling.insert("end", LANGUAGES_KNOWN)        
+            racescreens[3].scr_halfling.insert("end", LANGUAGES_KNOWN)
+        
+        elif self.race_chosen.get() == 3:
+            RaceScreens.current = 4
+            RaceScreens.switch_frame()
+            
+            if racescreens[4].sub_chosen == 0:
+                pass
+            
+            elif racescreens[4].sub_chosen == 1:
+                pass
 
 
             
@@ -564,7 +574,154 @@ class Halfling(RaceScreens):
         RaceScreens.switch_frame()
         
     def raise_subtype(self):
-        pass   
+        pass
+
+class HumanPick(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+
+        self.sub_chosen = tk.IntVar()
+        
+        self.lbl_continue = tk.Label(self, text = "Please Pick:", bg = FRMBACKGROUND)
+        self.lbl_continue.grid(row = 0, column = 0, columnspan = 2)
+        
+        self.rad_variant = tk.Radiobutton(self, text = "Variant Human", value = 0, 
+                                           variable = self.sub_chosen)
+        self.rad_variant.grid(row = 1, column = 0, sticky = "news")
+        
+        self.rad_regular = tk.Radiobutton(self, text = "Regular Human", value = 1, 
+                                           variable = self.sub_chosen)
+        self.rad_regular.grid(row = 2, column = 0, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 3, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.confirmed)
+        self.btn_ok.grid(row = 3, column = 0, sticky = "news")
+        
+    def cancel(self):
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+        
+    def confirmed(self):
+        if self.sub_chosen == 0:
+            RaceScreens.current = 5
+            RaceScreens.switch_frame()
+        
+        elif self.sub_chosen == 1:
+            RaceScreens.current = 6
+            RaceScreens.switch_frame()            
+    
+class ChooseTraits(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.trait_chosen = tk.IntVar()
+        
+        self.lbl_halfling = tk.Label(self, text = "Please pick two traits to increase by one:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_halfling.grid(row = 0, column = 0, columnspan = 3)
+        
+        self.rad_str = tk.Radiobutton(self, text = "Strength", value = 0, 
+                                           variable = self.trait_chosen)
+        self.rad_str.grid(row = 1, column = 0)
+        
+        self.rad_dex = tk.Radiobutton(self, text = "Dexterity", value = 1, 
+                                           variable = self.trait_chosen)
+        self.rad_dex.grid(row = 2, column = 0) 
+        
+        self.rad_con = tk.Radiobutton(self, text = "Constitution", value = 2, 
+                                           variable = self.trait_chosen)
+        self.rad_con.grid(row = 3, column = 0) 
+        
+        self.rad_int = tk.Radiobutton(self, text = "Intelligence", value = 3, 
+                                           variable = self.trait_chosen)
+        self.rad_int.grid(row = 4, column = 0) 
+        
+        self.rad_wis = tk.Radiobutton(self, text = "Wisdom", value = 4, 
+                                           variable = self.trait_chosen)
+        self.rad_wis.grid(row = 5, column = 0) 
+        
+        self.rad_cha = tk.Radiobutton(self, text = "Charisma", value = 5, 
+                                           variable = self.trait_chosen)
+        self.rad_cha.grid(row = 6, column = 0) 
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 7, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.confirmed)
+        self.btn_ok.grid(row = 8, column = 0, sticky = "news")
+        
+    def cancel(self):
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+        
+    def confirmed(self):
+        RaceScreens.current = 5
+        RaceScreens.switch_frame()        
+    
+class Human(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_halfling = tk.Label(self, text = "Human:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_halfling.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_halfling = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_halfling.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news") 
+        
+    def cancel(self):
+        global CON 
+        global SPEED
+        global ADVANTAGES
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global DEX
+        global STR
+        global CHA
+        global INT
+        CON = 0
+        SPEED = 0
+        ADVANTAGES = ""
+        PROFICIENCY = ""
+        LANGUAGES_KNOWN = ""
+        DEX = 0
+        STR = 0
+        CHA = 0
+        INT = 0
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+        
+    def raise_subtype(self):
+        pass    
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -576,12 +733,15 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start(), Dwarf(), Elf(), Halfling()]
+    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
     racescreens[1].grid(row = 0, column = 0, sticky = "news")
     racescreens[2].grid(row = 0, column = 0, sticky = "news")
     racescreens[3].grid(row = 0, column = 0, sticky = "news")
+    racescreens[4].grid(row = 0, column = 0, sticky = "news")
+    racescreens[5].grid(row = 0, column = 0, sticky = "news")
+    racescreens[6].grid(row = 0, column = 0, sticky = "news")
 
     
     mainscreens[0].tkraise()
