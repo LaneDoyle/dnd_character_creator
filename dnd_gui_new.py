@@ -76,6 +76,8 @@ available_races = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn",
 available_classes = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", 
                      "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", 
                      "Warlock", "Wizard"]
+race_traits = []
+
 race_index = 0
 class_index = 0
 
@@ -307,9 +309,113 @@ class Start(RaceScreens):
         self.btn_ok.grid(row = 10, column = 0)
         
     def raise_races(self):
+        global CON 
+        global SPEED
+        global ADVANTAGES
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global DEX
+        global STR
+        global CHA
+        global INT
         if self.race_chosen.get() == 0:
+            SPEED += 25
+            CON += 2
+            ADVANTAGES += 'poison, '
+            PROFICIENCY += 'battleaxe, handaxe, throwing hammer, warhammer, '
+            PROFICIENCY += "smith's tools, brewer's supplies, OR mason's tools, "
+            PROFICIENCY += "History of stonework checks, "
+            LANGUAGES_KNOWN = 'Dwarven, Common, '
+            
             RaceScreens.current = 1
-            RaceScreens.switch_frame()             
+            RaceScreens.switch_frame()
+           
+            racescreens[1].scr_dwarf.delete(0.0, "end")
+            racescreens[1].scr_dwarf.insert("end", "Your Racial Traits:")           
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "\n")            
+            racescreens[1].scr_dwarf.insert("end", "Speed: ")
+            racescreens[1].scr_dwarf.insert("end", SPEED)
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "Constitution Score: ")
+            racescreens[1].scr_dwarf.insert("end", CON)
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "Advantages: ")
+            racescreens[1].scr_dwarf.insert("end", ADVANTAGES)
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "Proficiency: ")
+            racescreens[1].scr_dwarf.insert("end", PROFICIENCY)
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "\n")
+            racescreens[1].scr_dwarf.insert("end", "Languages Known: ")
+            racescreens[1].scr_dwarf.insert("end", LANGUAGES_KNOWN)
+            
+        elif self.race_chosen.get() == 1:
+            DEX += 2
+            SPEED += 30
+            PROFICIENCY += 'The perception skill'
+            ADVANTAGES += 'Charmed, '
+            LANGUAGES_KNOWN += 'Elvish, Common, '
+            
+            RaceScreens.current = 2
+            RaceScreens.switch_frame()
+            
+            racescreens[2].scr_elf.delete(0.0, "end")
+            racescreens[2].scr_elf.insert("end", "Your Racial Traits:")           
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "\n")            
+            racescreens[2].scr_elf.insert("end", "Dexterity Score: ")
+            racescreens[2].scr_elf.insert("end", DEX)
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "Speed: ")
+            racescreens[2].scr_elf.insert("end", SPEED)
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "Advantages: ")
+            racescreens[2].scr_elf.insert("end", ADVANTAGES)
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "Proficiency: ")
+            racescreens[2].scr_elf.insert("end", PROFICIENCY)
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "\n")
+            racescreens[2].scr_elf.insert("end", "Languages Known: ")
+            racescreens[2].scr_elf.insert("end", LANGUAGES_KNOWN)
+            
+        elif self.race_chosen.get() == 2:
+            DEX += 1
+            SPEED += 25
+            ADVANTAGES += 'Fear, '
+            LANGUAGES_KNOWN += 'Halfling, Common, ' 
+            
+            RaceScreens.current = 3
+            RaceScreens.switch_frame()
+            
+            racescreens[3].scr_halfling.delete(0.0, "end")
+            racescreens[3].scr_halfling.insert("end", "Your Racial Traits:")           
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "\n")            
+            racescreens[3].scr_halfling.insert("end", "Dexterity Score: ")
+            racescreens[3].scr_halfling.insert("end", DEX)
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "Speed: ")
+            racescreens[3].scr_halfling.insert("end", SPEED)
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "Advantages: ")
+            racescreens[3].scr_halfling.insert("end", ADVANTAGES)
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "\n")
+            racescreens[3].scr_halfling.insert("end", "Languages Known: ")
+            racescreens[3].scr_halfling.insert("end", LANGUAGES_KNOWN)        
+
+
+            
             
 
             
@@ -328,16 +434,137 @@ class Dwarf(RaceScreens):
         self.btn_cancel = tk.Button(self, text = "Cancel",
                                             font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
                                             activebackground = BTNBACKGROUNDACTIVE,
-                                            command = "")
+                                            command = self.cancel)
         self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
         
         self.btn_ok = tk.Button(self, text = "Ok",
                                             font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
                                             activebackground = BTNBACKGROUNDACTIVE,
-                                            command = "")
+                                            command = self.raise_subtype)
         self.btn_ok.grid(row = 2, column = 0, sticky = "news")
-         
- 
+    
+    def cancel(self):
+        global CON 
+        global SPEED
+        global ADVANTAGES
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global DEX
+        global STR
+        global CHA
+        global INT
+        CON = 0
+        SPEED = 0
+        ADVANTAGES = ""
+        PROFICIENCY = ""
+        LANGUAGES_KNOWN = ""
+        DEX = 0
+        STR = 0
+        CHA = 0
+        INT = 0
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+    
+    def raise_subtype(self):
+        pass
+
+class Elf(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_elf = tk.Label(self, text = "Elf:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_elf.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_elf = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_elf.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+    
+    def cancel(self):
+        global CON 
+        global SPEED
+        global ADVANTAGES
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global DEX
+        global STR
+        global CHA
+        global INT
+        CON = 0
+        SPEED = 0
+        ADVANTAGES = ""
+        PROFICIENCY = ""
+        LANGUAGES_KNOWN = ""
+        DEX = 0
+        STR = 0
+        CHA = 0
+        INT = 0
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+        
+    def raise_subtype(self):
+        pass    
+
+class Halfling(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_halfling = tk.Label(self, text = "Halfling:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_halfling.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_halfling = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_halfling.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+    
+    def cancel(self):
+        global CON 
+        global SPEED
+        global ADVANTAGES
+        global PROFICIENCY
+        global LANGUAGES_KNOWN
+        global DEX
+        global STR
+        global CHA
+        global INT
+        CON = 0
+        SPEED = 0
+        ADVANTAGES = ""
+        PROFICIENCY = ""
+        LANGUAGES_KNOWN = ""
+        DEX = 0
+        STR = 0
+        CHA = 0
+        INT = 0
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+        
+    def raise_subtype(self):
+        pass   
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -349,10 +576,12 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start(), Dwarf()]
+    racescreens = [Start(), Dwarf(), Elf(), Halfling()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
     racescreens[1].grid(row = 0, column = 0, sticky = "news")
+    racescreens[2].grid(row = 0, column = 0, sticky = "news")
+    racescreens[3].grid(row = 0, column = 0, sticky = "news")
 
     
     mainscreens[0].tkraise()
