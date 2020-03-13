@@ -611,11 +611,11 @@ class HumanPick(RaceScreens):
         RaceScreens.switch_frame()
         
     def confirmed(self):
-        if self.sub_chosen == 0:
+        if self.sub_chosen.get() == 0:
             RaceScreens.current = 5
             RaceScreens.switch_frame()
         
-        elif self.sub_chosen == 1:
+        elif self.sub_chosen.get() == 1:
             RaceScreens.current = 6
             RaceScreens.switch_frame()            
     
@@ -624,54 +624,127 @@ class ChooseTraits(RaceScreens):
         RaceScreens.__init__(self)
         self.grid_columnconfigure(0, weight=1)
         
-        self.trait_chosen = tk.IntVar()
+        self.chosen = 0
         
-        self.lbl_halfling = tk.Label(self, text = "Please pick two traits to increase by one:", 
+        self.lbl_traits = tk.Label(self, text = "Please pick two traits to increase by one:", 
                                        font = DEFAULT, bg = FRMBACKGROUND)
-        self.lbl_halfling.grid(row = 0, column = 0, columnspan = 3)
+        self.lbl_traits.grid(row = 0, column = 0, columnspan = 3)        
         
-        self.rad_str = tk.Radiobutton(self, text = "Strength", value = 0, 
-                                           variable = self.trait_chosen)
-        self.rad_str.grid(row = 1, column = 0)
+        self.btn_str = tk.Button(self, text = "Strength", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.disable_str)
+        self.btn_str.grid(row = 1, column = 0) 
         
-        self.rad_dex = tk.Radiobutton(self, text = "Dexterity", value = 1, 
-                                           variable = self.trait_chosen)
-        self.rad_dex.grid(row = 2, column = 0) 
+        self.btn_dex = tk.Button(self, text = "Dexterity", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.disable_dex)
+        self.btn_dex.grid(row = 2, column = 0)
         
-        self.rad_con = tk.Radiobutton(self, text = "Constitution", value = 2, 
-                                           variable = self.trait_chosen)
-        self.rad_con.grid(row = 3, column = 0) 
+        self.btn_con = tk.Button(self, text = "Constitution", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.disable_con)
+        self.btn_con.grid(row = 3, column = 0)
         
-        self.rad_int = tk.Radiobutton(self, text = "Intelligence", value = 3, 
-                                           variable = self.trait_chosen)
-        self.rad_int.grid(row = 4, column = 0) 
+        self.btn_int = tk.Button(self, text = "Intelligence", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.disable_int)
+        self.btn_int.grid(row = 4, column = 0) 
         
-        self.rad_wis = tk.Radiobutton(self, text = "Wisdom", value = 4, 
-                                           variable = self.trait_chosen)
-        self.rad_wis.grid(row = 5, column = 0) 
+        self.btn_wis = tk.Button(self, text = "Wisdom", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.disable_wis)
+        self.btn_wis.grid(row = 5, column = 0)
         
-        self.rad_cha = tk.Radiobutton(self, text = "Charisma", value = 5, 
-                                           variable = self.trait_chosen)
-        self.rad_cha.grid(row = 6, column = 0) 
+        self.btn_cha = tk.Button(self, text = "Charisma", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.disable_cha)
+        self.btn_cha.grid(row = 6, column = 0)        
         
-        self.btn_cancel = tk.Button(self, text = "Cancel",
-                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
-                                            activebackground = BTNBACKGROUNDACTIVE,
-                                            command = self.cancel)
-        self.btn_cancel.grid(row = 7, column = 1, sticky = "news")
+        self.btn_ok = tk.Button(self, text = "Ok", font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE, command = self.confirmed)
+        self.btn_ok.grid(row = 7, column = 0)  
         
-        self.btn_ok = tk.Button(self, text = "Ok",
-                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
-                                            activebackground = BTNBACKGROUNDACTIVE,
-                                            command = self.confirmed)
-        self.btn_ok.grid(row = 8, column = 0, sticky = "news")
+    def disable_str(self):
+        global STR
+        STR += 1
+        print(STR)
+        self.btn_str.configure(state = "disabled")
+        self.chosen += 1
+        if self.chosen >= 2:
+            self.btn_dex.configure(state = "disabled")
+            self.btn_con.configure(state = "disabled")
+            self.btn_int.configure(state = "disabled")
+            self.btn_wis.configure(state = "disabled")
+            self.btn_cha.configure(state = "disabled")
+            
+            
+    
+    def disable_dex(self):
+        global DEX
+        DEX += 1
+        print(DEX)
+        self.btn_dex.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_str.configure(state = "disabled")
+            self.btn_con.configure(state = "disabled")
+            self.btn_int.configure(state = "disabled")
+            self.btn_wis.configure(state = "disabled")
+            self.btn_cha.configure(state = "disabled")
+               
+    
+    def disable_con(self):
+        global CON
+        CON += 1
+        print(CON)
+        self.btn_con.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex.configure(state = "disabled")
+            self.btn_str.configure(state = "disabled")
+            self.btn_int.configure(state = "disabled")
+            self.btn_wis.configure(state = "disabled")
+            self.btn_cha.configure(state = "disabled")                
+    
+    def disable_int(self):
+        global INT
+        INT += 1
+        print(INT)
+        self.btn_int.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex.configure(state = "disabled")
+            self.btn_str.configure(state = "disabled")
+            self.btn_con.configure(state = "disabled")
+            self.btn_wis.configure(state = "disabled")
+            self.btn_cha.configure(state = "disabled") 
+        
+    def disable_wis(self):
+        global WIS
+        WIS += 1
+        print(WIS)
+        self.btn_wis.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex.configure(state = "disabled")
+            self.btn_str.configure(state = "disabled")
+            self.btn_int.configure(state = "disabled")
+            self.btn_con.configure(state = "disabled")
+            self.btn_cha.configure(state = "disabled") 
+        
+    def disable_cha(self):
+        global CHA
+        CHA += 1
+        print(CON)
+        self.btn_cha.configure(state = "disabled")
+        self.chosen += 1 
+        if self.chosen >= 2:
+            self.btn_dex.configure(state = "disabled")
+            self.btn_str.configure(state = "disabled")
+            self.btn_int.configure(state = "disabled")
+            self.btn_wis.configure(state = "disabled")
+            self.btn_con.configure(state = "disabled") 
         
     def cancel(self):
         RaceScreens.current = 0
         RaceScreens.switch_frame()
         
     def confirmed(self):
-        RaceScreens.current = 5
+        RaceScreens.current = 6
         RaceScreens.switch_frame()        
     
 class Human(RaceScreens):
