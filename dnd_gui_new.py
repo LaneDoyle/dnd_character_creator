@@ -418,11 +418,7 @@ class Start(RaceScreens):
             RaceScreens.current = 4
             RaceScreens.switch_frame()
             
-            if racescreens[4].sub_chosen == 0:
-                pass
             
-            elif racescreens[4].sub_chosen == 1:
-                pass
 
 
             
