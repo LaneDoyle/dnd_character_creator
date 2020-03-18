@@ -8,9 +8,9 @@ from tkinter.scrolledtext import ScrolledText
 
 #Styles Constants
 DEFAULT = ('Arial', 25)
-FRMBACKGROUND = "mint cream"
-BTNBACKGROUNDSTATIC = "ivory"
-BTNBACKGROUNDACTIVE = "MistyRose2"
+FRMBACKGROUND = "PaleTurquoise1"
+BTNBACKGROUNDSTATIC = "LightCyan2"
+BTNBACKGROUNDACTIVE = "LightCyan3"
 
 #Lists
 available_races = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", 
@@ -363,6 +363,10 @@ class Start(RaceScreens):
             
             self.languages_known += 'Common, One of your choice, '
             self.speed += 30
+            
+        elif self.race_chosen.get() == 4:
+            RaceScreens.current = 4
+            RaceScreens.switch_frame()        
             
             
 class Dwarf(RaceScreens):
@@ -728,40 +732,40 @@ class ChooseTraits(RaceScreens):
         self.btn_int.configure(state = "normal")
         self.btn_wis.configure(state = "normal")
         self.btn_cha.configure(state = "normal")
-        racescreens[6].scr_halfling.delete(0.0, "end")
-        racescreens[6].scr_halfling.insert("end", "Your Racial Traits:")           
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")            
-        racescreens[6].scr_halfling.insert("end", "Strength Score: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[4].strength)
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Dexterity Score: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[4].dex)
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Constitution Score: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[4].con)
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Intelligence Score: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[4].intelligence) 
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Wisdom Score: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[4].wis) 
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Charisma Score: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[4].cha) 
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Speed: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[0].speed) 
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "\n")
-        racescreens[6].scr_halfling.insert("end", "Languages Known: ")
-        racescreens[6].scr_halfling.insert("end", racescreens[0].languages_known)        
+        racescreens[6].scr_human.delete(0.0, "end")
+        racescreens[6].scr_human.insert("end", "Your Racial Traits:")           
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")            
+        racescreens[6].scr_human.insert("end", "Strength Score: ")
+        racescreens[6].scr_human.insert("end", racescreens[4].strength)
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Dexterity Score: ")
+        racescreens[6].scr_human.insert("end", racescreens[4].dex)
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Constitution Score: ")
+        racescreens[6].scr_human.insert("end", racescreens[4].con)
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Intelligence Score: ")
+        racescreens[6].scr_human.insert("end", racescreens[4].intelligence) 
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Wisdom Score: ")
+        racescreens[6].scr_human.insert("end", racescreens[4].wis) 
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Charisma Score: ")
+        racescreens[6].scr_human.insert("end", racescreens[4].cha) 
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Speed: ")
+        racescreens[6].scr_human.insert("end", racescreens[0].speed) 
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "\n")
+        racescreens[6].scr_human.insert("end", "Languages Known: ")
+        racescreens[6].scr_human.insert("end", racescreens[0].languages_known)        
         RaceScreens.current = 6
         RaceScreens.switch_frame()        
     
@@ -770,12 +774,12 @@ class Human(RaceScreens):
         RaceScreens.__init__(self)
         self.grid_columnconfigure(0, weight=1)
         
-        self.lbl_halfling = tk.Label(self, text = "Human:", 
+        self.lbl_human = tk.Label(self, text = "Human:", 
                                        font = DEFAULT, bg = FRMBACKGROUND)
-        self.lbl_halfling.grid(row = 0, column = 0, columnspan = 3)  
+        self.lbl_human.grid(row = 0, column = 0, columnspan = 3)  
         
-        self.scr_halfling = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
-        self.scr_halfling.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        self.scr_human = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_human.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
         
         self.btn_cancel = tk.Button(self, text = "Cancel",
                                             font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
@@ -802,7 +806,96 @@ class Human(RaceScreens):
         RaceScreens.switch_frame()
         
     def raise_subtype(self):
-        pass    
+        pass 
+    
+class DragonPick(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+
+        self.breath_weapon = ""
+        self.resistance = ""
+    
+        self.breath_type = tk.IntVar()
+    
+        self.lbl_continue = tk.Label(self, text = "Please pick what type of damage you will do with your breath weapon:", bg = FRMBACKGROUND)
+        self.lbl_continue.grid(row = 0, column = 0, columnspan = 2)
+    
+        self.rad_black = tk.Radiobutton(self, text = "Black (Acid)", value = 0, 
+                                              variable = self.breath_type)
+        self.rad_black.grid(row = 1, column = 0, sticky = "news")
+    
+        self.rad_blue = tk.Radiobutton(self, text = "Blue (Lightning)", value = 1, 
+                                              variable = self.breath_type)
+        self.rad_blue.grid(row = 2, column = 0, sticky = "news")
+        
+        self.rad_brass = tk.Radiobutton(self, text = "Brass (Fire)", value = 2, 
+                                              variable = self.breath_type)
+        self.rad_brass.grid(row = 3, column = 0, sticky = "news")
+        
+        self.rad_bronze = tk.Radiobutton(self, text = "Bronze (Lightning)", value = 3, 
+                                              variable = self.breath_type)
+        self.rad_bronze.grid(row = 4, column = 0, sticky = "news")
+        
+        self.rad_copper = tk.Radiobutton(self, text = "Copper (Acid)", value = 4, 
+                                              variable = self.breath_type)
+        self.rad_copper.grid(row = 5, column = 0, sticky = "news")
+        
+        self.rad_gold = tk.Radiobutton(self, text = "Gold (Fire)", value = 5, 
+                                              variable = self.breath_type)
+        self.rad_gold.grid(row = 6, column = 0, sticky = "news")
+        
+        self.rad_green = tk.Radiobutton(self, text = "Green (Poison)", value = 6, 
+                                              variable = self.breath_type)
+        self.rad_green.grid(row = 7, column = 0, sticky = "news")
+        
+        self.rad_red = tk.Radiobutton(self, text = "Red (Fire)", value = 7, 
+                                              variable = self.breath_type)
+        self.rad_red.grid(row = 8, column = 0, sticky = "news")
+        
+        self.rad_silver = tk.Radiobutton(self, text = "Silver (Cold)", value = 8, 
+                                              variable = self.breath_type)
+        self.rad_silver.grid(row = 9, column = 0, sticky = "news")
+        
+        self.rad_white = tk.Radiobutton(self, text = "White (Cold)", value = 9, 
+                                              variable = self.breath_type)
+        self.rad_white.grid(row = 10, column = 0, sticky = "news")        
+    
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                        font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                                activebackground = BTNBACKGROUNDACTIVE,
+                                                command = self.cancel)
+        self.btn_cancel.grid(row = 11, column = 1, sticky = "news")
+    
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                    font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                                activebackground = BTNBACKGROUNDACTIVE,
+                                                command = self.confirmed)
+        self.btn_ok.grid(row = 12, column = 0, sticky = "news")    
+        
+    def cancel(self):
+        self.strength = 0
+        self.dex = 0
+        self.con = 0
+        self.intelligence = 0
+        self.wis = 0
+        self.cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
+        RaceScreens.current = 0
+        RaceScreens.switch_frame()
+        
+    def confirmed(self):
+        if self.breath_type.get() == 0:
+            self.breath_weapon = "Black (Acid)"
+            self.resistance = "Acid"
+            
+        elif self.breath_type.get() == 1:
+            self.breath_weapon = "Blue (Lightning)"
+            self.resistance = "Lightning"
+            
+        
+  
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -814,7 +907,7 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human()]
+    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
     racescreens[1].grid(row = 0, column = 0, sticky = "news")
@@ -823,6 +916,7 @@ if __name__ == "__main__":
     racescreens[4].grid(row = 0, column = 0, sticky = "news")
     racescreens[5].grid(row = 0, column = 0, sticky = "news")
     racescreens[6].grid(row = 0, column = 0, sticky = "news")
+    racescreens[7].grid(row = 0, column = 0, sticky = "news")
 
     
     mainscreens[0].tkraise()
