@@ -356,6 +356,7 @@ class Start(RaceScreens):
             racescreens[3].scr_halfling.insert("end", "\n")
             racescreens[3].scr_halfling.insert("end", "Languages Known: ")
             racescreens[3].scr_halfling.insert("end", self.languages_known)
+            
         
         elif self.race_chosen.get() == 3:
             RaceScreens.current = 4
@@ -365,7 +366,7 @@ class Start(RaceScreens):
             self.speed += 30
             
         elif self.race_chosen.get() == 4:
-            RaceScreens.current = 4
+            RaceScreens.current = 7
             RaceScreens.switch_frame()        
             
             
@@ -871,15 +872,15 @@ class DragonPick(RaceScreens):
                                     font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
                                                 activebackground = BTNBACKGROUNDACTIVE,
                                                 command = self.confirmed)
-        self.btn_ok.grid(row = 12, column = 0, sticky = "news")    
+        self.btn_ok.grid(row = 11, column = 0, sticky = "news")    
         
     def cancel(self):
-        self.strength = 0
-        self.dex = 0
-        self.con = 0
-        self.intelligence = 0
-        self.wis = 0
-        self.cha = 0
+        racescreens[0].strength = 0
+        racescreens[0].dex = 0
+        racescreens[0].con = 0
+        racescreens[0].intelligence = 0
+        racescreens[0].wis = 0
+        racescreens[0].cha = 0
         racescreens[0].speed = 0
         racescreens[0].languages_known = ""
         RaceScreens.current = 0
@@ -894,8 +895,136 @@ class DragonPick(RaceScreens):
             self.breath_weapon = "Blue (Lightning)"
             self.resistance = "Lightning"
             
+        elif self.breath_type.get() == 2:
+            self.breath_weapon = "Brass (Fire)"
+            self.resistance = "Fire"  
+            
+        elif self.breath_type.get() == 3:
+            self.breath_weapon = "Bronze (Lightning)"
+            self.resistance = "Lightning"  
+            
+        elif self.breath_type.get() == 4:
+            self.breath_weapon = "Copper (Acid)"
+            self.resistance = "Acid"  
+            
+        elif self.breath_type.get() == 5:
+            self.breath_weapon = "Gold (Fire)"
+            self.resistance = "Fire"  
+            
+        elif self.breath_type.get() == 6:
+            self.breath_weapon = "Green (Poison)"
+            self.resistance = "Poison"  
+            
+        elif self.breath_type.get() == 7:
+            self.breath_weapon = "Red (Fire)"
+            self.resistance = "Fire"  
+            
+        elif self.breath_type.get() == 8:
+            self.breath_weapon = "Silver (Cold)"
+            self.resistance = "Cold"            
+            
+        elif self.breath_type.get() == 9:
+            self.breath_weapon = "White (Cold)"
+            self.resistance = "Cold"  
+            
+        racescreens[0].speed += 30
+        racescreens[0].languages_known += "Common, Draconic, "
+        racescreens[0].strength += 2
+        racescreens[0].cha += 1
         
-  
+        racescreens[8].scr_dragon.delete(0.0, "end")
+        racescreens[8].scr_dragon.insert("end", "Your Racial Traits:")           
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "\n")            
+        racescreens[8].scr_dragon.insert("end", "Speed: ")
+        racescreens[8].scr_dragon.insert("end", racescreens[0].speed)
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "Languages Known: ")
+        racescreens[8].scr_dragon.insert("end", racescreens[0].languages_known)
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "Strength: ")
+        racescreens[8].scr_dragon.insert("end", racescreens[0].strength)
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "Charisma: ")
+        racescreens[8].scr_dragon.insert("end", racescreens[0].cha) 
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "Dragon Type: ")
+        racescreens[8].scr_dragon.insert("end", self.breath_weapon)    
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "\n")
+        racescreens[8].scr_dragon.insert("end", "Damage Resistance: ")
+        racescreens[8].scr_dragon.insert("end", self.resistance)        
+        
+        RaceScreens.current = 8
+        RaceScreens.switch_frame()          
+        
+class Dragonborn(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_dragon = tk.Label(self, text = "Dragonborn:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_dragon.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_dragon = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_dragon.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+        
+    def cancel(self):
+        racescreens[0].strength = 0
+        racescreens[0].dex = 0
+        racescreens[0].con = 0
+        racescreens[0].intelligence = 0
+        racescreens[0].wis = 0
+        racescreens[0].cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
+        RaceScreens.current = 0
+        RaceScreens.switch_frame() 
+        
+    def raise_subtype(self):
+        pass     
+        
+        
+        
+def __init__(self):
+    RaceScreens.__init__(self)
+    self.grid_columnconfigure(0, weight=1)
+    
+    self.lbl_human = tk.Label(self, text = "Human:", 
+                                   font = DEFAULT, bg = FRMBACKGROUND)
+    self.lbl_human.grid(row = 0, column = 0, columnspan = 3)  
+    
+    self.scr_human = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+    self.scr_human.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+    
+    self.btn_cancel = tk.Button(self, text = "Cancel",
+                                        font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                        activebackground = BTNBACKGROUNDACTIVE,
+                                        command = self.cancel)
+    self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+    
+    self.btn_ok = tk.Button(self, text = "Ok",
+                                        font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                        activebackground = BTNBACKGROUNDACTIVE,
+                                        command = self.raise_subtype)
+    self.btn_ok.grid(row = 2, column = 0, sticky = "news") 
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -907,7 +1036,7 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick()]
+    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick(), Dragonborn()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
     racescreens[1].grid(row = 0, column = 0, sticky = "news")
@@ -917,6 +1046,7 @@ if __name__ == "__main__":
     racescreens[5].grid(row = 0, column = 0, sticky = "news")
     racescreens[6].grid(row = 0, column = 0, sticky = "news")
     racescreens[7].grid(row = 0, column = 0, sticky = "news")
+    racescreens[8].grid(row = 0, column = 0, sticky = "news")
 
     
     mainscreens[0].tkraise()
