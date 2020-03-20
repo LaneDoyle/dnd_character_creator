@@ -367,7 +367,35 @@ class Start(RaceScreens):
             
         elif self.race_chosen.get() == 4:
             RaceScreens.current = 7
-            RaceScreens.switch_frame()        
+            RaceScreens.switch_frame() 
+            
+        elif self.race_chosen.get() == 5:
+            self.intelligence += 2
+            self.speed += 25
+            self.advantages += "intelligence, wisdom, and charisma saving throws against magic, "
+            self.languages_known += "Common, Gnomish, "
+            
+            RaceScreens.current = 9
+            RaceScreens.switch_frame()
+            
+            racescreens[9].scr_gnome.delete(0.0, "end")
+            racescreens[9].scr_gnome.insert("end", "Your Racial Traits:")           
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "\n")            
+            racescreens[9].scr_gnome.insert("end", "Intelligence Score: ")
+            racescreens[9].scr_gnome.insert("end", self.intelligence)
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "Speed: ")
+            racescreens[9].scr_gnome.insert("end", self.speed)
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "Advantages: ")
+            racescreens[9].scr_gnome.insert("end", self.advantages)
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "\n")
+            racescreens[9].scr_gnome.insert("end", "Languages Known: ")
+            racescreens[9].scr_gnome.insert("end", self.languages_known)        
             
             
 class Dwarf(RaceScreens):
@@ -1000,31 +1028,47 @@ class Dragonborn(RaceScreens):
         
     def raise_subtype(self):
         pass     
+
+class Gnome(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_gnome = tk.Label(self, text = "Gnome:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_gnome.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_gnome = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_gnome.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+        
+    def cancel(self):
+        racescreens[0].strength = 0
+        racescreens[0].dex = 0
+        racescreens[0].con = 0
+        racescreens[0].intelligence = 0
+        racescreens[0].wis = 0
+        racescreens[0].cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
+        RaceScreens.current = 0
+        RaceScreens.switch_frame() 
+        
+    def raise_subtype(self):
+        pass     
         
         
-        
-def __init__(self):
-    RaceScreens.__init__(self)
-    self.grid_columnconfigure(0, weight=1)
-    
-    self.lbl_human = tk.Label(self, text = "Human:", 
-                                   font = DEFAULT, bg = FRMBACKGROUND)
-    self.lbl_human.grid(row = 0, column = 0, columnspan = 3)  
-    
-    self.scr_human = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
-    self.scr_human.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
-    
-    self.btn_cancel = tk.Button(self, text = "Cancel",
-                                        font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
-                                        activebackground = BTNBACKGROUNDACTIVE,
-                                        command = self.cancel)
-    self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
-    
-    self.btn_ok = tk.Button(self, text = "Ok",
-                                        font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
-                                        activebackground = BTNBACKGROUNDACTIVE,
-                                        command = self.raise_subtype)
-    self.btn_ok.grid(row = 2, column = 0, sticky = "news") 
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -1036,7 +1080,7 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick(), Dragonborn()]
+    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick(), Dragonborn(), Gnome()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
     racescreens[1].grid(row = 0, column = 0, sticky = "news")
@@ -1047,6 +1091,7 @@ if __name__ == "__main__":
     racescreens[6].grid(row = 0, column = 0, sticky = "news")
     racescreens[7].grid(row = 0, column = 0, sticky = "news")
     racescreens[8].grid(row = 0, column = 0, sticky = "news")
+    racescreens[9].grid(row = 0, column = 0, sticky = "news")
 
     
     mainscreens[0].tkraise()
