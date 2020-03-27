@@ -202,6 +202,9 @@ class Start(RaceScreens):
         self.languages_known = ""
         self.proficiency = ""
         self.advantages = ""
+        self.misc = ""
+        self.resistance = ""
+        self.bonus_spells = ""
         self.speed = 0
         
         self.grid_columnconfigure(0, weight=1)
@@ -244,7 +247,7 @@ class Start(RaceScreens):
                                            variable = self.race_chosen)
         self.rad_he.grid(row = 7, column = 0)
         
-        self.rad_orc = tk.Radiobutton(self, text = "Orc", 
+        self.rad_orc = tk.Radiobutton(self, text = "Half-Orc", 
                                            bg = FRMBACKGROUND, value = 7,
                                            variable = self.race_chosen)
         self.rad_orc.grid(row = 8, column = 0)
@@ -395,7 +398,103 @@ class Start(RaceScreens):
             racescreens[9].scr_gnome.insert("end", "\n")
             racescreens[9].scr_gnome.insert("end", "\n")
             racescreens[9].scr_gnome.insert("end", "Languages Known: ")
-            racescreens[9].scr_gnome.insert("end", self.languages_known)        
+            racescreens[9].scr_gnome.insert("end", self.languages_known)  
+        
+        elif self.race_chosen.get() == 6:
+            self.cha += 2
+            self.speed += 30
+            self.advantages += "Saving throws against being charmed, "
+            self.proficiency += "Two skills of your choice, "
+            self.languages_known += "Common, Elvish, "
+            
+            RaceScreens.current = 10
+            RaceScreens.switch_frame()
+            
+            racescreens[10].scr_halfelf.delete(0.0, "end")
+            racescreens[10].scr_halfelf.insert("end", "Your Racial Traits:")           
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "\n")            
+            racescreens[10].scr_halfelf.insert("end", "Charisma Score: ")
+            racescreens[10].scr_halfelf.insert("end", self.cha)
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "Speed: ")
+            racescreens[10].scr_halfelf.insert("end", self.speed)
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "Advantages: ")
+            racescreens[10].scr_halfelf.insert("end", self.advantages)
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "Proficiency: ")
+            racescreens[10].scr_halfelf.insert("end", self.proficiency)            
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "\n")
+            racescreens[10].scr_halfelf.insert("end", "Languages Known: ")
+            racescreens[10].scr_halfelf.insert("end", self.languages_known) 
+            
+        elif self.race_chosen.get() == 7:
+            self.con += 1
+            self.speed += 30
+            self.misc += "When you are reduced to 0 hit points(health), you can drop to 1 HP instead, "
+            self.misc += "When you score a critical hit with a melee weapon attack you can roll one of damage dice one more time and add it to the extra damage of the crit, "
+            self.proficiency += "Intimidation, "
+            self.languages_known += "Common, Orcish, "
+            
+            RaceScreens.current = 11
+            RaceScreens.switch_frame()
+            
+            racescreens[11].scr_orc.delete(0.0, "end")
+            racescreens[11].scr_orc.insert("end", "Your Racial Traits:")           
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "\n")            
+            racescreens[11].scr_orc.insert("end", "Constitution Score: ")
+            racescreens[11].scr_orc.insert("end", self.con)
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "Speed: ")
+            racescreens[11].scr_orc.insert("end", self.speed)
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "Other: ")
+            racescreens[11].scr_orc.insert("end", self.misc)         
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "\n")
+            racescreens[11].scr_orc.insert("end", "Languages Known: ")
+            racescreens[11].scr_orc.insert("end", self.languages_known)  
+            
+        elif self.race_chosen.get() == 8:
+            self.cha += 2
+            self.speed += 30
+            self.resistance = "Fire damage, "
+            self.bonus_spells = "Thaumaturgy, "
+            self.languages_known += "Common, Infernal,  "
+            
+            RaceScreens.current = 12
+            RaceScreens.switch_frame()
+            
+            racescreens[12].scr_tief.delete(0.0, "end")
+            racescreens[12].scr_tief.insert("end", "Your Racial Traits:")           
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "\n")            
+            racescreens[12].scr_tief.insert("end", "Charisma Score: ")
+            racescreens[12].scr_tief.insert("end", self.cha)
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "Speed: ")
+            racescreens[12].scr_tief.insert("end", self.speed)
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "Damage Resistances: ")
+            racescreens[12].scr_tief.insert("end", self.resistance) 
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "Bonus Spells: ")
+            racescreens[12].scr_tief.insert("end", self.bonus_spells)               
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "\n")
+            racescreens[12].scr_tief.insert("end", "Languages Known: ")
+            racescreens[12].scr_tief.insert("end", self.languages_known)        
             
             
 class Dwarf(RaceScreens):
@@ -1067,7 +1166,132 @@ class Gnome(RaceScreens):
         
     def raise_subtype(self):
         pass     
+
+class HalfElf(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
         
+        self.lbl_halfelf = tk.Label(self, text = "Half-Elf:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_halfelf.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_halfelf = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_halfelf.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+        
+    def cancel(self):
+        racescreens[0].strength = 0
+        racescreens[0].dex = 0
+        racescreens[0].con = 0
+        racescreens[0].intelligence = 0
+        racescreens[0].wis = 0
+        racescreens[0].cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
+        RaceScreens.current = 0
+        RaceScreens.switch_frame() 
+        
+    def raise_subtype(self):
+        pass     
+
+class HalfOrc(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_orc = tk.Label(self, text = "Half-Orc:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_orc.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_orc = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_orc.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+        
+    def cancel(self):
+        racescreens[0].strength = 0
+        racescreens[0].dex = 0
+        racescreens[0].con = 0
+        racescreens[0].intelligence = 0
+        racescreens[0].wis = 0
+        racescreens[0].cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
+        RaceScreens.current = 0
+        RaceScreens.switch_frame() 
+        
+    def raise_subtype(self):
+        pass     
+
+class Tiefling(RaceScreens):
+    def __init__(self):
+        RaceScreens.__init__(self)
+        self.grid_columnconfigure(0, weight=1)
+        
+        self.lbl_tief = tk.Label(self, text = "Tiefling:", 
+                                       font = DEFAULT, bg = FRMBACKGROUND)
+        self.lbl_tief.grid(row = 0, column = 0, columnspan = 3)  
+        
+        self.scr_tief = ScrolledText(self, height = 8, width = 40, font = DEFAULT, wrap = 'word')
+        self.scr_tief.grid(row = 1, column = 0, columnspan = 3, sticky = "news")
+        
+        self.btn_cancel = tk.Button(self, text = "Cancel",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.cancel)
+        self.btn_cancel.grid(row = 2, column = 1, sticky = "news")
+        
+        self.btn_ok = tk.Button(self, text = "Ok",
+                                            font = DEFAULT, bg = BTNBACKGROUNDSTATIC,
+                                            activebackground = BTNBACKGROUNDACTIVE,
+                                            command = self.raise_subtype)
+        self.btn_ok.grid(row = 2, column = 0, sticky = "news")
+        
+    def cancel(self):
+        racescreens[0].strength = 0
+        racescreens[0].dex = 0
+        racescreens[0].con = 0
+        racescreens[0].intelligence = 0
+        racescreens[0].wis = 0
+        racescreens[0].cha = 0
+        racescreens[0].speed = 0
+        racescreens[0].languages_known = ""
+        RaceScreens.current = 0
+        RaceScreens.switch_frame() 
+        
+    def raise_subtype(self):
+        pass     
+    
+class ClassScreens(tk.Frame):
+    current = 0 
+    def __init__(self):
+        tk.Frame.__init__(self, bg = FRMBACKGROUND)
+    
+    def switch_frame():
+        classscreens[ClassScreens.current].tkraise()
+    
         
 
 if __name__ == "__main__":
@@ -1080,7 +1304,8 @@ if __name__ == "__main__":
     mainscreens[1].grid(row = 0, column = 0, sticky = "news")
     mainscreens[2].grid(row = 0, column = 0, sticky = "news")
     
-    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick(), Dragonborn(), Gnome()]
+    racescreens = [Start(), Dwarf(), Elf(), Halfling(), HumanPick(), ChooseTraits(), Human(), DragonPick(), 
+                   Dragonborn(), Gnome(), HalfElf(), HalfOrc(), Tiefling()]
     
     racescreens[0].grid(row = 0, column = 0, sticky = "news")
     racescreens[1].grid(row = 0, column = 0, sticky = "news")
@@ -1092,6 +1317,11 @@ if __name__ == "__main__":
     racescreens[7].grid(row = 0, column = 0, sticky = "news")
     racescreens[8].grid(row = 0, column = 0, sticky = "news")
     racescreens[9].grid(row = 0, column = 0, sticky = "news")
+    racescreens[10].grid(row = 0, column = 0, sticky = "news")
+    racescreens[11].grid(row = 0, column = 0, sticky = "news")
+    racescreens[12].grid(row = 0, column = 0, sticky = "news")
+    
+    classscreens = []
 
     
     mainscreens[0].tkraise()
