@@ -14,7 +14,6 @@ Program to help beginners create D&amp;D characters
 - Explaining class abilities
 
 ## Doing
-- Add Races
 - Create a GUI using Tkinter
 
 
@@ -23,4 +22,5 @@ Program to help beginners create D&amp;D characters
   - Created a menu which appears upon launch
   - Import dieroller
   - Created exit button which quits program when pressed
+  - Add Races
 
